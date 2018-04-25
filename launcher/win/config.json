@@ -1,21 +1,12 @@
 {
-    "launcher_project_id": "bd2e1104-5494-48f9-ac50-98f230062df1",
+    "launcher_project_id": "8c91ecf3-e7b0-46a8-aaf7-4c419ef8ef4b",
     "login_project_id": "bd2e1104-5494-48f9-ac50-98f230062df1",
-    "store_token_life_time": "23",
+    "redirect_url": "https://xsolla.com",
+    "stone_app_id": "",
+    "store_token_life_time": 23,
     "check_update_interval": 10800000,
     "GA_trackingId": "UA-117660045-1",
     "url_scheme": "Xsolla_Launcher",
-    "build_number": 225,
-    "game_local_info": [
-        {
-            "id": 2346,
-            "name": "Game 1",
-            "icon": "img/MainWindow/GameIcons/div_icon.png"
-        },
-        {
-            "id": 2349,
-            "name": "Game 2",
-            "icon": "img/MainWindow/GameIcons/div_icon.png"
-        }
-    ]
+    "game_size": "550 Mb",
+    "build_number": 0
 }

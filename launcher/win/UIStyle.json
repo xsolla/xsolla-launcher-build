@@ -25,9 +25,9 @@
         "remember_me_checkbox_deselected_image_hover": "img/LoginWindow/new_login/check_disabled_hover.png",
         "remember_me_text_color":                      "#ffffff",
 
-		"button_signin_color":          "#9d5a1c",
+        "button_signin_color":          "#0076FF",
         "button_signin_disabled_color": "#7a7a7a",
-		"button_signin_pressed_color":  "#af6929",
+        "button_signin_pressed_color":  "#0063D7",
         "button_signin_text_color":     "#ffffff",
 
 		"shadow_image": "img/LoginWindow/sign_button_shadow.png",
@@ -118,6 +118,16 @@
         "progress_bar_title_text_color": "#80FFFFFF",
         "bottom_line_divider_color":     "#33FFFFFF"
     },
+	"redemption_window": {
+        "redemption_window_background": "img/MainWindow/RedemptionWindow/background.png",
+        "redemption_window_check_icon": "img/MainWindow/RedemptionWindow/check.png",
+		"redemtion_window_border_color": "#33ffffff",
+		"redemtion_window_header_text_color": "#ffffff",
+		"redemtion_window_information_text_color": "#7FFFFFFF",
+		"redemtion_window_text_field_border_color": "#F2542D",
+		"redemtion_window_error_text_color": "#F2542D",
+		"redemtion_window_redeem_button_disabled_color": "#7a7a7a"
+	},
     "main_window": {
 
         "header_line_color":            "#28ffffff",
@@ -150,7 +160,9 @@
 		
 		"games_list_back_ground_color": "#94000000",
 		"games_list_item_color": "#cc000000",
-        "games_list_border_color": "#33ffffff"
+        "games_list_border_color": "#33ffffff",
+        "games_list_item_color_selected": "#ffffff",
+        "games_list_item_color_unselected": "#80ffffff"
     },
     "default_game_page": {
         "bg_game_image": "img/Backgrounds/game1.png",
@@ -217,7 +229,7 @@
 
     "game_page": [
         {
-            "game_id": 2346,
+            "game_id": 29235,
             "bg_game_image": "img/Backgrounds/game1.png",
 			"bg_news_image": "img/Backgrounds/news1.png",
 			"bg_store_image": "img/Backgrounds/news1.png",
@@ -280,7 +292,7 @@
             }
         },
         {
-            "game_id": 2349,
+            "game_id": 29236,
             "bg_game_image": "img/Backgrounds/game2.png",
 			"bg_news_image": "img/Backgrounds/news2.png",
 			"bg_store_image": "img/Backgrounds/news2.png",
@@ -368,12 +380,12 @@
 
         "one_news_back_btn_image":           "img/MainWindow/NewsScreen/back_button.png",
         "one_news_back_btn_selected_image":  "img/MainWindow/NewsScreen/back_button_sel.png",
-        "one_news_back_text_color":          "#c69046",
+        "one_news_back_text_color":          "#0076FF",
         "one_news_back_selected_text_color": "#ffffff",
         "one_news_date_text_color":          "#afffffff",
         "one_news_title_text_color":         "#ffffff",
         "one_news_main_text_color":          "#ffffff",
-        "one_news_link_text_color":          "#c69046",
+        "one_news_link_text_color":          "#0076FF",
 
         "error_message_text_color": "#ffffff"
     },
@@ -448,7 +460,7 @@
         "scroll_bar_handle_color": "#696D6D"
     },
     "friends_window": {
-        "bg_color":                             "#313131",
+        "bg_color":                             "#011627",
         "header_text_color":                    "#ffffff",
         "header_line_color":                    "#33ffffff",
         "line_color":                           "#33ffffff",
@@ -641,6 +653,13 @@
         "header_text_color":        "#FFFFFFFF",
         "border_color":             "#2DFFFFFF",
 
+        "sale_bg_color"       :    "black",
+        "sale_text_color"     :    "#F7A330",
+        "percent_bg_color"    :    "#F7A330",
+        "percent_color"       :    "black",
+        "price_text_color"    :    "#F13900",
+        "old_price_text_color":    "#F7A330",
+
         "indicator_image":         "img/UI/circle_empty.png",
         "indicator_pressed_image": "img/UI/circle_filled.png",
         "play_icon_image":         "img/MainWindow/GamePage/play_icon.png",
@@ -663,6 +682,8 @@
         "tech_banner_button_text_color" : "#000000",
         "reloading_status_color" : "#7fffffff",
         "completed_status_color" : "#09D100",
+
+        "banner_description_image":   "img/UI/banner_description.png",
         "failed_status_color"    : "#0076FF"
     },
     "highlights_component": {
@@ -717,6 +738,14 @@
             "scroll_bar_handler_pressed_color": "#7f8891"
 
         },
+
+        "info_panel": {
+            "background_color": "#E6011627",
+            "text_color"       : "white",
+            "border_color": "#4c888a85",
+            "scrollbar_color": "#4c888a85"
+        },
+
         "scrollbar": {
             "hovered_handle_color": "white",
             "pressed_handle_color": "white",
