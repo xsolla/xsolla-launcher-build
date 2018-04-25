@@ -1,0 +1,1 @@
+# xsolla-launcher-build
