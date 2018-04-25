@@ -1,0 +1,787 @@
+{
+    "app_icon":"img/launcherIcon.png",
+    "change_username_window":{
+        "search_friend_window_error_color": "#F2542D",
+        "header_text_color": "#ffffff",
+        "button_text_color": "white",
+        "textfield_border_color": "#33FFFFFF",
+        "textfield_text_color": "#999999",
+        "textfield_background_color": "#42000000"
+    },
+	"login_window": {
+        "login_background_color": "#E6011627",
+
+        "bg_image":   "img/LoginWindow/login_background.png",
+		"logo_image": "img/LoginWindow/new_login/logo.png",
+		
+		"button_sign_main_social_color":          "#507299",
+		"button_sign_main_social_disabled_color": "#7a7a7a",
+		"button_sign_main_social_pressed_color":  "#678eb9",
+		"button_sign_main_social_text_color":     "#ffffff",
+
+        "remember_me_checkbox_simple_image":           "img/LoginWindow/new_login/check_enabled.png",
+        "remember_me_checkbox_simple_image_hover":     "img/LoginWindow/new_login/check_enabled_hover.png",
+        "remember_me_checkbox_deselected_image":       "img/LoginWindow/new_login/check_disabled.png",
+        "remember_me_checkbox_deselected_image_hover": "img/LoginWindow/new_login/check_disabled_hover.png",
+        "remember_me_text_color":                      "#ffffff",
+
+		"button_signin_color":          "#9d5a1c",
+        "button_signin_disabled_color": "#7a7a7a",
+		"button_signin_pressed_color":  "#af6929",
+        "button_signin_text_color":     "#ffffff",
+
+		"shadow_image": "img/LoginWindow/sign_button_shadow.png",
+
+		"logo_vk_image":      "img/LoginWindow/social/vk_logo.png",
+		"logo_fb_image":      "img/LoginWindow/social/facebook_logo.png",
+		"logo_steam_image":   "img/LoginWindow/social/steam_logo.png",
+		"logo_google_image":  "img/LoginWindow/social/google_logo.png",
+		"logo_baidu_image":   "img/LoginWindow/social/baidu_logo.png",
+		"logo_naver_image":   "img/LoginWindow/social/naver_logo.png",
+		"logo_twitter_image": "img/LoginWindow/social/twitter_logo.png",
+		"logo_more_image":    "img/LoginWindow/social/more_logo.png",
+
+        "bottom_line_color":           "#4c888a85",
+        "bottom_items_color":          "#80ffffff",
+        "bottom_items_selected_color": "#ffffff",
+
+        "back_button_image":               "img/LoginWindow/new_login/back_button.png",
+        "back_button_image_hover":         "img/LoginWindow/new_login/back_button_hover.png",
+        "search_icon_image":               "img/LoginWindow/new_login/search.png",
+        "search_line_color":               "#66888a85",
+        "search_placeholder_text_color":   "#40ffffff",
+        "search_text_color":               "#ffffff",
+        "social_item_text_color":          "#82ffffff",
+        "social_item_text_selected_color": "#ffffff",
+
+        "close_button":       "img/LoginWindow/new_login/close_button.png",
+        "close_button_hover": "img/LoginWindow/new_login/close_button_hover.png",
+        "regions_combo_box": {
+            "region_label_text_color":    "#80FFFFFF",
+            "selected_region_text_color": "#FFFFFF",
+
+            "loading_label_text_color": "#80FFFFFF",
+
+            "arrow_down_image": "img/UI/settings_arrow.png",
+
+            "tool_tip_text_color":   "white",
+            "tool_tip_bg_color":     "black",
+            "tool_tip_border_color": "#29FFFFFF",
+
+            "regions_list_bg_color":        "#DA000000",
+            "regions_list_border_color":    "#29FFFFFF",
+            "regions_list_item_text_color": "white",
+            "regions_list_item_bg_color":   "#1CFFFFFF"
+        }
+    },
+    "steam_login_window": {
+        "bg_color":   "#E6000000",
+        "logo_image": "img/LoginWindow/new_login/logo.png",
+
+        "title_text_color": "white",
+        "description_text_color": "#888A85",
+
+        "button_bg_color":            "#A65E24",
+        "button_disabled_bg_color":   "#793F10",
+        "button_text_color":          "white",
+        "button_disabled_text_color": "#80FFFFFF",
+
+        "close_button_image":         "img/LoginWindow/new_login/close_button.png",
+        "close_button_hovered_image": "img/LoginWindow/new_login/close_button_hover.png",
+
+        "email_wrong_color": "#F2542D"
+
+    },
+    "error_window": {
+        "bg_color":          "#313131",
+        "text_color":        "white",
+        "bottom_line_color": "white"
+    },
+    "error_report_window": {
+        "bg_color":              "#313131",
+        "header_text_color":     "white",
+        "error_text_color":      "white",
+        "send_error_text_color": "#80FFFFFF",
+        "bottom_line_color":     "white"
+    },
+    "game_install_window": {
+        "bg_image":                    "img/GameInstallWindow/bg.png",
+        "logo_image":                  "img/GameInstallWindow/logo.png",
+        "install_dir_text_color":      "#999999",
+        "disk_space_title_text_color": "#999999",
+        "disk_space_value_text_color": "white"
+    },
+    "launcher_update_window": {
+        "bg_color":                      "#011627",
+        "header_text_color":             "#ffffff",
+        "header_bottom_border_color":    "#33FFFFFF",
+        "progress_bar_title_text_color": "#80FFFFFF",
+        "bottom_line_divider_color":     "#33FFFFFF"
+    },
+    "main_window": {
+
+        "header_line_color":            "#28ffffff",
+        "header_text_selected_color":   "#ffffff",
+        "header_text_deselected_color": "#7fffffff",
+
+        "context_button_image":     "img/MainWindow/context_menu_button@2x.png",
+        "login_text_color":         "#ffffff",
+
+        "menu_bg_color":            "#db000000",
+        "menu_line_color":          "#28ffffff",
+        "menu_text_color":          "#ffffff",
+        "menu_selected_item_color": "#1cffffff",
+
+        "progress_item_bg_color":         "#323232",
+        "progress_item_top_line_color":   "#33ffffff",
+        "progress_item_title_text_color": "#999999",
+
+        "user_circle_online_status_color" :  "#0AD100",
+        "user_circle_ingame_status_color" :  "#5CC8FF",
+        "user_circle_away_status_color"   :  "#FFF600",
+        "user_circle_offline_status_color":  "#878E88",
+
+        "avatar_image":         "https://img-fotki.yandex.ru/get/139626/137106206.713/0_1e32b5_f2fdfdcf_orig",
+        "avatr_border_color":   "#33ffffff",
+        "chat_icon":            "img/MainWindow/chat_button.png",
+        "chat_hovered_icon":    "img/MainWindow/chat_button_hovered.png",
+        "publisher_logo":       "img/MainWindow/publisher_logo.png",
+        "unreaded_messages_text_color": "#ffffff",
+		
+		"games_list_back_ground_color": "#94000000",
+		"games_list_item_color": "#cc000000",
+        "games_list_border_color": "#33ffffff"
+    },
+    "default_game_page": {
+        "bg_game_image": "img/Backgrounds/game1.png",
+        "bg_news_image": "img/Backgrounds/news1.png",
+        "bg_store_image": "img/Backgrounds/news1.png",
+
+        "version_text_color":         "#7FFFFFFF",
+        "social_text_color":          "#7FFFFFFF",
+        "support_text_color":         "#0076FF",
+        "support_text_hovered_color": "#006EEE",
+        "locate_text_color":          "#FFFFFFFF",
+
+        "progress_bar_buttons_bg_color":     "#A1000000",
+        "progress_bar_buttons_border_color": "#40FFFFFF",
+
+        "options_btn_text_color":         "#FFFFFF",
+        "options_btn_text_hovered_color": "#CFFFFFFF",
+        "options_btn_text_pressed_color": "#CFFFFFFF",
+        "options_btn_bg_color":           "#45000000",
+        "options_btn_bg_hovered_color":   "#8c000000",
+        "options_btn_bg_pressed_color":   "#000000",
+        "options_btn_border_color":       "#25FFFFFF",
+
+        "options_list_bg_color":             "#DB000000",
+        "options_list_border_color":         "#28000000",
+        "options_list_button_color":         "#00000000",
+        "options_list_button_pressed_color": "#1CFFFFFF",
+        "options_list_text_color":           "#FFFFFFFF",
+        "options_list_separator_color":      "#28FFFFFF",
+
+        "banner_arrow_pressed_image": "img/UI/arrow_rect_pressed_big.png",
+        "banner_arrow_image":         "img/UI/arrow_rect_big.png",
+        "banner_arrow_hovered_image": "img/UI/arrow_rect_hovered_big.png",
+
+        "pause_image": "img/MainWindow/GamePage/pause.png",
+        "play_image":  "img/MainWindow/GamePage/play.png",
+        "gear_image":  "img/MainWindow/GamePage/gear.png",
+        "stop_image":  "img/MainWindow/GamePage/stop.png",
+
+        "logo_image":        "img/MainWindow/GamePage/logo.png",
+        "bottom_logo_image": "img/MainWindow/GamePage/bitbox_logo_bw.png",
+        "arrow_down_image":  "img/MainWindow/GamePage/arrow_down.png",
+
+        "more_image":        "img/MainWindow/SocialLinks/more.png",
+
+        "error_message_text_color": "#ffffff",
+        "change_char": {
+            "name_text_color":          "#FFFFFF",
+            "status_open_color":        "#09D100",
+            "status_closed_color":      "#0076FF",
+            "world_name_text_color":    "#9CFFFFFF",
+            "change_button_text_color": "#C69046"
+        },
+        "controll_button": {
+            "text_regular_color": "#000000",
+            "text_hovered_color": "#FFFFFF",
+            "text_pressed_color": "#FFFFFF",
+
+            "bg_regular_color": "#0076FF",
+            "bg_hovered_color": "#006EEE",
+            "bg_pressed_color": "#0063D7"
+        }
+    },
+
+    "game_page": [
+        {
+            "game_id": 2346,
+            "bg_game_image": "img/Backgrounds/game1.png",
+			"bg_news_image": "img/Backgrounds/news1.png",
+			"bg_store_image": "img/Backgrounds/news1.png",
+
+            "version_text_color":         "#7FFFFFFF",
+            "social_text_color":          "#7FFFFFFF",
+            "support_text_color":         "#0076FF",
+            "support_text_hovered_color": "#006EEE",
+            "locate_text_color":          "#FFFFFFFF",
+
+            "progress_bar_buttons_bg_color":     "#A1000000",
+            "progress_bar_buttons_border_color": "#40FFFFFF",
+
+            "options_btn_text_color":         "#FFFFFF",
+            "options_btn_text_hovered_color": "#CFFFFFFF",
+            "options_btn_text_pressed_color": "#CFFFFFFF",
+            "options_btn_bg_color":           "#45000000",
+            "options_btn_bg_hovered_color":   "#8c000000",
+            "options_btn_bg_pressed_color":   "#000000",
+            "options_btn_border_color":       "#25FFFFFF",
+
+            "options_list_bg_color":             "#DB000000",
+            "options_list_border_color":         "#28000000",
+            "options_list_button_color":         "#00000000",
+            "options_list_button_pressed_color": "#1CFFFFFF",
+            "options_list_text_color":           "#FFFFFFFF",
+            "options_list_separator_color":      "#28FFFFFF",
+
+            "banner_arrow_pressed_image": "img/UI/arrow_rect_pressed_big.png",
+            "banner_arrow_image":         "img/UI/arrow_rect_big.png",
+            "banner_arrow_hovered_image": "img/UI/arrow_rect_hovered_big.png",
+
+            "pause_image": "img/MainWindow/GamePage/pause.png",
+            "play_image":  "img/MainWindow/GamePage/play.png",
+            "gear_image":  "img/MainWindow/GamePage/gear.png",
+            "stop_image":  "img/MainWindow/GamePage/stop.png",
+
+            "logo_image":        "img/MainWindow/GamePage/logo.png",
+            "bottom_logo_image": "img/MainWindow/GamePage/bitbox_logo_bw.png",
+            "arrow_down_image":  "img/MainWindow/GamePage/arrow_down.png",
+
+            "more_image":        "img/MainWindow/SocialLinks/more.png",
+
+            "error_message_text_color": "#ffffff",
+            "change_char": {
+                "name_text_color":          "#FFFFFF",
+                "status_open_color":        "#09D100",
+                "status_closed_color":      "#0076FF",
+                "world_name_text_color":    "#9CFFFFFF",
+                "change_button_text_color": "#C69046"
+            },
+            "controll_button": {
+                "text_regular_color": "#000000",
+                "text_hovered_color": "#FFFFFF",
+                "text_pressed_color": "#FFFFFF",
+
+                "bg_regular_color": "#0076FF",
+                "bg_hovered_color": "#006EEE",
+                "bg_pressed_color": "#0063D7"
+            }
+        },
+        {
+            "game_id": 2349,
+            "bg_game_image": "img/Backgrounds/game2.png",
+			"bg_news_image": "img/Backgrounds/news2.png",
+			"bg_store_image": "img/Backgrounds/news2.png",
+
+            "version_text_color":         "#7FFFFFFF",
+            "social_text_color":          "#7FFFFFFF",
+            "support_text_color":         "#FF005B",
+            "support_text_hovered_color": "#F20056",
+            "locate_text_color":          "#FFFFFFFF",
+
+            "progress_bar_buttons_bg_color":     "#A1000000",
+            "progress_bar_buttons_border_color": "#40FFFFFF",
+
+            "options_btn_text_color":         "#FFFFFF",
+            "options_btn_text_hovered_color": "#CFFFFFFF",
+            "options_btn_text_pressed_color": "#CFFFFFFF",
+            "options_btn_bg_color":           "#45000000",
+            "options_btn_bg_hovered_color":   "#8c000000",
+            "options_btn_bg_pressed_color":   "#000000",
+            "options_btn_border_color":       "#25FFFFFF",
+
+            "options_list_bg_color":             "#DB000000",
+            "options_list_border_color":         "#28000000",
+            "options_list_button_color":         "#00000000",
+            "options_list_button_pressed_color": "#1CFFFFFF",
+            "options_list_text_color":           "#FFFFFFFF",
+            "options_list_separator_color":      "#28FFFFFF",
+
+            "banner_arrow_pressed_image": "img/UI/arrow_rect_pressed_big.png",
+            "banner_arrow_image":         "img/UI/arrow_rect_big.png",
+            "banner_arrow_hovered_image": "img/UI/arrow_rect_hovered_big.png",
+
+            "pause_image": "img/MainWindow/GamePage/pause.png",
+            "play_image":  "img/MainWindow/GamePage/play.png",
+            "gear_image":  "img/MainWindow/GamePage/gear.png",
+            "stop_image":  "img/MainWindow/GamePage/stop.png",
+
+            "logo_image":        "img/MainWindow/GamePage/logo.png",
+            "bottom_logo_image": "img/MainWindow/GamePage/bitbox_logo_bw.png",
+            "arrow_down_image":  "img/MainWindow/GamePage/arrow_down.png",
+
+            "more_image":        "img/MainWindow/SocialLinks/more.png",
+
+            "error_message_text_color": "#ffffff",
+            "change_char": {
+                "name_text_color":          "#FFFFFF",
+                "status_open_color":        "#09D100",
+                "status_closed_color":      "#0076FF",
+                "world_name_text_color":    "#9CFFFFFF",
+                "change_button_text_color": "#C69046"
+            },
+            "controll_button": {
+                "text_regular_color": "#000000",
+                "text_hovered_color": "#FFFFFF",
+                "text_pressed_color": "#FFFFFF",
+
+                "bg_regular_color": "#FF005B",
+                "bg_hovered_color": "#F20056",
+                "bg_pressed_color": "#D2004B"
+            }
+        }
+    ],
+    "news_screen": {
+        "placeholder_image": "img/UI/placeholder_image.png",
+
+        "banner_border_color": "#2dffffff",
+
+        "switch_button_pressed_image": "img/UI/arrow_rect_pressed_big.png",
+        "switch_button_image":         "img/UI/arrow_rect_big.png",
+        "switch_button_hovered_image":  "img/UI/arrow_rect_hovered_big.png",
+
+        "title_bg_color":   "#63000000",
+        "title_text_color": "#ffffff",
+        "date_text_color":  "#afffffff",
+
+        "point_image":       "img/UI/circle_filled.png",
+        "point_empty_image": "img/UI/circle_empty.png",
+
+        "news_date_text_color": 	"#afffffff",
+        "news_title_color":     	"#0076FF",
+        "news_hovered_title_color":	"#006EEE",
+        "news_main_text_color": 	"#ccffffff",
+
+        "scroll_bar_handle_color": "#48ffffff",
+
+        "one_news_back_btn_image":           "img/MainWindow/NewsScreen/back_button.png",
+        "one_news_back_btn_selected_image":  "img/MainWindow/NewsScreen/back_button_sel.png",
+        "one_news_back_text_color":          "#c69046",
+        "one_news_back_selected_text_color": "#ffffff",
+        "one_news_date_text_color":          "#afffffff",
+        "one_news_title_text_color":         "#ffffff",
+        "one_news_main_text_color":          "#ffffff",
+        "one_news_link_text_color":          "#c69046",
+
+        "error_message_text_color": "#ffffff"
+    },
+    "store_screen": {
+        "error_text_header_color": "#ffffff",
+        "error_text_color": "#80FFFFFF"
+    },
+    "settings_screen": {
+        "bg_color": "#495C6B",
+
+        "header_text_color": "#ffffff",
+        "header_line_color": "#33ffffff",
+
+        "language_text_color": "#ffffff",
+
+        "account_text_color":       "#ffffff",
+        "remember_me_text_color":   "#ffffff",
+        "check_btn_select_image":   "img/SettingsWindow/check_box_sel.png",
+        "check_btn_deselect_image": "img/SettingsWindow/check_box_desel.png",
+        "minimize_icon" : "img/SettingsWindow/header/minimize.png",
+        "maximize_icon" : "img/SettingsWindow/header/maximize.png",
+        "cloze_icon" :    "img/SettingsWindow/header/close.png",
+
+        "downloads_text_color": "#ffffff",
+        "use_p2p_text_color":   "#ffffff",
+
+        "bottom_line_color": "#33ffffff",
+        "border_line_color": "#33ffffff",
+
+        "tabs_item_color"            : "#30000000",
+        "tabs_item_button_color"     : "#91495C6B",
+        "tabs_item_button_text_color": "white",
+		
+		"editNickNameButtonColor": "#44000000",
+        "editNickNameButtonBorderColor": "#29FFFFFF",
+        "vk_image":       "img/SettingsWindow/SocialNetworks/vk.png",
+        "fb_image":       "img/SettingsWindow/SocialNetworks/fb.png",
+        "google_image":   "img/SettingsWindow/SocialNetworks/google.png",
+        "steam_image":    "img/SettingsWindow/SocialNetworks/steam.png",
+        "twitter_image":  "img/SettingsWindow/SocialNetworks/twitter.png",
+        "baidu_image":    "img/SettingsWindow/SocialNetworks/baidu.png",
+        "naver_image":    "img/SettingsWindow/SocialNetworks/naver.png"
+    },
+    "chars_window": {
+        "bg_image":     "img/CharsWindow/bg.png",
+        "border_color": "#33FFFFFF",
+
+        "arrow_image":         "img/CharsWindow/arrow.png",
+        "arrow_checked_image": "img/CharsWindow/arrow_checked.png",
+        "arrow_hovered_image": "img/CharsWindow/arrow_hovered.png",
+
+        "header_border_color": "#33FFFFFF",
+        "header_text_color":   "#FFFFFF",
+
+        "table_header_border_line_color":   "#33FFFFFF",
+        "table_header_selected_text_color": "white",
+        "table_header_regular_text_color":  "#9CFFFFFF",
+        "table_header_hovered_text_color":  "#7D8686",
+
+        "bottom_panel_border_color": "#33FFFFFF",
+
+        "list_item_name_text_color":               "white",
+        "list_item_world_text_color":              "#9cFFFFFF",
+        "list_item_players_text_color":            "#9cFFFFFF",
+        "list_item_status_available_text_color":   "#09D100",
+        "list_item_status_unavailable_text_color": "#0076FF",
+        "list_item_selected_bg_color":             "#45000000",
+        "list_item_selected_border_color":         "#68FFFFFF",
+        "list_item_hovered_bg_color":              "#8C000000",
+        "list_item_pressed_bg_color":              "#000000",
+
+        "scroll_bar_handle_color": "#696D6D"
+    },
+    "friends_window": {
+        "bg_color":                             "#313131",
+        "header_text_color":                    "#ffffff",
+        "header_line_color":                    "#33ffffff",
+        "line_color":                           "#33ffffff",
+        "scroll_bar_handle_color":              "#47ffffff",
+        "beetween_sections_header_text_color":  "#ffffff",
+        
+        "tabs_background_color":    "#30000000",
+        "tab_button_text_color":    "#ffffff",
+        "tab_button_badge_color":   "#0076FF",
+        "tab_button_hovered_color": "#33000000",
+        "tab_button_checked_color": "#91000000",
+        "social_media_textColor":   "#7fffffff",
+        
+        "friend_image_border_color":                "#51ffffff",
+        "friend_name_text_color":                   "#ffffff",
+        "friend_status_dot_color":                  "#09d100",
+        "friend_status_text_color":                 "#b8b8b8",
+        "friend_requst_sent_text_color":            "#09d100",
+        "friend_cancel_request_text_color":         "#c69046",
+        "friend_cancel_request_hover_text_color":   "#f8A330",
+        
+        "vk_image":       "img/SettingsWindow/SocialNetworks/vk.png",
+        "fb_image":       "img/SettingsWindow/SocialNetworks/fb.png",
+        "google_image":   "img/SettingsWindow/SocialNetworks/google.png",
+        "steam_image":    "img/SettingsWindow/SocialNetworks/steam.png",
+        "twitter_image":  "img/SettingsWindow/SocialNetworks/twitter.png",
+        "baidu_image":    "img/SettingsWindow/SocialNetworks/baidu.png",
+        "naver_image":    "img/SettingsWindow/SocialNetworks/naver.png",
+
+        "search_text_field": {
+            "text_color": "#ffffff",
+            "bg_color": "#69000000",
+            "border_color": "#28FFFFFF",
+            "placeholder_text_color": "#80FFFFFF",
+            
+            "search_image_source": "img/FriendsWindow/search.png"
+        },
+        "search_friend_window": {
+            "shadow_color": "#7f000000",
+            "background_image": "img/FriendsWindow/SearchFriendWindow/background.png",
+            "search_icon": "img/FriendsWindow/SearchFriendWindow/search_icon.png",
+            "close_icon": "img/FriendsWindow/SearchFriendWindow/close.png"
+        }
+    },
+    "connect_social_network_window": {
+        "logo_facebook":            "img/ConnectSocialNetworkWindow/facebook_logo.png",
+        "logo_vk":                  "img/ConnectSocialNetworkWindow/vk_logo.png",
+        "logo_google":              "img/ConnectSocialNetworkWindow/google_logo.png",
+        "logo_steam":               "img/ConnectSocialNetworkWindow/steam_logo.png",
+        "logo_twitter":             "img/ConnectSocialNetworkWindow/twitter_logo.png",
+        "logo_more":                "img/ConnectSocialNetworkWindow/more_logo.png",
+        "logo_baidu":               "img/ConnectSocialNetworkWindow/baidu_logo.png",
+        "logo_naver":               "img/ConnectSocialNetworkWindow/naver_logo.png",
+        "check_enabled":            "img/ConnectSocialNetworkWindow/check_enabled.png",
+        "check_enabled_hover":      "img/ConnectSocialNetworkWindow/check_enabled_hover.png",
+        "back_button":              "img/ConnectSocialNetworkWindow/back_button.png",
+        "search_icon":              "img/ConnectSocialNetworkWindow/search_icon.png",
+        
+        "background_color":         "#313131",
+        "description_text_color":   "#ffffff",
+        "bottom_line_color":        "#33ffffff",
+        "shadow_button_color":      "#7f000000",
+        "facebook_button_color":    "#4065b4",
+        "vk_button_color":          "#5e81a8",
+        "check_box_rectangle_color":"#44000000",
+        "check_box_border_color":   "#28ffffff",
+        "social_network_text_color":"#ffffff",
+        "check_box_text_color":     "#ffffff",
+        "hovered_text_color":       "#ffffff",
+        "regular_text_color":       "#7fffffff",
+        "search_bottom_line_color": "#66ffffff"
+    },
+    "chat_window": {
+        "background_color": "#011627",
+        "friends_section_background_color": "#33000000",
+        "line_color": "#33ffffff",
+        "avatar_border_color": "#33FFFFFF",
+        "circle_status_color": "#09D100",
+        "user_name_text_color": "#ffffff",
+        "status_text_color": "#80FFFFFF",
+        "vertical_lineColor": "#29ffffff",
+        "selected_item_background_color": "#75000000",
+        "header_text_color": "#ffffff",
+
+        "new_message_color"     : "#0076FF",
+        "new_message_text_color": "#ffffff",
+
+        "user_circle_online_status_color" :  "#0AD100",
+        "user_circle_ingame_status_color" :  "#5CC8FF",
+        "user_circle_away_status_color"   :  "#FFF600",
+        "user_circle_offline_status_color":  "#878E88",
+		
+		"user_profile_border_color": "#33ffffff",
+		"user_profile_initials_text_color": "#FFFFFF",
+        "new_message_check_color": "#0076FF",
+		"new_message_count_color": "#FFFFFF",
+		
+		"search_friend_window_background_color": "#011627",
+		"search_friend_window_border_color": "#33FFFFFF",
+		"search_friend_window_error_color": "#F2542D",
+		
+		"chat_title_color": "#ffffff",
+		"place_holder_text_color": "#999999",
+		
+		"text_field_background_color": "#42000000",
+		"text_field_text_color": "#ffffff",
+		"text_field_border_color": "#33FFFFFF",
+		
+		"add_users_window_border_color": "#33ffffff",
+		"add_users_window_color": "#011627",
+		"add_users_header_text_color": "#ffffff", 
+		"invite_friends_to_group_text_color": "#ffffff", 
+		"counter_friends_color": "#FFFFFF",
+		"friends_list_contain_mouse_color": "#45000000",
+		"check_box_color": "#3F000000",
+		"check_box_border": "#3fffffff",
+		
+		"create_chat_window_color": "#011627",
+		"create_chat_window_border_color": "#33ffffff",
+		"create_chat_header_text_color": "#ffffff",
+		"invite_title_text_color": "#80ffffff",
+        "chat_label_contain_mouse_color": "#45000000",
+		"add_group_button_color": "#44000000",
+		"add_group_button_border_color": "#29ffffff",
+		"new_group_text_color": "#ffffff",
+		
+		"group_chat_window_color": "#011627",
+		"group_chat_border_color": "#33ffffff",
+		"group_chat_header_text_color": "#ffffff",
+		"group_chat_status_text_color": "#ffffff",
+		"group_chat_information_text_color": "#7FFFFFFF",
+		"group_chat_text_field_border_color": "#F2542D",
+		"group_chat_error_text_color": "#F2542D",
+		"group_chat_invite_text_color": "#FFFFFF",
+		"group_chat_counter_text_color": "#FFFFFF",
+		"group_chat_contain_mouse_color": "#45000000",
+		"group_chat_checkbox_color": "#3F000000",
+		"group_chat_checkbox_border": "#3fffffff",
+		
+		"chat_label_color": "#45000000",
+        
+        "arrow_image_url": "img/ChatWindow/arrow_down.png",
+        "search_ion_url": "img/SettingsWindow/search.png",
+
+        "pinned_image":               "img/ChatWindow/pinnedIcon.png",
+        "notification_disabled_icon": "img/ChatWindow/notificationDisabledIcon.png",
+        "settings_icon" : "img/ChatWindow/settings_icon.png",
+        "contacts_menu": "img/ChatWindow/contacts_menu.png",
+		"add_group_icon": "img/ChatWindow/Group.png",
+		"shape_icon": 		"img/ChatWindow/Shape.png",
+		"avatar_pictures": "img/FriendsWindow/Avatars/avatar",
+        
+        "message_item": {
+            "new_friend_request_text_color":    "#7fffffff",
+            "line_color":                       "#33ffffff",
+            "text_field_background_color":      "#75000000",
+            "place_holder_text_field_color":    "#ffffff",
+            "text_field_color":                 "#ffffff",
+            "send_button_color":                "#4eb8ff",
+            "unblock_button_color_regular":     "#ffffff",
+            "unblock_button_color_hovered":     "#beffffff",
+            "unblock_button_color_pressed":     "#7fffffff",
+            "empty_screen_text_color":          "#979797",
+            "avatar_background_color":          "#28ffffff",
+            "my_message_text_color":            "#ffffff",
+            "friend_message_text_color":        "#979797",
+            "my_message_background_color":      "#8c000000",
+            "friend_message_background_color":  "#26000000"
+        },
+        "conversation_info_item": {
+            "bg_color":                       "#3E3E3E",
+            "back_button_text_color":         "#C69046",
+            "back_arrow_image":               "img/ChatWindow/arrow_back.png",
+            "chat_title_text_color":          "white",
+            "group_members_count_text_color": "#80FFFFFF",
+            "line_dividers_color":            "#33FFFFFF",
+            "members_text_color":             "white",
+            "members_counts_text_color":      "#80FFFFFF",
+            "user_avatar_letter_color":       "#80FFFFFF",
+            "user_nickname_text_color":       "white",
+            "user_avatar_border_color":       "#33FFFFFF",
+            "scrollbar_color":                "#48FFFFFF",
+            "scrollbar_pressed_color":        "white"
+        }
+    },
+    "banner_component": {
+        "header_bg_regular_color":  "#66000000",
+        "header_bg_hovered_color":  "#8C000000",
+        "header_bg_pressed_color":  "#000000",
+        "header_text_color":        "#FFFFFFFF",
+        "border_color":             "#2DFFFFFF",
+
+        "indicator_image":         "img/UI/circle_empty.png",
+        "indicator_pressed_image": "img/UI/circle_filled.png",
+        "play_icon_image":         "img/MainWindow/GamePage/play_icon.png",
+        "placeholder_image":       "img/UI/placeholder_image.png",
+
+        "arrow_pressed_image": "img/UI/arrow_rect_pressed.png",
+        "arrow_image":         "img/UI/arrow_rect.png",
+        "arrow_hovered_image": "img/UI/arrow_rect_hovered.png",
+	
+        "external_link": "img/UI/external_link.png",
+
+        "shadow_color": "#7F000000",
+        "attention_icon_image" : "img/UI/attention.png",
+        "refresh_icon_image" : "img/UI/refreshIcon.png",
+        "tech_banner_border_color" : "#F2542D",
+        "tech_banner_color" : "#99000000",
+        "tech_banner_line_color" : "#33FFFFFF",
+        "tech_banner_label_color" : "#66000000",
+        "tech_banner_button_color" : "#0076FF",
+        "tech_banner_button_text_color" : "#000000",
+        "reloading_status_color" : "#7fffffff",
+        "completed_status_color" : "#09D100",
+        "failed_status_color"    : "#0076FF"
+    },
+    "highlights_component": {
+        "title_text_color":   "white",
+        "updated_text_color": "white",
+        "share_dialog": {
+            "bg_color":               "#000000",
+            "border_color":           "#33FFFFFF",
+            "share_title_text_color": "#B3FFFFFF",
+            "direct_link_text_color": "#B3FFFFFF"
+        },
+        "video_item": {
+            "border_color":            "#33FFFFFF",
+            "bottom_panel_bg_color":   "black",
+            "video_title_text_color":  "#C69046",
+            "video_source_text_color": "#B2FFFFFFo",
+            "source_logo":             "img/MainWindow/StoriesScreen/youtube_logo.png",
+            "play_image":              "img/MainWindow/StoriesScreen/play.png"
+        }
+    },
+    "world_loading_window": {
+        "bg_image":                      "img/MainWindow/WorldLoadingWindow/bg.png",
+        "header_text_color":             "white",
+        "header_bottom_line_color":      "#33FFFFFF",
+        "progress_bar_title_text_color": "#80FFFFFF",
+        "bottom_panel_top_line_color":   "#33FFFFFF"
+    },
+	"social_links_window": {
+            "find_us_text_color":    "#FFFFFF",
+            "bg_color":              "#CC000000",
+            "search_line_color":     "#99FFFFFF",
+            "search_ph_text_color":  "#80FFFFFF",
+			"link_title_color":      "#E6FFFFFF",
+            "logo":                  "img/MainWindow/SocialLinksWindow/logo.png",
+            "close_image":           "img/MainWindow/SocialLinksWindow/close_button.png",
+			"search_image":          "img/MainWindow/SocialLinksWindow/search_icon.png",
+			"external_link":         "img/MainWindow/SocialLinksWindow/external_link.png"
+    },
+    "ui_components": {
+        "combobox": {
+            "arrow_image":                       "img/UI/settings_arrow.png",
+            "main_item_border_deselected_color": "#2Affffff",
+            "main_item_border_selected_color":   "#ffffff",
+            "main_item_bg_color":                "#3B4B57",
+            "item_text_selected_color":          "#ffffff",
+            "item_text_deselected_color":        "#aaffffff",
+            "menu_bg_color":                     "#3B4B57",
+            "menu_selected_item_bg_color":       "#435463",
+
+            "scroll_bar_hovered_color":         "#b8bcc1",
+            "scroll_bar_handler_color":         "white",
+            "scroll_bar_handler_pressed_color": "#7f8891"
+
+        },
+        "scrollbar": {
+            "hovered_handle_color": "white",
+            "pressed_handle_color": "white",
+            "handle_color":         "#3b434a"
+        },
+        "progressbar": {
+            "bg_color":     "#A1000000",
+            "border_color": "#40FFFFFF",
+            "color":        "#0076FF",
+            "text_color":   "white"
+        },
+        "text_label": {
+            "active_color":     "#FFFFFF",
+            "hovered_color":    "#C0FFFFFF",
+            "not_active_color": "#80FFFFFF"
+        },
+        "transparent_button": {
+            "text_regular_color": "#FFFFFF",
+            "text_hovered_color": "#CFFFFFFF",
+            "text_pressed_color": "#CFFFFFFF",
+
+            "bg_regular_color": "#45000000",
+            "bg_hovered_color": "#8c000000",
+            "bg_pressed_color": "#000000",
+
+            "border_color": "#25FFFFFF"
+        },
+        "transparent_textfield": {
+            "text_color":             "#ffffff",
+            "bg_color":               "#00ffffff",
+            "border_color":           "#66888a85",
+            "placeholder_text_color": "#999999",
+            "eye_image":              "img/ui/eye.png",
+            "eye_on_image":           "img/LoginWindow/new_login/password_visible.png",
+            "eye_on_hover_image":     "img/LoginWindow/new_login/password_visible_hover.png",
+            "eye_off_image":          "img/LoginWindow/new_login/password_invisible.png",
+            "eye_off_hover_image":    "img/LoginWindow/new_login/password_invisible_hover.png"
+        },
+        "window_buttons_bar": {
+            "button_regular_bg_color":        "#00000000",
+            "button_hovered_bg_color":        "#99000000",
+            "button_pressed_bg_color":        "#FF000000",
+            "text_title_color":        	      "#FFFFFF",
+            "button_minimize_image":          "img/ui/window_button/minimize.png",
+            "button_maximize_image":          "img/ui/window_button/maximize.png",
+            "button_minimize_2_window_image": "img/ui/window_button/minimize2window.png",
+            "button_close_image":             "img/ui/window_button/close.png"
+        },
+        "placeholder_image": {
+            "bg_color": "#000000",
+            "logo_image": "img/UI/placeholderLogo.png"
+        },
+        "notification_window": {
+            "border_color":     "#80FFFFFF",
+            "bg_color":         "#000000",
+            "title_text_color": "#B0FFFFFF",
+            "main_text_color":  "#FFFFFF",
+            "close_image":      "img/UI/notificationClose.png"
+        },
+	"shadow_window_background_image": "img/UI/shadowBackground.png"	
+    },
+    "fonts": {
+        "regular":  "fonts/Lato-Regular.ttf",
+        "medium":   "fonts/Lato-Medium.ttf",
+        "bold":     "fonts/Lato-Bold.ttf",
+        "black":    "fonts/Lato-Black.ttf"
+    }
+}
