@@ -18,7 +18,7 @@ The **scripts/win/deploy.bat** script generates:
 * `login_project_id`: Login Widget ID from the Publisher Account;
 * `game_local_info`: ID of game project you want to be delivered via Launcher, game name and path to the game’s image file.
 
-Read the [documentation](https://new-developers.xsolla.com/doc/launcher/) for full Launcher integration.
+Read the [documentation](https://developers.xsolla.com/doc/launcher/) for full Launcher integration.
 
 ## Updating Launcher
 
