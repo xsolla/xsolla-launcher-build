@@ -1,0 +1,13 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+## [Unreleased]
+
+## [1.6.19.235] - 2018-06-27
+### Changed
+- Updated French and German translations 
+
+## [1.6.19.230] - 2018-06-26
+### Added
+- Added display of necessary free disk space for game installation
+- Added support for Playfab authorization (login / password, via Steam)
