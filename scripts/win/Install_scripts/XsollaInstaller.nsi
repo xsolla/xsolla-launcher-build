@@ -129,7 +129,7 @@ Section "-MainSection" SEC01
   File "XsollaDownloader.dll"
   File "XsollaAuth.dll"
   File "XsollaCore.dll"
-  
+  File "Changelog.txt"
   SetOutPath "$INSTDIR"
 
   ${StrRep} $0 "$INSTDIR" "\" "/"
@@ -212,6 +212,7 @@ Section Uninstall
   Delete "$INSTDIR\XsollaDownloader.dll"
   Delete "$INSTDIR\XsollaAuth.dll"
   Delete "$INSTDIR\XsollaCore.dll"
+  Delete "$INSTDIR\Changelog.txt"
   RMDir /r "$INSTDIR\bearer"
   RMDir /r "$INSTDIR\data"
   RMDir /r "$INSTDIR\fonts"

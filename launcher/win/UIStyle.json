@@ -8,6 +8,15 @@
         "textfield_text_color": "#999999",
         "textfield_background_color": "#42000000"
     },
+    "disconnect_account_window": {
+        "bg_color": "#495C6B",
+        "header_text_color": "#ffffff",
+        "header_line_color": "#33ffffff",
+        "text_color":        "white",
+        "top_line_color": "white",
+        "bottom_line_color": "white"
+    },
+
 	"login_window": {
         "login_background_color": "#E6011627",
 
@@ -67,6 +76,9 @@
         "logo_yandex_image"         : "img/LoginWindow/social/yandex_logo.png",
         "logo_youtube_image"        : "img/LoginWindow/social/youtube_logo.png",
         "logo_more_image"           : "img/LoginWindow/social/more_logo.png",
+
+        "select_image":       "img/SocialGuidesWindow/check_box_sel.png",
+        "deselect_image":     "img/SocialGuidesWindow/check_box_desel.png",
 
         "bottom_line_color":           "#4c888a85",
         "bottom_items_color":          "#80ffffff",
@@ -182,6 +194,7 @@
         "avatr_border_color":   "#33ffffff",
         "chat_icon":            "img/MainWindow/chat_button.png",
         "chat_hovered_icon":    "img/MainWindow/chat_button_hovered.png",
+        "settings_icon":        "img/MainWindow/settings_icon.png",
         "publisher_logo":       "img/MainWindow/publisher_logo.png",
         "unreaded_messages_text_color": "#ffffff",
 		
@@ -448,13 +461,11 @@
 		
 		"editNickNameButtonColor": "#44000000",
         "editNickNameButtonBorderColor": "#29FFFFFF",
-        "vk_image":       "img/SettingsWindow/SocialNetworks/vk.png",
-        "fb_image":       "img/SettingsWindow/SocialNetworks/fb.png",
-        "google_image":   "img/SettingsWindow/SocialNetworks/google.png",
-        "steam_image":    "img/SettingsWindow/SocialNetworks/steam.png",
-        "twitter_image":  "img/SettingsWindow/SocialNetworks/twitter.png",
-        "baidu_image":    "img/SettingsWindow/SocialNetworks/baidu.png",
-        "naver_image":    "img/SettingsWindow/SocialNetworks/naver.png"
+
+        "refresh_icon":    "img/SettingsWindow/refresh_icon.png",
+        "refresh_hovered_icon":    "img/SettingsWindow/refresh_hovered_icon.png",
+        "refresh_button_text_color":      "#979797",
+        "shadow_color":                   "#666666"
     },
     "chars_window": {
         "bg_image":     "img/CharsWindow/bg.png",
