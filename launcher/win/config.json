@@ -10,5 +10,7 @@
     "check_update_interval": 10800000,
     "GA_trackingId": "UA-117660045-1",
     "url_scheme": "Xsolla_Launcher",
+    "link_support":      "https://xsolla.com",
+    "link_community":    "https://xsolla.com",
     "build_number": 0
 }

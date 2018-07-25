@@ -5,10 +5,10 @@
 !define PRODUCT_PUBLISHER "Xsolla"
 !define PRODUCT_VERSION ""
 !define PRODUCT_WEB_SITE "xsolla.com"
-!define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\launcher.exe"
+!define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
-!define LAUNCHER_REGKEY "XsollaLauncher"
+!define LAUNCHER_REGKEY "${PRODUCT_NAME}_XsollaLauncher"
 
 ; MUI 1.67 compatible ------
 !include "MUI.nsh"
@@ -96,7 +96,6 @@ Section "-MainSection" SEC01
   File "libeay32.dll"
   File "libEGL.dll"
   File "libGLESv2.dll"
-  File "launcherIcon.ico"
   File "LifCore.dll"
   File "msvcp140.dll"
   File "Qlib7zVS.dll"
@@ -144,7 +143,7 @@ SectionEnd
 Section -AdditionalIcons
   WriteIniStr "$INSTDIR\Official Site.url" "InternetShortcut" "URL" "${PRODUCT_WEB_SITE}"
   SetShellVarContext All
-  CreateShortCut "$SMPROGRAMS\Xsolla_launcher\Life is Feudal Official Site.lnk" "$INSTDIR\Official Site.url"
+  CreateShortCut "$SMPROGRAMS\Xsolla_launcher\Official Site.lnk" "$INSTDIR\Official Site.url"
   CreateShortCut "$SMPROGRAMS\Xsolla_launcher\Uninstall.lnk" "$INSTDIR\uninst.exe"
 SectionEnd
 
@@ -179,7 +178,6 @@ Section Uninstall
   Delete "$INSTDIR\libeay32.dll"
   Delete "$INSTDIR\libEGL.dll"
   Delete "$INSTDIR\libGLESv2.dll"
-  Delete "$INSTDIR\launcherIcon.ico"
   Delete "$INSTDIR\LifCore.dll"
   Delete "$INSTDIR\msvcp140.dll"
   Delete "$INSTDIR\Qlib7zVS.dll"
