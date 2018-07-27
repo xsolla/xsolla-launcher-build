@@ -63,6 +63,15 @@ Function DirectoryLeave
   ${EndIf}
 FunctionEnd
 
+!define SHCNE_ASSOCCHANGED 0x08000000
+!define SHCNF_IDLIST 0
+ 
+Function RefreshShellIcons
+  ; By jerome tremblay - april 2003
+  System::Call 'shell32.dll::SHChangeNotify(i, i, i, i) v \
+  (${SHCNE_ASSOCCHANGED}, ${SHCNF_IDLIST}, 0, 0)'
+FunctionEnd
+
 Section "-MainSection" SEC01
   SetOutPath "$INSTDIR"
   SetOverwrite ifnewer
@@ -135,16 +144,18 @@ Section "-MainSection" SEC01
 
   SetShellVarContext All
   CreateDirectory "$SMPROGRAMS\Xsolla_launcher"
-  CreateShortCut "$SMPROGRAMS\Xsolla_launcher\${PRODUCT_NAME}.lnk" "$INSTDIR\launcher.exe"
-  CreateShortCut "$DESKTOP\${PRODUCT_NAME}.lnk" "$INSTDIR\launcher.exe"
+  CreateShortCut "$SMPROGRAMS\Xsolla_launcher\${PRODUCT_NAME}.lnk" "$INSTDIR\launcher.exe" "" "$INSTDIR\img\launcherIcon.ico"
+  CreateShortCut "$DESKTOP\${PRODUCT_NAME}.lnk" "$INSTDIR\launcher.exe" "" "$INSTDIR\img\launcherIcon.ico"
   SimpleFC::AddApplication "${PRODUCT_NAME}: launcher" "$INSTDIR\launcher.exe" 0 2 "" 1
+  Call RefreshShellIcons
 SectionEnd
 
 Section -AdditionalIcons
   WriteIniStr "$INSTDIR\Official Site.url" "InternetShortcut" "URL" "${PRODUCT_WEB_SITE}"
   SetShellVarContext All
-  CreateShortCut "$SMPROGRAMS\Xsolla_launcher\Official Site.lnk" "$INSTDIR\Official Site.url"
+  CreateShortCut "$SMPROGRAMS\Xsolla_launcher\Official Site.lnk" "$INSTDIR\Official Site.url" "" "$INSTDIR\img\launcherIcon.ico"
   CreateShortCut "$SMPROGRAMS\Xsolla_launcher\Uninstall.lnk" "$INSTDIR\uninst.exe"
+  Call RefreshShellIcons
 SectionEnd
 
 Section -Post

@@ -3,9 +3,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.6.20.255] - 2018-07-27
+### Changed
+- fixed minor bugs
+
 ## [1.6.20.250] - 2018-07-25
 ### Changed
-- updated install script
 - fixed minor bugs
 
 ## [1.6.20.245] - 2018-07-23

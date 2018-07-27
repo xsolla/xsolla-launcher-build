@@ -1,5 +1,5 @@
 {
-    "app_icon":"img/launcherIcon.png",
+    "app_icon":"img/launcherIcon.ico",
     "change_username_window":{
         "search_friend_window_error_color": "#F2542D",
         "header_text_color": "#ffffff",
