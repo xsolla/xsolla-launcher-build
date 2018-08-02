@@ -443,6 +443,7 @@
 
         "account_text_color":       "#ffffff",
         "remember_me_text_color":   "#ffffff",
+        "hide_email_text_color":   "#ffffff",
         "check_btn_select_image":   "img/SettingsWindow/check_box_sel.png",
         "check_btn_deselect_image": "img/SettingsWindow/check_box_desel.png",
         "minimize_icon" : "img/SettingsWindow/header/minimize.png",
