@@ -107,6 +107,8 @@ Section "-MainSection" SEC01
   File "libGLESv2.dll"
   File "LifCore.dll"
   File "msvcp140.dll"
+  File "ucrtbase.dll"
+  File "vcruntime140.dll"
   File "Qlib7zVS.dll"
   File "Qt5Concurrent.dll"
   File "Qt5Core.dll"
@@ -180,6 +182,12 @@ Section "-MainSection" SEC01
   File "api-ms-win-crt-string-l1-1-0.dll"             
   File "api-ms-win-crt-time-l1-1-0.dll"               
   SetOutPath "$INSTDIR"
+
+  File "vc_redist.x64.exe"
+  DetailPrint "Running vcredist setup..."
+  ExecWait "$INSTDIR\vc_redist.x64.exe /q /norestart"
+  DetailPrint "Finished vcredist setup"
+
 
   ${StrRep} $0 "$INSTDIR" "\" "/"
 
