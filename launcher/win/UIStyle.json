@@ -433,6 +433,11 @@
         "error_text_header_color": "#ffffff",
         "error_text_color": "#80FFFFFF"
     },
+    "store_window": {
+        "error_text_header_color": "#ffffff",
+        "error_text_color": "#80FFFFFF",
+        "bg_color": "#495C6B"
+    },
     "settings_screen": {
         "bg_color": "#495C6B",
 
