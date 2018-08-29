@@ -1,6 +1,7 @@
 {
     "app_icon":"img/launcherIcon.ico",
     "change_username_window":{
+        "bg_color": "#495C6B",
         "search_friend_window_error_color": "#F2542D",
         "header_text_color": "#ffffff",
         "button_text_color": "white",
@@ -146,6 +147,8 @@
     "game_install_window": {
         "bg_image":                    "img/GameInstallWindow/bg.png",
         "logo_image":                  "img/GameInstallWindow/logo.png",
+        "check_btn_select_image":      "img/GameInstallWindow/check_box_sel.png",
+        "check_btn_deselect_image":    "img/GameInstallWindow/check_box_desel.png",
         "install_dir_text_color":      "#999999",
         "disk_space_title_text_color": "#999999",
         "disk_space_value_text_color": "white"
@@ -445,6 +448,7 @@
         "header_line_color": "#33ffffff",
 
         "language_text_color": "#ffffff",
+        "version_text_color":  "#7FFFFFFF",
 
         "account_text_color":       "#ffffff",
         "remember_me_text_color":   "#ffffff",
@@ -471,7 +475,12 @@
         "refresh_icon":    "img/SettingsWindow/refresh_icon.png",
         "refresh_hovered_icon":    "img/SettingsWindow/refresh_hovered_icon.png",
         "refresh_button_text_color":      "#979797",
-        "shadow_color":                   "#666666"
+        "shadow_color":                   "#666666",
+
+        "license_window": {
+            "bg_color": "#495C6B",
+            "title_text_color": "#ffffff"
+        }
     },
     "chars_window": {
         "bg_image":     "img/CharsWindow/bg.png",

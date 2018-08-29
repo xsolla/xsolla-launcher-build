@@ -9,7 +9,7 @@
     "store_token_life_time": 23,
     "check_update_interval": 10800000,
     "GA_trackingId": "UA-117660045-1",
-    "url_scheme": "Xsolla_Launcher",
+    "product_name": "Xsolla_launcher",
     "link_support":      "https://xsolla.com",
     "link_community":    "https://xsolla.com",
     "build_number": 0
