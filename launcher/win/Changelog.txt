@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.6.25.280] - 2018-08-30
+### Added
+- The ability to use promo codes when buying the game
+
+### Changed
+- fixed minor bugs
+
 ## [1.6.24.275] - 2018-08-29
 ### Added
 - The icon creation when installing the game added.

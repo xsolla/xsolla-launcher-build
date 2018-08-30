@@ -860,6 +860,13 @@
         },
 	"shadow_window_background_image": "img/UI/shadowBackground.png"	
     },
+    "uninstall_window": {
+        "bg_color":          "#495C6B",
+        "header_text_color": "#ffffff",
+        "header_line_color": "#white",
+        "text_color":        "white",
+        "bottom_line_color": "white"
+    },
     "fonts": {
         "regular":  "fonts/Lato-Regular.ttf",
         "medium":   "fonts/Lato-Medium.ttf",
