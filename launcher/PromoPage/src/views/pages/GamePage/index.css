@@ -1,0 +1,22 @@
+.game-page {
+  width: 900px;
+  z-index: 1;
+  flex-direction: row;
+  margin: 100px auto 0;
+  position: relative;
+}
+
+.game-page__back_home {
+  position: absolute;
+  left: -14px;
+  top: -58px;
+  z-index: 1;
+
+  flex-direction: row;
+
+  cursor: pointer;
+}
+
+.game-page__back_home__arrow {
+  margin-right: 6px;
+}

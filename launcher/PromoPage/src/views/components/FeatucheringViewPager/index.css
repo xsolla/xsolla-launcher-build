@@ -1,0 +1,102 @@
+.fe-pager {
+  width: 100%;
+  height: 252px;
+
+  flex-direction: row;
+  position: relative;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.fe-pager__lenta {
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: relative;
+  left: 0;
+  transition: left 0.5s linear;
+}
+
+.fe-pager__game {
+  width: 100%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.fe-pager__image {
+  width: 540px;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.fe-pager__info-wraper {
+  position: absolute;
+  width: 360px;
+  right: 20px;
+  top: 25px;
+  bottom: 25px;
+}
+
+.fe-pager__info-wraper__title {
+  margin: 10px 0 6px;
+}
+
+.fe-pager__info-wraper__buy-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 6px 20px;
+}
+
+.fe-pager__arrow-left {
+  position: absolute;
+  left: 0;
+  top: calc(50% - 35px);
+  z-index: 1;
+}
+
+.fe-pager__arrow-right {
+  position: absolute;
+  right: 0;
+  top: calc(50% - 35px);
+  z-index: 1;
+}
+
+.fe-pager__progress-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 30px;
+}
+
+.fe-pager__status {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.fe-pager__info__btn__wrap {
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.fe-pager__info__btn {
+  padding: 6px 20px;
+}
+
+.fe-pager__info__btn_redeem {
+  margin-left: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.fe-pager__info__btn_redeem__toolpit {
+  left: -43px;
+  top: -38px;
+}

@@ -1,0 +1,19 @@
+.home {
+  width: 940px;
+  z-index: 1;
+  flex-direction: column;
+  margin: 40px auto 0;
+}
+
+.home__logo {
+  width: 214px;
+  height: 86px;
+}
+
+.home__featured-pager {
+  margin: 40px 0;
+}
+
+.home__last-update, .home__all-games {
+  margin-bottom: 40px;
+}

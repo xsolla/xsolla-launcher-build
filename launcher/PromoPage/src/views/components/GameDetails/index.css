@@ -1,0 +1,68 @@
+.gdetails {
+  width: 340px;
+}
+
+.gdetails__main-info {
+  height: 362px;
+}
+
+.gdetails__main-info__title {
+  margin: 20px 0 6px;
+}
+
+.gdetails__logo {
+  width: 224px;
+  height: 92px;
+
+  margin-bottom: 20px;
+
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+  object-fit: cover;
+}
+
+.gdetails__buy-btn_wrap {
+  /* flex-direction: row; */
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+}
+
+.gdetails__buy-btn {
+  margin-top: 30px;
+  padding: 0 20px;
+}
+
+.gdetails_info-block {
+  margin-bottom: 35px;
+}
+
+.gdetails_info-block .description {
+  margin-bottom: 5px;
+}
+
+.gdetails_info-block__value {
+  color: #FFF;
+}
+
+.gdetails__progress-bar {
+  width: 100%;
+  margin-top: 30px;
+  position: relative;
+}
+
+.gdetails__status {
+  margin-top: 15px;
+}
+
+.gdetails__info__btn__wrap {
+  flex-direction: row;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.gdetails__btn_redeem {
+  margin-left: 10px;
+  justify-content: flex-end;
+}

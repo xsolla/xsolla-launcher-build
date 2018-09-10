@@ -1,0 +1,11 @@
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.view {
+  display: flex;
+  flex-direction: column;
+}

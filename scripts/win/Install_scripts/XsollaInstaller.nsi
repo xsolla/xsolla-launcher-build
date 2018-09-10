@@ -141,6 +141,7 @@ Section "-MainSection" SEC01
   File "XsollaAuth.dll"
   File "XsollaCore.dll"
   File "Changelog.txt"
+  File "qwebchannel.js"
   
   File "api-ms-win-crt-utility-l1-1-0.dll"            
   File "api-ms-win-core-console-l1-1-0.dll"           
@@ -318,6 +319,7 @@ Section Uninstall
   Delete "$INSTDIR\api-ms-win-crt-string-l1-1-0.dll"             
   Delete "$INSTDIR\api-ms-win-crt-time-l1-1-0.dll" 
   Delete "$INSTDIR\vc_redist.x64.exe"
+  Delete "$INSTDIR\qwebchannel.js"
   
   RMDir /r "$INSTDIR\bearer"
   RMDir /r "$INSTDIR\data"

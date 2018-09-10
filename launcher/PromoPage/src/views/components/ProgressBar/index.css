@@ -1,0 +1,14 @@
+.progress-wraper {
+  height: 4px;
+  
+  background: #343434;
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+
+  background: #3076D7;
+}

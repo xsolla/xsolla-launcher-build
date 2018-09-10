@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.6.26.285] - 2018-09-10
+### Added
+- Added ability to set default state for "Automatically Update Game at Launch"
+- Added Start page
+
+### Changed
+- Fixed "back to game" button operation when buying game key
+
 ## [1.6.25.280] - 2018-08-30
 ### Added
 - The ability to use promo codes when buying the game

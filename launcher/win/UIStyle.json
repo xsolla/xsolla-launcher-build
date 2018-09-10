@@ -205,7 +205,8 @@
 		"games_list_item_color": "#cc000000",
         "games_list_border_color": "#33ffffff",
         "games_list_item_color_selected": "#ffffff",
-        "games_list_item_color_unselected": "#80ffffff"
+        "games_list_item_color_unselected": "#80ffffff",
+        "bg_home_image": "img/Backgrounds/game2.png"
     },
     "default_game_page": {
         "bg_game_image": "img/Backgrounds/game1.png",

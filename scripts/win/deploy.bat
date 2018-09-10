@@ -41,6 +41,7 @@ ECHO * Copying installer's stuff
 	
 COPY %BUILD_PATH%\img\launcherIcon.ico "%TARGET_PATH%"
 COPY %SCRIPTS_PATH%\XSollaInstaller.nsi "%TARGET_PATH%"
+COPY %BUILD_PATH%\qwebchannel.js "%TARGET_PATH%"
 	
 pushd %NSIS_PATH%
 SET NSIS_PATH=%CD%
