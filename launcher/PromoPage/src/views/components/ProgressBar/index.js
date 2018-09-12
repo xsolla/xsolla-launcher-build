@@ -1,10 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './index.css';
 import {
   View,
 } from '../../elements';
 
-class AllGames extends React.Component {
+class ProgressBar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -18,10 +19,14 @@ class AllGames extends React.Component {
   render() {
     return (
       <View className={`progress-wraper ${this.className}`}>
-        <View className="progress-bar" style={{ width: `${this.props.progress}%` }} />
+        <View className="progress-bar" style={{ width: `${this.props.curProgress}%` }} />
       </View>
     );
   }
 }
 
-export default AllGames;
+const mapStateToProps = state => ({
+  curProgress: state.games.curProgress,
+});
+
+export default connect(mapStateToProps)(ProgressBar);

@@ -3,7 +3,7 @@
 }
 
 .gdetails__main-info {
-  height: 362px;
+  min-height: 362px;
 }
 
 .gdetails__main-info__title {
@@ -11,13 +11,13 @@
 }
 
 .gdetails__logo {
-  width: 224px;
-  height: 92px;
+  /* width: 224px;
+  height: 92px; */
 
   margin-bottom: 20px;
 
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
-  object-fit: cover;
+  /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)); */
+  /* object-fit: cover; */
 }
 
 .gdetails__buy-btn_wrap {
@@ -55,11 +55,14 @@
 }
 
 .gdetails__info__btn__wrap {
-  flex-direction: row;
-  align-items: flex-end;
   position: absolute;
   bottom: 0;
   left: 0;
+}
+
+.gdetails__info__btns_redeem__wrap {
+  flex-direction: row;
+  align-items: flex-end;
 }
 
 .gdetails__btn_redeem {

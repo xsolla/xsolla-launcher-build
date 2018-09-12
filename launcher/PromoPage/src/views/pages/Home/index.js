@@ -27,7 +27,10 @@ class Home extends React.Component {
     return (
       <Background>
         <View className="home">
-          <img className="home__logo" src={ require('../../../imgs/logo.svg') } alt="logo" />
+          <View style={{ flexDirection: 'row' }}>
+            <img className="home__logo" src="../img/web/publisher_logo.png" alt="logo" />
+          </View>
+          
           {
             Boolean(this.props.games.length) &&
               <FeatucheringViewPager
@@ -38,7 +41,6 @@ class Home extends React.Component {
                 curGame={{
                   id: this.props.curGameId,
                   status: this.props.curGameStatus,
-                  progress: this.props.curProgress,
                 }}
               />
           }
@@ -60,7 +62,6 @@ class Home extends React.Component {
                 curGame={{
                   id: this.props.curGameId,
                   status: this.props.curGameStatus,
-                  progress: this.props.curProgress,
                 }}
               />
           }
@@ -74,7 +75,6 @@ const mapStateToProps = state => ({
     games: state.games.list,
     news: state.news.list,
     curGameId: state.games.curGameInLauncher,
-    curProgress: state.games.curProgress,
     curGameStatus: state.games.curGameStatus,
 });
 

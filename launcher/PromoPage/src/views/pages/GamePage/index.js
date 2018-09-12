@@ -38,7 +38,6 @@ class GamePage extends React.Component {
             curGame={{
               id: this.props.curGameId,
               status: this.props.curGameStatus,
-              progress: this.props.curProgress,
             }}
           />
         </View>
@@ -50,7 +49,6 @@ class GamePage extends React.Component {
 const mapStateToProps = state => ({
     game: state.games.selectedGame,
     curGameId: state.games.curGameInLauncher,
-    curProgress: state.games.curProgress,
     curGameStatus: state.games.curGameStatus,
 });
 

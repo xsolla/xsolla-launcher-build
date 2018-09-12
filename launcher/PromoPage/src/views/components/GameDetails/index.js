@@ -51,7 +51,10 @@ class AllGames extends React.Component {
     return (
       <View className={`gdetails ${this.className}`}>
         <View className="gdetails__main-info" >
-          <img src={ game.gameIcon } alt="logo" className="gdetails__logo" />
+          <View style={{ flexDirection: 'row' }}>
+            <img src={`../img/web/game_logo_${game.publisher_project_id}.png`} alt="logo" className="gdetails__logo" />
+          </View>
+          
           <Title className="gdetails__main-info__title">{ game.name }</Title>
           {/* <Description>
             { game.description  }
@@ -59,7 +62,7 @@ class AllGames extends React.Component {
           <View className="gdetails__buy-btn_wrap">
             {
               installProccess &&
-                <ProgressBar className="gdetails__progress-bar" progress={curGame.progress} />
+                <ProgressBar className="gdetails__progress-bar" />
             }
             { !installProccess && this.renderBtn(game) }
             { curGame.status === 'INSTALLING' && installProccess && <Text className="gdetails__status">Installing...</Text> }
@@ -133,7 +136,7 @@ class AllGames extends React.Component {
 
     if (game.buy_option_enabled && game.key_redeem_enabled) {
       return (
-        <View className="gdetails__info__btn__wrap">
+        <View className="gdetails__info__btns_redeem__wrap">
           <Button
             green
             className="gdetails__buy-btn"

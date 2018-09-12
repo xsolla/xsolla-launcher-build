@@ -5,7 +5,8 @@
 
 p, .title, .link,
 .subtitle, .link,
-.tag, .btn, .time_label__text {
+.tag, .btn, .time_label__text,
+.btn__redeem__toolpit__text {
   font-family: Lato;
   font-smooth: antialiased;
   margin: 0;

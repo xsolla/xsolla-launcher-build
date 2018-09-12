@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.6.27.290] - 2018-09-12
+### Changed
+- fixed minor bugs
+
 ## [1.6.26.285] - 2018-09-10
 ### Added
 - Added ability to set default state for "Automatically Update Game at Launch"

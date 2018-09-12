@@ -41,6 +41,16 @@ class Game {
     });
   }
 
+  getGameBanner() {
+    for (let i = 0; i < this.arts.length; i++) {
+      if (this.arts[i].type !== 'video') {
+        return this.arts[i].link;
+      }
+    }
+  
+    return require('../imgs/placeholder_image@2x.png');
+  }
+
   wasBuy() {
     this.hasUserGame = true;
   }

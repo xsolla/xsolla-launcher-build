@@ -130,7 +130,7 @@ class AllGames extends React.Component {
     return (
       <View className="all__game" key={uuidv4()}>
         <View className="all__game__img">
-          <img onClick={ this.openGame(g) } className="all__game__img__fon" src={ g.gameIcon } alt={uuidv4()} />
+          <img onClick={ this.openGame(g) } className="all__game__img__fon" src={ g.getGameBanner() } alt={uuidv4()} />
           <View className="all__game__info">
             <Title link onClick={ this.openGame(g) }>
               { g.name }
@@ -138,7 +138,7 @@ class AllGames extends React.Component {
             { this.renderBtn(g, installProccess, curGame.status, installing) }
             {
               installProccess &&
-                <ProgressBar className="all__progress-bar" progress={curGame.progress} />
+                <ProgressBar className="all__progress-bar" />
             }
           </View>
         </View>

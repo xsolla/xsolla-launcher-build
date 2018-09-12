@@ -65,4 +65,4 @@ npm run build-archive-linux
    
 "home_page_debug_port": <port for page debugging (optional)>
 
-- Last built PromoPage you can find here: https://s3.amazonaws.com/launcher-stuff/PromoPage/build.7z
+- Last built PromoPage you can find here: https://s3.amazonaws.com/launcher-stuff/PromoPage/build_1_6_27_290.7z

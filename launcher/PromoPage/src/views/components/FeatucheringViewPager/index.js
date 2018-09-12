@@ -115,7 +115,7 @@ class FeatucheringViewPager extends React.Component {
 
     return (
       <View className="fe-pager__game" key={uuidv4()}>
-        <img onClick={ this.openGame(game) } className="fe-pager__image" src={ game.gameIcon } alt={uuidv4()}/>
+        <img onClick={ this.openGame(game) } className="fe-pager__image" src={ game.getGameBanner() } alt={uuidv4()}/>
         <View className="fe-pager__info-wraper">
           <Text>Featured game</Text>
           <Title
@@ -130,7 +130,7 @@ class FeatucheringViewPager extends React.Component {
           </Description>
           {
              installProccess &&
-              <ProgressBar className="fe-pager__progress-bar" progress={curGame.progress} />
+              <ProgressBar className="fe-pager__progress-bar" />
           }
           { this.renderBtn(game, installProccess, curGame.status, install) }
         </View>
@@ -139,8 +139,8 @@ class FeatucheringViewPager extends React.Component {
   }
 
   renderGameDescription(text) {
-    if (text.length > 203) {
-      let newText = text.slice(0, 200).split(' ');
+    if (text.length > 153) {
+      let newText = text.slice(0, 150).split(' ');
       newText = newText.slice(0, newText.length - 1).join(' ');
 
       return newText + ' ...';
