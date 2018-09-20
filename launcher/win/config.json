@@ -14,5 +14,6 @@
     "link_community":    "https://xsolla.com",
     "build_number": 0,
     "enable_home_page": false,
-    "home_page_res_link": "https://s3.amazonaws.com/launcher-stuff/PromoPage/build_1_6_27_290.7z"
+    "home_page_res_link": "https://s3.amazonaws.com/launcher-stuff/PromoPage/build_1_6_27_290.7z",
+    "home_page_debug_port": 12345
 }
