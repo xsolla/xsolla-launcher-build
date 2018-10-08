@@ -3,6 +3,20 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.6.29.300] - 2018-10-05
+### Changed
+- Fixed opening a store when buying a key in the launcher
+- Fixed minor bugs in the process of activation key
+- Fixed display of error window
+
+### Added
+- Added the ability to change the name of the launcher window
+- Added a list of events for Google Analytics
+- Added the ability to set login_url in the config
+- Added the ability to use PlayFab User ID as a store user ID
+- Added the ability for the partner to control the display of peer\seed through the config file
+- Removed all sensitive information from the launcher logs
+
 ## [1.6.28.295] - 2018-09-20
 ### Changed
 - fixed minor bugs
