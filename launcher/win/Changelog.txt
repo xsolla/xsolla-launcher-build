@@ -3,7 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [1.6.29.300] - 2018-10-05
+## [1.6.29.305] - 2018-10-22
+### Changed
+- Fixed opening a create account widget and restore password widget
+
+## [1.6.29.300] - 2018-10-08
 ### Changed
 - Fixed opening a store when buying a key in the launcher
 - Fixed minor bugs in the process of activation key
