@@ -129,5 +129,3 @@ All parameters required for Launcher UI customization are represented as JSON ob
 ]
 ```
 **Note:** The code is self-describing, with object names directly referring to their purpose. For example, "version_text_color" refers to the color of the text indicating Launcher version.
-
-Read the [documentation](https://developers.xsolla.com/doc/launcher/#guides_launcher_ui_customization) for full Launcher customization.
