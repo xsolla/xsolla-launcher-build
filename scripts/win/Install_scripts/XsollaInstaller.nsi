@@ -3,8 +3,8 @@
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "Xsolla_launcher" ;Launcher name in the Start menu. The value must be duplicated in the "product_name" parameter in the launcher/win/config.json file. 
 !define PRODUCT_PUBLISHER "Xsolla"
-!define PRODUCT_VERSION "" ;Version shown in the launcher installer window. 
-!define PRODUCT_WEB_SITE "xsolla.com" ;Game URL used to open the shortcut from the Start menu (see the 206, 208 lines). 
+!define PRODUCT_VERSION "" ;Version shown in the Launcher installer window. 
+!define PRODUCT_WEB_SITE "xsolla.com" ;Game URL opened from the shortcut in the Start menu. 
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
@@ -19,7 +19,7 @@ ${StrRep}
 ; MUI Settings
 !define MUI_ABORTWARNING
 !define MUI_ICON "launcherIcon.ico"
-!define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico" ;Uninstall icon.
+!define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico" ;Uninstallation icon.
 
 ; Language Selection Dialog Settings
 !define MUI_LANGDLL_REGISTRY_ROOT "${PRODUCT_UNINST_ROOT_KEY}"
@@ -43,8 +43,8 @@ ${StrRep}
 ; MUI end ------
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "bin\Xsolla_Launcher_installer.exe" ;The name for launcher installer.
-InstallDir "$LOCALAPPDATA\${PRODUCT_NAME}" ;The directory used for launcher intallation by default.
+OutFile "bin\Xsolla_Launcher_installer.exe" ;Launcher installer name.
+InstallDir "$LOCALAPPDATA\${PRODUCT_NAME}" ;Default directory for Launcher installation.
 InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show
 ShowUnInstDetails show
@@ -203,10 +203,10 @@ Section "-MainSection" SEC01
 SectionEnd
 
 Section -AdditionalIcons
-  WriteIniStr "$INSTDIR\Official Site.url" "InternetShortcut" "URL" "${PRODUCT_WEB_SITE}" ;Create the link to the Game URL (see the 7 line).
+  WriteIniStr "$INSTDIR\Official Site.url" "InternetShortcut" "URL" "${PRODUCT_WEB_SITE}"
   SetShellVarContext Current
-  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Official Site.lnk" "$INSTDIR\Official Site.url" "" "$INSTDIR\img\launcherIcon.ico" ;Create the shortcut to open Game URL from the Start menu (see the 7 line).
-  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Uninstall.lnk" "$INSTDIR\uninst.exe" ;Create the shortcut for launcher unistall.
+  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Official Site.lnk" "$INSTDIR\Official Site.url" "" "$INSTDIR\img\launcherIcon.ico"
+  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Uninstall.lnk" "$INSTDIR\uninst.exe"
   Call RefreshShellIcons
 SectionEnd
 
