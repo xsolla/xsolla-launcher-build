@@ -20,17 +20,17 @@ Parameters required for Launcher configuration are represented as JSON objects i
 
 **Object**               | **Description**                             
 :------------------------|:-------------------------------------------------------------------
- launcher_project_id     | Launcher ID from Publisher Account.
- login_project_id        | Login ID from Publisher Account.    
- callback_url            | **Callback URL** from Login settings in Publisher Account.        
+ launcher_project_id     | Launcher ID from Publisher Account. **Required.**
+ login_project_id        | Login ID from Publisher Account. **Required.**  
+ build_number            | Launcher build number. **Required.**  
+ callback_url            | **Callback URL** from Login settings in Publisher Account. This URL is used to redirect the user after successful authentication via a social network.        
  product_name            | Launcher name in the **Start** menu. Duplicate the name in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter.        
  link_support            | Link to the game’s technical support website.        
  link_community          | Link to the game’s community.     
  default_p2p_enabled     | Whether a P2P network is used for game and update delivery. Can be ‘true’ and ‘false’. Default is ‘true’. A user can change this setting in the Launcher UI.
  game_autoupdate         | Whether the game is updated automatically. Can be ‘true’ and ‘false’. Default is ‘false’. A user can change this setting in the Launcher UI.     
  hide_peer_seed_info     | Whether a number of peers and seeds is displayed in Launcher during games and updates download. Can be ‘true’ and ‘false’. Default is ‘false’.
- hide_email              | Whether the user email is hidden in Launcher. Can be ‘true’ and ‘false’. Default is ‘false’. A user can change this setting in the Launcher UI.         
- build_number            | Launcher build number.                                                     
+ hide_email              | Whether the user email is hidden in Launcher. Can be ‘true’ and ‘false’. Default is ‘false’. A user can change this setting in the Launcher UI.                                                            
  
  **Example**
  
