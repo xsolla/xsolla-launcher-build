@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.6.30.310] - 2018-10-30
+### Added
+- Setting up the links for creating account and changing the password via the config.json file
+- Changing the placeholder for email or username input via the config.json file
+
 ## [1.6.29.305] - 2018-10-22
 ### Changed
 - Fixed opening a create account widget and restore password widget
