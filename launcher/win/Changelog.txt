@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.6.31.315] - 2018-11-02
+### Added
+- Verification of ownership of the game for all packages drm
+
 ## [1.6.30.310] - 2018-10-30
 ### Added
 - Setting up the links for creating account and changing the password via the config.json file
