@@ -112,6 +112,10 @@
             "regions_list_border_color":    "#29FFFFFF",
             "regions_list_item_text_color": "white",
             "regions_list_item_bg_color":   "#1CFFFFFF"
+        },
+        "game_access_item": {
+            "bg_color": "#EF011627",
+            "text_color": "#888A85"
         }
     },
     "steam_login_window": {
