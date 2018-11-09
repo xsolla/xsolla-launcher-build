@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import Home from './pages/Home';
 import Game from './pages/GamePage';
 import { initConnectionFunc } from '../ws';
-import { pageSetCurPageReq, } from '../actions/pages';
+import { pageSetCurPageReq, pageSetLangReq } from '../actions/pages';
 import {
   gamesSetListReq,
   gamesSelectGameReq,
@@ -44,6 +44,9 @@ class Router extends React.Component {
       initCurGameStatus: status => {
         this.props.gamesSetCurStatusGameReq(status);
       },
+      onChangeLang: lang => {
+        this.props.pageSetLangReq(lang);
+      },
       onError: () => {},
     });
   }
@@ -60,11 +63,14 @@ class Router extends React.Component {
     if (this.props.curPage === 'Game') {
       return (<Game {...this.props} openPage={ this.openPage } />);
     }
+
+    return null;
   }
 }
 
 const mapStateToProps = state => ({
   curPage: state.pages.curPage,
+  lang: state.pages.lang,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -76,6 +82,7 @@ const mapDispatchToProps = dispatch => ({
     gamesSetCurLauncherGameReq,
     gamesSetCurProgressGameReq,
     gamesSetCurStatusGameReq,
+    pageSetLangReq,
   }, dispatch),
 });
 

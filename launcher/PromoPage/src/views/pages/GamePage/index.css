@@ -17,6 +17,22 @@
   cursor: pointer;
 }
 
+.game-page__back_home__rtl {
+  position: absolute;
+  right: -14px;
+  top: -58px;
+  z-index: 1;
+
+  flex-direction: row;
+
+  cursor: pointer;
+}
+
 .game-page__back_home__arrow {
   margin-right: 6px;
+}
+
+.game-page__back_home__arrow__rtl {
+  margin-left: 6px;
+  transform: rotate(180deg);
 }

@@ -11,13 +11,10 @@
 }
 
 .gdetails__logo {
-  /* width: 224px;
-  height: 92px; */
-
+  height: 92px;
   margin-bottom: 20px;
-
   /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)); */
-  /* object-fit: cover; */
+  object-fit: cover;
 }
 
 .gdetails__buy-btn_wrap {
@@ -68,4 +65,16 @@
 .gdetails__btn_redeem {
   margin-left: 10px;
   justify-content: flex-end;
+}
+
+.gdetails__title_container {
+  margin-bottom: 10px;
+}
+
+.gdetails__info_container {
+  margin-bottom: 18px;
+}
+
+.gdetails__info_container:last-child {
+  margin-bottom: 0;
 }

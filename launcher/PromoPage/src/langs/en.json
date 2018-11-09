@@ -1,0 +1,33 @@
+{
+  "HOME.TITLE_ALL_GAMES": "All games",
+  "HOME.TITLE_NEW_GAMES": "New games",
+  "HOME.TITLE_LAST_UPDATE": "Last updates",
+  "HOME.TITLE_FEATURED_GAME": "Featured game",
+
+  "GAME_PAGE.BACK_HOME": "Home",
+  "GAME_PAGE.TITLE_DETAILS": "Details",
+  "GAME_PAGE.TITLE_SYS_REQ": "System requirements",
+  "GAME_PAGE.TITLE_DESCRIPTION": "Description",
+  "GAME_PAGE.READ_MORE": "Read more",
+
+  "ELEMENT.REEDEM_CODE_TOOLPIT": "Redeem game key",
+  "ELEMENT.LABEL_INSTALLING": "Installing...",
+  "ELEMENT.LABEL_PAUSED": "Paused",
+  "ELEMENT.BTN_INSTALL": "Install",
+  "ELEMENT.BTN_LAUNCH": "Launch",
+  "ELEMENT.BTN_BUY": "Buy",
+  "ELEMENT.BTN_REDEEM": "Redeem",
+
+  "MONTH_JAN": "January",
+  "MONTH_FEB": "February",
+  "MONTH_MAR": "March",
+  "MONTH_APR": "April",
+  "MONTH_MAY": "May",
+  "MONTH_JUN": "June",
+  "MONTH_JUL": "July",
+  "MONTH_AUG": "August",
+  "MONTH_SEP": "September",
+  "MONTH_OCT": "October",
+  "MONTH_NOV": "November",
+  "MONTH_DEC": "December"
+}

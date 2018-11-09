@@ -1,4 +1,4 @@
-import { put, takeEvery } from 'redux-saga/effects';
+import { put, takeEvery, select } from 'redux-saga/effects';
 import { pageSetCurPage } from '../actions/pages';
 import {
   gamesSetListReq,
@@ -26,10 +26,25 @@ import Game from '../models/Game';
 
 export function* setListProc({ payload }) {
   try {
-    yield put(gamesSetListFin(payload.map(g => new Game(g))));
+    const list = payload.map(g => new Game(g));
+    let curSelectedGame = yield select(getSelectedGame);
+
+    yield put(gamesSetListFin(list));
+
+    if (curSelectedGame.id) {
+      const newSelectedGame = list.find(g => g.id === curSelectedGame.id);
+
+      if (newSelectedGame) {
+        yield put(gamesSelectGameFin(newSelectedGame));
+      }
+    }
   } catch(err) {
     yield put(gamesSetListErr());
   }
+}
+
+function getSelectedGame(state) {
+  return state.games.selectedGame;
 }
 
 export function* selectGameProc({ payload }) {

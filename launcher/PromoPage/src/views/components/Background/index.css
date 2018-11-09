@@ -1,41 +1,8 @@
-.bg {
-  min-height: 100vh;
-  overflow: hidden;
-  background-color: rgba(0, 0, 0, 0);
-  /* background-color: #000000; */
-  position:relative;
-  overflow:hidden;
-}
-
-.bg-img {
-  /* background-image: url(../../../imgs/back.jpg); */
-  background-repeat: no-repeat;
-  background-position: center 0;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1080px;
-  flex: 1;
-}
-
-.bg-gradient {
-  width: 100%;
-  height: 553px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);
-}
-
-.bg-gradient-full {
-  height: 100%;
-  background: radial-gradient(1001.00px at 50% 0%, rgba(0, 0, 0, 0) 0%, #000000 100%);
-}
-
-.bg__content {
+.bg__container {
+  max-height: calc(100vh - 5px);
   overflow: scroll;
+}
+
+.bg {
+  position: relative;
 }

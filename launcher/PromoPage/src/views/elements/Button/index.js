@@ -1,5 +1,6 @@
 import React from 'react';
 import View from '../View';
+import { text } from '../../../langs';
 
 function Button (props) {
     if (props.redeem) {
@@ -57,7 +58,7 @@ function RedeemButton(props) {
               </View>
               <View className={`btn__redeem__toolpit ${toolpitClassName}`}>
                 <img src={ require('../../../imgs/union-toolpit.svg') } alt="toolpit"/>
-                <View className="btn__redeem__toolpit__text">Redeem code</View>
+                <View className="btn__redeem__toolpit__text">{ text('ELEMENT.REEDEM_CODE_TOOLPIT') }</View>
               </View>
             </View>
         );

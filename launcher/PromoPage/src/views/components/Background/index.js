@@ -6,14 +6,11 @@ import {
 
 function BG(props) {
   return (
-      <View className="bg">
-        {/* <View className="bg-img">
-          <View className={`bg-gradient ${props.full ? 'bg-gradient-full' : ''}`} />
-        </View> */}
-        <View className="bg__content">
+      <div className="bg__container">
+        <View className="bg">
           { props.children }
         </View>
-      </View>
+      </div>
   );
 }
 

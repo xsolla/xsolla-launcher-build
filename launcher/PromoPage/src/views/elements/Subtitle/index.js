@@ -13,15 +13,15 @@ function Subtitle(props) {
     }
 
     if (props.header) {
-        return getHeader(element);
+        return getHeader(element, props.containerClassName);
     }
 
     return element;
 }
 
-function getHeader(subtitle) {
+function getHeader(subtitle, containerClassName = '') {
     return (
-        <View className="subtitle_header">
+        <View className={`subtitle_header ${containerClassName}`}>
             { subtitle }
         </View>
     );

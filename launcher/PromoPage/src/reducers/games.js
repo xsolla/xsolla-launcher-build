@@ -1,5 +1,5 @@
 import { createReducer } from 'redux-act';
-// import Game from '../models/Game';
+import Game from '../models/Game';
 import {
   gamesSetListFin,
   gamesSetListErr,
@@ -18,13 +18,11 @@ import {
 } from '../actions/games';
 
 export const initialState = {
-  list: [
-    // new Game({ name: 'Game 1', hasUserGame: false, installed: false, id: 1, gameIcon: 'https://images.lexus-europe.com//gb/CT/CT%20200h/F%20SPORT/width/740/height/340/scale-mode/0/padding/0,0/day-exterior-06_8X1.png' }),
-    // new Game({ name: 'Game 2', hasUserGame: true, installed: false, id: 2, gameIcon: 'https://johncornacchia.files.wordpress.com/2011/11/vertical-farm-editt-tower-globacorp-john-cornacchia-1.jpg' }),
-    // new Game({ name: 'Game 3', hasUserGame: true, installed: true, id: 3 }),
-    // new Game({ name: 'Game 4', hasUserGame: true, installed: false, id: 4 }),
-  ],
-  selectedGame: null, //new Game({ name: 'Game 1', hasUserGame: false, installed: false, id: 1 }),
+  list: [],
+  newGames: [],
+  featureGames: [],
+
+  selectedGame: new Game({}),
 
   curGameInLauncher: null,
   curProgress: 0,
@@ -36,6 +34,8 @@ export default createReducer(
     [gamesSetListFin]: (state, payload) => ({
       ...state,
       list: payload,
+      newGames: payload.filter(g => g.is_new),
+      featureGames: payload.filter(g => g.is_feature),
     }),
 
     [gamesSetListErr]: (state) => ({
