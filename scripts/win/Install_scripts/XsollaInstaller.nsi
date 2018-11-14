@@ -75,7 +75,6 @@ FunctionEnd
 Section "-MainSection" SEC01
   SetOutPath "$INSTDIR"
   SetOverwrite ifnewer
-  File  /r "bearer"
   File  /r "data"
   File  /r "fonts"
   File  /r "imageformats"
@@ -321,7 +320,6 @@ Section Uninstall
   Delete "$INSTDIR\vc_redist.x64.exe"
   Delete "$INSTDIR\qwebchannel.js"
   
-  RMDir /r "$INSTDIR\bearer"
   RMDir /r "$INSTDIR\data"
   RMDir /r "$INSTDIR\fonts"
   RMDir /r "$INSTDIR\imageformats"
