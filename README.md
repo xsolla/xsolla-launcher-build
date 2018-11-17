@@ -90,7 +90,7 @@ Optional object in **config.json** are used to perform extended Launcher setting
 restore_password_link |	URL to redirect the user to the password change page on the game’s website with [Login Widget](https://developers.xsolla.com/doc/login/) already integrated.
 is_username_email |	Whether to show the *Email* or the *Username* placeholder during authentication in Launcher. Can be ‘true’ (to show *Email*) and ‘false’ (to show *Username*). Default is ‘true’.
 default_news_tab | Whether to show news from all the games (‘all’) or from a particular one. To show news from a particular game, specify the project ID from Publisher Account.
-always_open_default_news_tab | Whether to always show news set up in the default_news_tab object. If ‘true’, the news are displayed as specified in the default_news_tab object. If ‘false’, the news are displayed as specified in **default_news_tab** object only for the first opening, and then each game shows its own news. Default is ‘false’.
+always_open_default_news_tab | Whether to always show news set up in the default_news_tab object. If ‘true’, the news are displayed as specified in the default_news_tab object. If ‘false’, the news are displayed as specified in "default_news_tab" object only for the first opening, and then each game shows its own news. Default is ‘false’.
 cdn_try_load_count	| Number of attempts to download the game file.
 cdn_network_timeout	| Wait time between the download attempts (in milliseconds). Recommended ‘30000‘.
 enable_locate_button | Whether to show the *Locate the game* button for game serching. Can be ‘true‘ or ‘false‘. ‘true‘ by default. 
@@ -200,7 +200,6 @@ All parameters required for Launcher UI customization are represented as JSON ob
 ]
 ```
 </details>
-
-
+<p></p>
 
 > **Note:** The code is self-describing, with object names directly referring to their purpose. For example, "version_text_color" refers to the color of the text indicating Launcher version.
