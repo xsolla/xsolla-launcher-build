@@ -92,7 +92,8 @@ is_username_email |	Whether to show the *Email* or the *Username* placeholder du
 default_news_tab | Whether to show news from all the games (‘all’) or from a particular one. To show news from a particular game, specify the project ID from Publisher Account.
 always_open_default_news_tab | Whether to always show news set up in the default_news_tab object. If ‘true’, the news are displayed as specified in the default_news_tab object. If ‘false’, the news are displayed as specified in "default_news_tab" object only for the first opening, and then each game shows its own news. Default is ‘false’.
 cdn_try_load_count	| Number of attempts to download the game file.
-cdn_network_timeout	| Wait time between the download attempts (in milliseconds). Recommended ‘30000‘.
+cdn_network_timeout	| Wait time between the download attempts (in milliseconds). Recommended ‘30000‘. Must be used in pair with "cdn_block_size".
+cdn_block_size|Bytes in swap buffer. Default ‘1048576‘. Must be used in pair with "cdn_network_timeout".
 enable_locate_button | Whether to show the *Locate the game* button for game serching. Can be ‘true‘ or ‘false‘. ‘true‘ by default. 
 
 <details><summary>Example</summary>
