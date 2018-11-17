@@ -18,7 +18,7 @@ The **scripts/win/deploy.bat** script generates:
 
 1. Register an [Xsolla Publisher Account](https://publisher.xsolla.com) and create a project.
 2. Set up Launcher in Publisher Account.
-3. Clone this repository and specify values for required objects in **config.json**.
+3. Clone this repository and specify values for required [objects](#configjson) in **config.json**.
 4. [Customize](https://developers.xsolla.com/doc/launcher/#guides_launcher_ui_customization) Launcher UI.
 5. [Generate](https://developers.xsolla.com/doc/launcher/#guides_launcher_generate_archive_installation_file) a Launcher installation file and build archive.
 6. [Upload](https://developers.xsolla.com/doc/launcher/#guides_launcher_builds_upload) the game build to the Xsolla update server.
