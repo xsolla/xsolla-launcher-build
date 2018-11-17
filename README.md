@@ -1,4 +1,5 @@
 [Documentation](https://developers.xsolla.com/doc/launcher) is for full Launcher integration.
+
 [Wiki](https://github.com/xsolla/xsolla-launcher-build/wiki) is for getting details about Launcher releases.
 
 ## Repository Structure
