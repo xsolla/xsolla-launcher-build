@@ -1,11 +1,11 @@
-# Launcher
-
-Read the [documentation](https://developers.xsolla.com/doc/launcher) for full Launcher integration.
+[Documentation](https://developers.xsolla.com/doc/launcher) is for full Launcher integration.
+[Wiki](https://github.com/xsolla/xsolla-launcher-build/wiki) is for getting details about Launcher releases.
 
 ## Repository Structure
 
 Launcher updates are delivered via this repository that has the following folders:
-* **launcher/win** — Launcher;
+* **launcher/win** — Launcher for Windows;
+* **launcher/PromoPage** — Launcher start page;
 * **portables/win** — 7zip archiver and a utility that creates the installer (Nullsoft Scriptable Install System);
 * **scripts/win** — scripts to generate the archive and installer.
 
@@ -13,7 +13,24 @@ The **scripts/win/deploy.bat** script generates:
 * a Launcher installer that you can send to new users,
 * an archive including the Launcher build used to deliver updates to users.
 
-## Files to be customized
+## Steps to Integrate Launcher
+
+1. Register an [Xsolla Publisher Account](https://publisher.xsolla.com) and create a project.
+2. Set up Launcher in Publisher Account.
+3. Clone this repository and specify values for required objects in **config.json**.
+4. [Customize](https://developers.xsolla.com/doc/launcher/#guides_launcher_ui_customization) Launcher UI.
+5. [Generate](https://developers.xsolla.com/doc/launcher/#guides_launcher_generate_archive_installation_file) a Launcher installation file and build archive.
+6. [Upload](https://developers.xsolla.com/doc/launcher/#guides_launcher_builds_upload) the game build to the Xsolla update server.
+7. Send the Launcher installation file to new users.
+
+## Steps to Update Launcher
+
+1. Download updates from this repository.
+2. [Customize](https://developers.xsolla.com/doc/launcher/#guides_launcher_ui_customization) the updated Launcher part if needed.
+3. Launch the **scripts/win/deploy.bat** script.
+4. Upload the Launcher build archive to your Publisher Account so that updates are automatically delivered to users.
+
+## Files to Be Customized
 
 ### config.json
 Parameters required for Launcher configuration are represented as JSON objects in **launcher/win/config.json**.
