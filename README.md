@@ -96,6 +96,7 @@ cdn_network_timeout	| Wait time between the download attempts (in milliseconds).
 enable_locate_button | Whether to show the *Locate the game* button for game serching. Can be ‘true‘ or ‘false‘. ‘true‘ by default. 
 
 <details><summary>Example</summary>
+ 
  ```
 {
   "store": { "id" : 12345, "theme" : "default", "size" : "large", "view" : "horizontal_navigation" },
