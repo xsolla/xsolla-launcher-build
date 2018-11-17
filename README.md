@@ -201,4 +201,4 @@ All parameters required for Launcher UI customization are represented as JSON ob
 ```
 </details>
 
-**Note:** The code is self-describing, with object names directly referring to their purpose. For example, "version_text_color" refers to the color of the text indicating Launcher version.
+> **Note:** The code is self-describing, with object names directly referring to their purpose. For example, "version_text_color" refers to the color of the text indicating Launcher version.
