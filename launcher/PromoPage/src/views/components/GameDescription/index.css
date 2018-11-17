@@ -1,9 +1,25 @@
 .gdesc {
   width: 500px;
   margin-right: 60px;
+  margin-bottom: 5px;
+}
+
+.gdesc__rtl {
+  width: 500px;
+  margin-left: 60px;
+  margin-bottom: 5px;
 }
 
 .gdesc__read-more {
   width: 90px;
-  margin-top: 20px;
+  margin-top: 15px;
+}
+
+.gdesc__desc-container {
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.gdesc__title_container {
+  margin-bottom: 10px;
 }

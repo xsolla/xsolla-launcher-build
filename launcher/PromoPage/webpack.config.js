@@ -2,6 +2,7 @@ const webpack = require('webpack');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const FlowWebpackPlugin = require('flow-webpack-plugin')
 
 const config = {
     entry: "./src/index.js",
@@ -38,6 +39,7 @@ const config = {
         ],
     },
     plugins: [
+        // new FlowWebpackPlugin(),
         new ExtractTextPlugin("styles.css"),
         new HtmlWebpackPlugin({
             template: './public/index.html',

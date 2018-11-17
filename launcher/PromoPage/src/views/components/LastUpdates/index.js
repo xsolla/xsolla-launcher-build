@@ -9,6 +9,8 @@ import {
 } from '../../elements';
 import Time from '../../../models/Time';
 
+import { text } from '../../../langs';
+
 const uuidv4 = require('uuid/v4');
 const step = 1;
 
@@ -59,9 +61,11 @@ class LastUpdates extends React.Component {
 
     return (
       <View className={`last-update ${this.className}`}>
-        <Title header nav={ this.renderNav() }>
-          Last Updates
-        </Title>
+        <View style={{ direction: this.props.pageDirection }}>
+          <Title header nav={ this.renderNav() }>
+            { text('HOME.TITLE_LAST_UPDATE') }
+          </Title>
+        </View>
 
         <View className="lu__games">
           <View
@@ -76,6 +80,15 @@ class LastUpdates extends React.Component {
   }
 
   renderNav() {
+    if (this.props.pageDirection !== 'ltr') {
+      return (
+        <View className="lu__header__nav">
+          <ArrowButton onClick={ this.turnRight } right disabled={ !this.canTurnRight() } />
+          <ArrowButton onClick={ this.turnLeft } disabled={this.state.pagerPage === 0} />
+        </View>
+      );
+    }
+
     return (
       <View className="lu__header__nav">
         <ArrowButton onClick={ this.turnLeft } disabled={this.state.pagerPage === 0} />
@@ -88,7 +101,7 @@ class LastUpdates extends React.Component {
     const date = new Time(n.date);
 
     return (
-      <View className="lu__game" key={ uuidv4() }>
+      <View className="lu__game" key={ uuidv4() } style={{ direction: this.props.pageDirection }}>
         <img onClick={ () => { window.openOneNews(n.id) } } className="lu__game__img" src={ n.image } alt={ uuidv4() }/>
         <Caption className="lu__game__date">{ date.getFormat() }</Caption>
         <Subtitle link onClick={ () => { window.openOneNews(n.id) } }>

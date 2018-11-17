@@ -68,7 +68,8 @@ All parameters required for Launcher UI customization are represented as JSON ob
  steam_login_window                            | Authorization window for game launch from Steam.                
  error_window                                  | Error window for non-critical errors such as wrong username/password.  
  error_report_window                           | Error window for criticial errors such as cannot load social links.      
- game_install_window                           | Game installation window with configuration parameters such as installation folder, required disk space, etc.               
+ default_game_install_window                   | Game installation window with configuration parameters such as the installation folder, required disk space, etc.
+ game_install_window                           | Game installation window with configuration parameters such as the installation folder, required disk space, etc. The object can be customized for each game using its project ID.              
  friends_window                                | Friends list window.                    
  friends_window: search_friend_window          | Search block in the Friends list window.     
  friends_window: search_text_field             | Text field to search friends by nickname or email.      

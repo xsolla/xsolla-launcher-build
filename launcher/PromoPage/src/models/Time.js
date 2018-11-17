@@ -1,16 +1,18 @@
+import { text } from '../langs';
+
 const monthes = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
+  'MONTH_JAN',
+  'MONTH_FEB',
+  'MONTH_MAR',
+  'MONTH_APR',
+  'MONTH_MAY',
+  'MONTH_JUN',
+  'MONTH_JUL',
+  'MONTH_AUG',
+  'MONTH_SEP',
+  'MONTH_OCT',
+  'MONTH_NOV',
+  'MONTH_DEC',
 ];
 
 class DateTime {
@@ -20,8 +22,9 @@ class DateTime {
 
   getFormat() {
     const d = this.date;
+    const month = text(monthes[d.getMonth()]);
 
-    return `${monthes[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+    return `${month} ${d.getDate()}, ${d.getFullYear()}`;
   }
 }
 

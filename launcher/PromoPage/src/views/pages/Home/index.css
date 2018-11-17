@@ -6,12 +6,13 @@
 }
 
 .home__logo {
-  /* width: 214px;
-  height: 86px; */
+  height: 86px;
+  object-fit: cover;
+  margin-bottom: 40px;
 }
 
 .home__featured-pager {
-  margin: 40px 0;
+  margin: 0 0 40px;
 }
 
 .home__last-update, .home__all-games {

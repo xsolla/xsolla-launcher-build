@@ -22,6 +22,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -29,6 +30,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2016": "^6.24.1",
     "babel-preset-es2017": "^6.24.1",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
@@ -36,6 +38,8 @@
     "browserify": "^16.2.2",
     "css-loader": "^0.28.9",
     "extract-text-webpack-plugin": "^3.0.2",
+    "flow-bin": "^0.81.0",
+    "flow-webpack-plugin": "^1.2.0",
     "gulp": "^3.9.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^2.30.1",
@@ -49,11 +53,12 @@
     "webpack": "^3.10.0"
   },
   "scripts": {
+    "flow": "flow",
     "start": "react-scripts start",
-    "build": "./node_modules/webpack/bin/webpack.js",
+    "build": "node ./node_modules/webpack/bin/webpack.js",
     "server-start": "node ./app.js",
     "build-server": "npm run build && npm run server-start",
-    "build-archive-win": "./node_modules/gulp/bin/gulp.js archive-win",
-    "build-archive-linux": "./node_modules/gulp/bin/gulp.js archive-linux"
+    "build-archive-win": "node ./node_modules/gulp/bin/gulp.js archive-win",
+    "build-archive-linux": "node ./node_modules/gulp/bin/gulp.js archive-linux"
   }
 }

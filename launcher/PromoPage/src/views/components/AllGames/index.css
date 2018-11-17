@@ -82,7 +82,7 @@
 }
 
 .all__game__info__btn_redeem {
-  margin-right: 10px;
+  margin: 0 10px;
   align-items: center;
   justify-content: center;
   /* position: relative; */

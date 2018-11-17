@@ -1,5 +1,5 @@
 class News {
-  constructor (news) {
+  constructor (news = {}) {
     this.date = news.date || ''; 
     this.id = news.id || -1;
     this.image = news.image || '';

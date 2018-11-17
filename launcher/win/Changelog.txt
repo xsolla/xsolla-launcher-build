@@ -3,6 +3,30 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.6.33.325] - 2018-11-14
+### Added
+- Locate the game. The availability of this button is configured via the config.json file.
+- Added support for sell game banners. For selling game packs.
+
+### Fixed
+- Minor bugs fixed
+
+## [1.6.32.320] - 2018-11-09
+### Added
+- Launcher window. Now the window title is set by the Launcher name field in Publisher Account
+- Game installation window. Now customization of this window is available for each game
+- News section. Now news display can be set up for all games or for a particular game
+- Game and updates downloading via CDN can now be resumed in case of connection error
+- Game section. Now renamed into “Library”
+- Home page is fully completed and localized
+- The build number is now incrementing automatically via a special script
+
+### Updated
+- Translations updated
+
+### Fixed
+- Minor bugs fixed
+
 ## [1.6.31.315] - 2018-11-02
 ### Added
 - Verification of ownership of the game for all packages drm

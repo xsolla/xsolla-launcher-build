@@ -1,11 +1,14 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import './index.css';
 import GameMedia from '../GameMedia';
+import { text } from '../../../langs';
 
 import {
   View,
   Subtitle,
-  Description,
+  // Description,
 } from '../../elements';
 
 class GameDesc extends React.Component {
@@ -15,39 +18,52 @@ class GameDesc extends React.Component {
     this.className = props.className;
 
     this.state = {
-      //
+      maxHeightContainer: 'inherit',
+      realHeight: 0,
+      showReadMore: false,
     };
+  }
+
+  componentDidMount() {
+    const node = ReactDOM.findDOMNode(this.refs.desc);
+    if (node) {
+      const calculatedHeight = node.clientHeight;
+
+      if (calculatedHeight > 300) {
+        this.setState({
+          maxHeightContainer: 300,
+          realHeight: calculatedHeight,
+          showReadMore: true,
+        });
+      }
+    }
+  }
+
+  onReadMore = () => {
+    this.setState({ maxHeightContainer: this.state.realHeight, showReadMore: false });
   }
 
   render() {
     return (
-      <View className={`gdesc ${this.className}`}>
+      <View
+        className={`${ this.props.pageDirection === 'ltr' ? 'gdesc' : 'gdesc__rtl'} ${this.className}`} 
+        style={{ direction: this.props.pageDirection }}
+      >
         {
           Boolean(this.props.game && this.props.game.arts.length) &&
-            <GameMedia media={ this.props.game.arts }/>
+            <GameMedia media={ this.props.game.arts } pageDirection={ this.props.pageDirection }/>
         }
 
-        <Subtitle header>Description</Subtitle>
+        <Subtitle containerClassName="gdesc__title_container" header>{ text('GAME_PAGE.TITLE_DESCRIPTION') }</Subtitle>
 
-        <Description>
-          { this.props.game.description }
-          {/* THE RAPTURE HAS HAPPENED. YOU DIDN'T MAKE THE CUT.
-        </Description>
-        <Description point>
-          Rapture Rejects is a top down isometric last man standing game set in the apocalyptic Cyanide & Happiness universe.
-        </Description>
-        <Description point>
-          When God leaves the worst of us to fight for ourselves, all that’s left to do is to kill each other.
-        </Description>
-        <Description point>
-          Scavenge for weapons and kill every other person on Earth, to impress the almighty enough to let you into Heaven.
-        </Description>
-        <Description>
-          Rapture Rejects is a dark comedy Battle Royale game based on the
-          Cyanide & Happiness web comics. */}
-        </Description>
+        <div ref="desc" className="gdesc__desc-container" style={{ maxHeight: this.state.maxHeightContainer }}>
+          <div dangerouslySetInnerHTML={{ __html: this.props.game.description }}></div>
+        </div>
 
-        {/* <a className="link gdesc__read-more">Read more</a> */}
+        {
+          this.state.showReadMore &&
+            <a onClick={ this.onReadMore } className="link gdesc__read-more">{ text('GAME_PAGE.READ_MORE') }</a>
+        }
       </View>
     );
   }

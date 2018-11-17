@@ -5,10 +5,12 @@ import {
   View,
   Text,
   Title,
-  Description,
+  // Description,
   Button,
   ArrowButton,
 } from '../../elements';
+
+import { text } from '../../../langs';
 
 const uuidv4 = require('uuid/v4');
 const autoShowTime = 5 * 1000;
@@ -36,6 +38,22 @@ class FeatucheringViewPager extends React.Component {
 
   componentWillUnmount() {
     clearInterval(autoShowInterval);
+  }
+
+  onArrowClick = left => () => {
+    if (this.props.pageDirection === 'ltr') {
+      if (left) {
+        this.turnLeft();
+      } else {
+        this.turnRight(true);
+      }
+    } else {
+      if (!left) {
+        this.turnLeft();
+      } else {
+        this.turnRight(true);
+      }
+    }
   }
 
   turnLeft = () => {
@@ -98,12 +116,28 @@ class FeatucheringViewPager extends React.Component {
 
   render() {
     return (
-      <View className={`fe-pager ${this.className}`}>
-        <ArrowButton big className="fe-pager__arrow-left" onClick={ this.turnLeft }/>
-        <View className="fe-pager__lenta" style={{ left: `-${this.state.pagerPage * 100}%` }}>
+      <View className={`fe-pager ${this.className}`} style={{ direction: this.props.pageDirection }}>
+        {
+          this.props.games.length > 1 &&
+            <ArrowButton big
+              className="fe-pager__arrow-left"
+              onClick={ this.onArrowClick(true) }
+            />
+        }
+        <View
+          className="fe-pager__lenta"
+          style={{ left: `${this.props.pageDirection === 'ltr' ? '-' : ''}${this.state.pagerPage * 100}%` }}
+        >
           { this.props.games.slice(0, 5).map(g => this.renderGame(g)) }
         </View>
-        <ArrowButton big right className="fe-pager__arrow-right" onClick={ () => this.turnRight(true) }/>
+        {
+          this.props.games.length > 1 &&
+            <ArrowButton
+              big right
+              className="fe-pager__arrow-right"
+              onClick={ this.onArrowClick(false) }
+            />
+        }
       </View>
     );
   }
@@ -116,8 +150,8 @@ class FeatucheringViewPager extends React.Component {
     return (
       <View className="fe-pager__game" key={uuidv4()}>
         <img onClick={ this.openGame(game) } className="fe-pager__image" src={ game.getGameBanner() } alt={uuidv4()}/>
-        <View className="fe-pager__info-wraper">
-          <Text>Featured game</Text>
+        <View className={ this.props.pageDirection !== 'ltr' ? 'fe-pager__info-wraper__rtl' : 'fe-pager__info-wraper'}>
+          <Text>{ text('HOME.TITLE_FEATURED_GAME') }</Text>
           <Title
             link
             className="fe-pager__info-wraper__title"
@@ -125,9 +159,10 @@ class FeatucheringViewPager extends React.Component {
           >
             { game.name }
           </Title>
-          <Description>
+          <div dangerouslySetInnerHTML={{ __html: game.title }}></div>
+          {/* <Description>
             { this.renderGameDescription(game.description) }
-          </Description>
+          </Description> */}
           {
              installProccess &&
               <ProgressBar className="fe-pager__progress-bar" />
@@ -150,20 +185,26 @@ class FeatucheringViewPager extends React.Component {
   }
 
   renderBtn(game, installProccess, status, install) {
+    const rtl = this.props.pageDirection !== 'ltr';
+
     if (installProccess) {
-      if (status === 'INSTALLING') {
-        return <Text className="fe-pager__status">Installing...</Text>;
-      }
-      return <Text className="fe-pager__status">Paused...</Text>;
+      return <Text
+        className={`fe-pager__status${rtl ? '__rtl' : ''}`}>
+          {
+            status === 'INSTALLING' ?
+              text('ELEMENT.LABEL_INSTALLING') :
+              text('ELEMENT.LABEL_PAUSED')
+          }
+        </Text>;
     }
 
     if (game.hasUserGame && game.installed) {
       return (
         <Button
-          className="fe-pager__info-wraper__buy-btn"
+          className={`fe-pager__info-wraper__buy-btn${rtl ? '__rtl' : ''}`}
           onClick={ this.onClickBtn(game, 'launch') }
         >
-          Launch
+          { text('ELEMENT.BTN_LAUNCH') }
         </Button>
       );
     }
@@ -171,11 +212,11 @@ class FeatucheringViewPager extends React.Component {
     if (game.hasUserGame && !game.installed) {
       return (
         <Button
-          className="fe-pager__info-wraper__buy-btn"
+          className={`fe-pager__info-wraper__buy-btn${rtl ? '__rtl' : ''}`}
           disabled={ install }
           onClick={ this.onClickBtn(game, 'install') }
         >
-          Install
+          { text('ELEMENT.BTN_INSTALL') }
         </Button>
       );
     }
@@ -183,24 +224,26 @@ class FeatucheringViewPager extends React.Component {
     if (game.buy_option_enabled && !game.key_redeem_enabled) {
       return (
         <Button
-          className="fe-pager__info-wraper__buy-btn"
+          className={`fe-pager__info-wraper__buy-btn${rtl ? '__rtl' : ''}`}
           green
           onClick={ this.onClickBtn(game, 'buy') }
         >
-          Buy
+          { text('ELEMENT.BTN_BUY') }
         </Button>
       );
     }
 
     if (game.buy_option_enabled && game.key_redeem_enabled) {
       return (
-        <View className="fe-pager__info__btn__wrap">
+        <View
+          className={`fe-pager__info__btn__wrap${rtl ? '__rtl' : ''}`}
+        >
           <Button
             green
             className="fe-pager__info__btn"
             onClick={ this.onClickBtn(game, 'buy') }
           >
-            Buy
+            { text('ELEMENT.BTN_BUY') }
           </Button>
           <Button
             redeem
@@ -217,10 +260,10 @@ class FeatucheringViewPager extends React.Component {
       return (
         <Button
           redeem
-          className="fe-pager__info-wraper__buy-btn"
+          className={`fe-pager__info-wraper__buy-btn${rtl ? '__rtl' : ''}`}
           onClick={ this.onClickBtn(game, 'redeem') }
         >
-          Redeem
+          { text('ELEMENT.BTN_REDEEM') }
         </Button>
       );
     }

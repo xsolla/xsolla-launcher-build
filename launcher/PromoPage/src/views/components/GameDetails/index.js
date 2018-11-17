@@ -1,16 +1,18 @@
 import React from 'react';
 import './index.css';
 import ProgressBar from '../ProgressBar';
+import { text } from '../../../langs';
+
 import {
   View,
   Subtitle,
   Title,
   Text,
-  Description,
+  // Description,
   Button,
 } from '../../elements';
 
-class AllGames extends React.Component {
+class Details extends React.Component {
   constructor(props) {
     super(props);
 
@@ -49,51 +51,41 @@ class AllGames extends React.Component {
     const { game, curGame } = this.props;
     const installProccess = curGame.id === game.id && (curGame.status === 'INSTALLING' || curGame.status === 'PAUSED');
     return (
-      <View className={`gdetails ${this.className}`}>
+      <View className={`gdetails ${this.className}`} style={{ direction: this.props.pageDirection }}>
         <View className="gdetails__main-info" >
           <View style={{ flexDirection: 'row' }}>
-            <img src={`../img/web/game_logo_${game.publisher_project_id}.png`} alt="logo" className="gdetails__logo" />
+            <img
+              // src={`../img/web/game_logo_${game.publisher_project_id}.png`}
+              src={ game.game_logo }
+              alt="logo"
+              className="gdetails__logo"
+            />
           </View>
           
           <Title className="gdetails__main-info__title">{ game.name }</Title>
-          {/* <Description>
-            { game.description  }
-          </Description> */}
+
+          <div dangerouslySetInnerHTML={{ __html: game.title }}></div>
+
           <View className="gdetails__buy-btn_wrap">
             {
               installProccess &&
                 <ProgressBar className="gdetails__progress-bar" />
             }
             { !installProccess && this.renderBtn(game) }
-            { curGame.status === 'INSTALLING' && installProccess && <Text className="gdetails__status">Installing...</Text> }
-            { curGame.status === 'PAUSED' && installProccess && <Text className="gdetails__status">Paused...</Text> }
+            { curGame.status === 'INSTALLING' && installProccess && <Text className="gdetails__status">{ text('ELEMENT.LABEL_INSTALLING') }</Text> }
+            { curGame.status === 'PAUSED' && installProccess && <Text className="gdetails__status">{ text('ELEMENT.LABEL_PAUSED') }</Text> }
           </View>
         </View>
         
-        {/* <Subtitle header>Details</Subtitle>
+        <View className="gdetails__info_container">
+          <Subtitle containerClassName="gdetails__title_container" header>{ text('GAME_PAGE.TITLE_DETAILS') }</Subtitle>
+          <div dangerouslySetInnerHTML={{ __html: game.details }}></div>
+        </View>
 
-        <View className="gdetails_info-block">
-          <Description>Title: <span className="gdetails_info-block__value">Value</span></Description>
-          <Description>Developer: <span className="gdetails_info-block__value">Value</span></Description>
-          <Description>Publisher: <span className="gdetails_info-block__value">Value</span></Description>
-          <Description>Release Date: <span className="gdetails_info-block__value">Value</span></Description>
-        </View> */}
+        <View className="gdetails__info_container">
+          <Subtitle containerClassName="gdetails__title_container" header>{ text('GAME_PAGE.TITLE_SYS_REQ') }</Subtitle>
 
-        <Subtitle header>System requirements</Subtitle>
-
-        <View className="gdetails_info-block">
-          {
-            game.getMinSysReq().map(r =>
-              <Description key={`${r.field}-${r.value}`}>{r.field}<span className="gdetails_info-block__value">{r.value ? `: ${r.value}` : ''}</span></Description>
-            )
-          }
-          {/* <Description>OS: <span className="gdetails_info-block__value">Value</span></Description>
-          <Description>Processor: <span className="gdetails_info-block__value">Value</span></Description>
-          <Description>Memory: <span className="gdetails_info-block__value">Value</span></Description>
-          <Description>Graphics: <span className="gdetails_info-block__value">Value</span></Description>
-          <Description>Network: <span className="gdetails_info-block__value">Value</span></Description>
-          <Description>Storage: <span className="gdetails_info-block__value">Value</span></Description>
-          <Description>Sound Card: <span className="gdetails_info-block__value">Value</span></Description> */}
+          <div dangerouslySetInnerHTML={{ __html: game.system_requirements }}></div>
         </View>
       </View>
     );
@@ -106,7 +98,7 @@ class AllGames extends React.Component {
           className="gdetails__buy-btn"
           onClick={ this.onClickBtn(game, 'install') }
         >
-          Install
+          { text('ELEMENT.BTN_INSTALL') }
         </Button>
       );
     }
@@ -117,7 +109,7 @@ class AllGames extends React.Component {
           className="gdetails__buy-btn"
           onClick={ this.onClickBtn(game, 'launch') }
         >
-          Launch
+          { text('ELEMENT.BTN_LAUNCH') }
         </Button>
       );
     }
@@ -129,7 +121,7 @@ class AllGames extends React.Component {
           green
           onClick={ this.onClickBtn(game, 'buy') }
         >
-          Buy
+          { text('ELEMENT.BTN_BUY') }
         </Button>
       );
     }
@@ -142,7 +134,7 @@ class AllGames extends React.Component {
             className="gdetails__buy-btn"
             onClick={ this.onClickBtn(game, 'buy') }
           >
-            Buy
+            { text('ELEMENT.BTN_BUY') }
           </Button>
           <Button
             redeem
@@ -161,10 +153,10 @@ class AllGames extends React.Component {
           redeem
           className="gdetails__buy-btn"
           onClick={ this.onClickBtn(game, 'redeem') }
-        >Redeem</Button>
+        >{ text('ELEMENT.BTN_REDEEM') }</Button>
       );
     }
   }
 }
 
-export default AllGames;
+export default Details;

@@ -20,8 +20,5 @@ After installing use this command in profect folder:
 #### build and start server
 `npm run build-server`
 
-#### archive files in 7z on windows
-`npm run build-archive-win`
-
-#### archive files in 7z on linux or mac
+#### next you can archive `build` folder or use command for mac or linux
 `npm run build-archive-linux`

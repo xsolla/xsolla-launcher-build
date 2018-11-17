@@ -9,11 +9,13 @@ import {
 const uuidv4 = require('uuid/v4');
 const step = 1;
 
-class AllGames extends React.Component {
+class Media extends React.Component {
   constructor(props) {
     super(props);
 
     this.className = props.className;
+
+    console.log(props)
 
     this.state = {
       pagerPage: 0,
@@ -21,6 +23,23 @@ class AllGames extends React.Component {
       selectedMedia: props.media[0] || null,
       selectedIndex: 0,
     };
+  }
+
+  onArrowClick = (left = false) => () => {
+    console.log(left, this.props.pageDirection)
+    if (this.props.pageDirection === 'ltr') {
+      if (left) {
+        this.turnLeft();
+      } else {
+        this.turnRight();
+      }
+    } else {
+      if (!left) {
+        this.turnLeft();
+      } else {
+        this.turnRight();
+      }
+    }
   }
 
   turnLeft = () => {
@@ -56,8 +75,11 @@ class AllGames extends React.Component {
 
   render() {
     const { lastInPager, pagerPage } = this.state;
+    const ltr = this.props.pageDirection === 'ltr';
     const pers = pagerPage * (25 * step) + (25 * lastInPager);
-    const px = pagerPage * (6.5 * (0.25 * step)) + (6.5 * (0.25 * lastInPager));
+    const px = pagerPage * (6.5 * (0.25 * step)) + (6.5 * (0.25 * lastInPager))
+     + (ltr ? 0 : 6.5 * step);
+    const calcSymbol = ltr ? '-' : '+';
 
     return (
       <View className={`${this.className}`}>
@@ -68,13 +90,13 @@ class AllGames extends React.Component {
           }
         </View>
         <View className="gmedia__list">
-          <ArrowButton big className="gmedia__arrow" onClick={ this.turnLeft } />
+          <ArrowButton big className="gmedia__arrow" onClick={ this.onArrowClick(true) } />
 
-          <View className="gmedia__lenta" style={{ left: `calc(-${pers}% - ${px}px)` }}>
+          <View className="gmedia__lenta" style={{ left: `calc(${calcSymbol}${pers}% ${calcSymbol} ${px}px)` }}>
             { this.props.media.map((m, index) => this.renderMedia(m, index)) }
           </View>
 
-          <ArrowButton big right className="gmedia__arrow_right" onClick={ this.turnRight } />
+          <ArrowButton big right className="gmedia__arrow_right" onClick={ this.onArrowClick() } />
         </View>
       </View>
     );
@@ -137,4 +159,4 @@ class AllGames extends React.Component {
   }
 }
 
-export default AllGames;
+export default Media;

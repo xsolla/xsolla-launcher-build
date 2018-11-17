@@ -2,7 +2,10 @@ import { put, takeEvery } from 'redux-saga/effects';
 
 import {
   pageSetCurPageReq,
-  pageSetCurPage
+  pageSetCurPage,
+
+  pageSetLangReq,
+  pageSetLang,
 } from '../actions/pages';
 
 export function* setPageProc({ payload }) {
@@ -13,8 +16,18 @@ export function* setPageProc({ payload }) {
   }
 }
 
+export function* setLangProc({ payload }) {
+  try {
+    window.lang = payload.lang;
+    yield put(pageSetLang(payload));
+  } catch(err) {
+    //
+  }
+}
+
 export default function* () {
   yield [
     takeEvery(pageSetCurPageReq().type, setPageProc),
+    takeEvery(pageSetLangReq().type, setLangProc),
   ];
 }

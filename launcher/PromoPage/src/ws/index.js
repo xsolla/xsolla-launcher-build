@@ -1,9 +1,12 @@
 export function initConnectionFunc(callbacks) {
-  window.openConnection = port => {
+  window.openConnection = (port, lang = 'en', rtl = false) => {
     connect(port, callbacks);
+    callbacks.onChangeLang({ lang, direction: rtl ? 'rtl' : 'ltr' });
   };
 
-  // connect(12345, callbacks);
+  window.changeLang = (lang, rtl = false) => {
+    callbacks.onChangeLang({ lang, direction: rtl ? 'rtl' : 'ltr' });
+  }
 }
 
 export function connect(port, callbacks) {
@@ -54,7 +57,10 @@ export function connect(port, callbacks) {
         openOneNewsById,
         getNextNews,
         redeemKeyByGameID,
+        publisherLogo,
       } = channel.objects.core;
+
+      window.publisher_logo = publisherLogo;
 
       initCurrentGame(window.wsChannel.currentGameId);
       initCurrentProgress(window.wsChannel.progress);
