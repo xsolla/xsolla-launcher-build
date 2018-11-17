@@ -34,13 +34,15 @@ The **scripts/win/deploy.bat** script generates:
 ## Files to Be Customized
 
 ### config.json
+
+#### Required Objects
+
 Parameters required for Launcher configuration are represented as JSON objects in **launcher/win/config.json**.
 
 **Object**               | **Description**                             
 :------------------------|:-------------------------------------------------------------------
  launcher_project_id     | Launcher ID from Publisher Account. **Required.**
  login_project_id        | Login ID from Publisher Account. **Required.**  
- build_number            | Launcher build number. **Required.**  
  callback_url            | **Callback URL** from Login settings in Publisher Account. This URL is used to redirect the user after successful authentication via a social network.        
  product_name            | Launcher name in the **Start** menu. Duplicate the name in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter.        
  link_support            | Link to the game’s technical support website.        
@@ -50,7 +52,7 @@ Parameters required for Launcher configuration are represented as JSON objects i
  hide_peer_seed_info     | Whether a number of peers and seeds is displayed in Launcher during games and updates download. Can be ‘true’ and ‘false’. Default is ‘false’.
  hide_email              | Whether the user email is hidden in Launcher. Can be ‘true’ and ‘false’. Default is ‘false’. A user can change this setting in the Launcher UI.                                                            
  
- **Example**
+<details><summary>Example</summary>
  
  ```
 {
@@ -67,6 +69,55 @@ Parameters required for Launcher configuration are represented as JSON objects i
   "build_number": 1
 }
 ```
+</details>
+
+#### Optional Objects
+
+Optional object in **config.json** are used to perform extended Launcher settings.
+
+**Object**               | **Description**                             
+:------------------------|:-------------------------------------------------------------------
+ store     | An array of objects to customize Launcher in-game Store. See the [guide](https://developers.xsolla.com/doc/launcher/#guides_launcher_store_customization).
+ GA_trackingId        | Google Analytics tracking code. See the [recipe](https://developers.xsolla.com/recipes/launcher/game-analytics/).  
+ playfab_project_id            | PlayFab project identifier. See the [recipe](https://developers.xsolla.com/recipes/launcher/playfab-auth/).        
+ use_playfab_login            | ‘true’ to enable authentication via PlayFab. See the [recipe](https://developers.xsolla.com/recipes/launcher/playfab-auth/).     
+ playfab_link_restore_pass            | Link to the password change page. If the value is not specified, the password change will be unavailable. See the [recipe](https://developers.xsolla.com/recipes/launcher/playfab-auth/).
+ playfab_link_create_account          | Link to the account creation page. If the value is not specified, account creation will be unavailable. See the [recipe](https://developers.xsolla.com/recipes/launcher/playfab-auth/).     
+ use_playfab_id_in_store |‘true’ to set the user ID from the PlayFab database as user ID in the in-game store. ‘false’ to set the user ID from the Xsolla database. Default is ‘false’. See the [recipe](https://developers.xsolla.com/recipes/launcher/playfab-auth/).
+ steam_app_id | Steam app ID. See the [recipe](https://developers.xsolla.com/recipes/launcher/cross-authentication/#recipes_cross_authentication_steam).
+ stone_app_id | Stone app ID. See the [recipe](https://developers.xsolla.com/recipes/launcher/cross-authentication/#recipes_cross_authentication_stone).
+ create_account_link |	URL to redirect the user to the registration page on the game’s website with [Login Widget](https://developers.xsolla.com/doc/login/) already integrated.
+restore_password_link |	URL to redirect the user to the password change page on the game’s website with [Login Widget](https://developers.xsolla.com/doc/login/) already integrated.
+is_username_email |	Whether to show the *Email* or the *Username* placeholder during authentication in Launcher. Can be ‘true’ (to show *Email*) and ‘false’ (to show *Username*). Default is ‘true’.
+default_news_tab | Whether to show news from all the games (‘all’) or from a particular one. To show news from a particular game, specify the project ID from Publisher Account.
+always_open_default_news_tab | Whether to always show news set up in the default_news_tab object. If ‘true’, the news are displayed as specified in the default_news_tab object. If ‘false’, the news are displayed as specified in **default_news_tab** object only for the first opening, and then each game shows its own news. Default is ‘false’.
+cdn_try_load_count	| Number of attempts to download the game file.
+cdn_network_timeout	| Wait time between the download attempts (in milliseconds). Recommended ‘30000‘.
+enable_locate_button | Whether to show the *Locate the game* button for game serching. Can be ‘true‘ or ‘false‘. ‘true‘ by default. 
+
+<details><summary>Example</summary>
+ ```
+{
+  "store": { "id" : 12345, "theme" : "default", "size" : "large", "view" : "horizontal_navigation" },
+  "GA_trackingId": "UA-111111111-1",
+  "playfab_project_id": "FB8D",
+  "use_playfab_login": true,
+  "playfab_link_restore_pass": "http://collgame.com/restore_pass",
+  "playfab_link_create_account": "http://collgame.com/create_account",
+  "use_playfab_id_in_store": false,
+  "steam_app_id": 123,
+  "stone_app_id": 129,
+  "create_account_link": "https://coolgame.com/create_account",
+  "restore_password_link": "https://coolgame.com/restore_pass",
+  "is_username_email": true,
+  "default_news_tab": 65784,
+  "always_open_default_news_tab": true,
+  "cdn_try_load_count": 3,
+  "cdn_network_timeout": 30000,
+  "enable_locate_button": true
+}
+```
+</details>
 
  ### UIStyle.json
 All parameters required for Launcher UI customization are represented as JSON objects in **launcher/win/UIStyle.json**. An object may contain window element styles and/or nested objects.
@@ -117,7 +168,7 @@ All parameters required for Launcher UI customization are represented as JSON ob
  uninstall_window                              | Game uninstallation window.       
  fonts                                         | Fonts.    
 
- **Example**
+ <details><summary>Example</summary>
  
  ```
 "error_window": {
@@ -147,4 +198,5 @@ All parameters required for Launcher UI customization are represented as JSON ob
   }
 ]
 ```
+</details>
 **Note:** The code is self-describing, with object names directly referring to their purpose. For example, "version_text_color" refers to the color of the text indicating Launcher version.
