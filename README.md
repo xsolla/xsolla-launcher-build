@@ -42,7 +42,8 @@ Parameters required for Launcher configuration are represented as JSON objects i
 **Object**               | **Description**                             
 :------------------------|:-------------------------------------------------------------------
  launcher_project_id     | Launcher ID from Publisher Account. **Required.**
- login_project_id        | Login ID from Publisher Account. **Required.**  
+ login_project_id        | Login ID from Publisher Account. **Required.** 
+ build_number	| Launcher build number.
  callback_url            | **Callback URL** from Login settings in Publisher Account. This URL is used to redirect the user after successful authentication via a social network.        
  product_name            | Launcher name in the **Start** menu. Duplicate the name in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter.        
  link_support            | Link to the game’s technical support website.        
