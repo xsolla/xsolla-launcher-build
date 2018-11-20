@@ -6,7 +6,7 @@
 
 Launcher updates are delivered via this repository that has the following folders:
 * **launcher/win** — Launcher for Windows;
-* **launcher/PromoPage** — Launcher start page;
+* **launcher/PromoPage** — [Launcher start page](https://docs.google.com/document/d/1YuVftxN4efURR1ZnUJCjCoxx6skazaXRzVRbz2cLIVc/edit#heading=h.t0ksoifvtzar);
 * **portables/win** — 7zip archiver and a utility that creates the installer (Nullsoft Scriptable Install System);
 * **scripts/win** — scripts to generate the archive and installer.
 
