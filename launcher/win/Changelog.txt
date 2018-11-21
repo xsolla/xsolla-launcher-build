@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.6.34.330] - 2018-11-21
+### Added
+- Improved the process of applying the game patch
+- On the login window added the ability to manually open the link in the browser, if it does not open automatically
+
+### Fixed
+- Minor bugs fixed
+
 ## [1.6.33.325] - 2018-11-14
 ### Added
 - Locate the game. The availability of this button is configured via the config.json file.
