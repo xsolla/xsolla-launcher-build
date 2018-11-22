@@ -96,6 +96,7 @@ cdn_try_load_count	| Number of attempts to download the game file.
 cdn_network_timeout	| Wait time between the download attempts (in milliseconds). Recommended ‘30000‘. Must be used in pair with "cdn_block_size".
 cdn_block_size|Bytes in swap buffer. Default ‘1048576‘. Must be used in pair with "cdn_network_timeout".
 enable_locate_button | Whether to show the *Locate the game* button for game searching. Can be ‘true‘ or ‘false‘. ‘true‘ by default. 
+check_update_interval | The interval for checking game updates availability in milliseconds. Default is ‘10800000’.
 
 <details><summary>Example</summary>
  
@@ -117,7 +118,8 @@ enable_locate_button | Whether to show the *Locate the game* button for game sea
   "always_open_default_news_tab": true,
   "cdn_try_load_count": 3,
   "cdn_network_timeout": 30000,
-  "enable_locate_button": true
+  "enable_locate_button": true,
+  "check_update_interval": 10800000
 }
 ```
 </details>
