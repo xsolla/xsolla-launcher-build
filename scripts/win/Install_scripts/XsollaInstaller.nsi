@@ -181,7 +181,12 @@ Section "-MainSection" SEC01
   File "api-ms-win-crt-runtime-l1-1-0.dll"            
   File "api-ms-win-crt-stdio-l1-1-0.dll"              
   File "api-ms-win-crt-string-l1-1-0.dll"             
-  File "api-ms-win-crt-time-l1-1-0.dll"               
+  File "api-ms-win-crt-time-l1-1-0.dll"  
+
+  File "aws-cpp-sdk-core.dll"  
+  File "aws-cpp-sdk-s3.dll"
+  File "aws-cpp-sdk-transfer.dll"
+  
   SetOutPath "$INSTDIR"
 
   File "vc_redist.x64.exe"
@@ -319,6 +324,10 @@ Section Uninstall
   Delete "$INSTDIR\api-ms-win-crt-time-l1-1-0.dll" 
   Delete "$INSTDIR\vc_redist.x64.exe"
   Delete "$INSTDIR\qwebchannel.js"
+  
+  Delete "$INSTDIR\aws-cpp-sdk-core.dll"  
+  Delete "$INSTDIR\aws-cpp-sdk-s3.dll"
+  Delete "$INSTDIR\aws-cpp-sdk-transfer.dll"
   
   RMDir /r "$INSTDIR\data"
   RMDir /r "$INSTDIR\fonts"

@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.6.35.335] - 2018-12-04
+### Added
+- Checking for free disk space before the game or update installation
+- Information message with the request to use admin rights for Launcher operation
+
+### Fixed
+- Minor bugs fixed
+
 ## [1.6.34.330] - 2018-11-21
 ### Added
 - Improved the process of applying the game patch
