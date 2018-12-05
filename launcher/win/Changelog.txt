@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.6.36.340] - 2018-12-05
+### Fixed
+- Minor bugs fixed
+
 ## [1.6.35.335] - 2018-12-04
 ### Added
 - Checking for free disk space before the game or update installation
