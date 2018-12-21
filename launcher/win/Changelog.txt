@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.6.36.350] - 2018-12-21
+### Fixed
+- Minor bugs fixed
+
 ## [1.6.36.345] - 2018-12-14
 ### Fixed
 - The working directory for the game launch is the directory with the game executable file.
