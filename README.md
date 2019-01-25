@@ -48,7 +48,6 @@ Parameters required for Launcher configuration are represented as JSON objects i
  product_name            | Launcher name in the **Start** menu. Duplicate the name in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter.        
  link_support            | Link to the game’s technical support website.        
  link_community          | Link to the game’s community.     
- default_p2p_enabled     | Whether a P2P network is used for game and update delivery. Can be ‘true’ and ‘false’. Default is ‘true’. A user can change this setting in the Launcher UI.
  game_autoupdate         | Whether the game is updated automatically. Can be ‘true’ and ‘false’. Default is ‘false’. A user can change this setting in the Launcher UI.     
  hide_peer_seed_info     | Whether a number of peers and seeds is displayed in Launcher during games and updates download. Can be ‘true’ and ‘false’. Default is ‘false’.
  hide_email              | Whether the user email is hidden in Launcher. Can be ‘true’ and ‘false’. Default is ‘false’. A user can change this setting in the Launcher UI.                                                            
@@ -63,7 +62,6 @@ Parameters required for Launcher configuration are represented as JSON objects i
   "product_name": "Launcher",
   "link_support": "https://support_example.com",
   "link_community": "https://community_example.com",
-  "default_p2p_enabled": true,
   "game_autoupdate": false,
   "hide_peer_seed_info": false,
   "hide_email": false,
