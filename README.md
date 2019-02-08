@@ -95,6 +95,7 @@ cdn_network_timeout	| Wait time between the download attempts (in milliseconds).
 cdn_block_size|Bytes in swap buffer. Default ‘1048576‘. Must be used in pair with "cdn_network_timeout".
 enable_locate_button | Whether to show the *Locate the game* button for game searching. Can be ‘true‘ or ‘false‘. ‘true‘ by default. 
 check_update_interval | The interval for checking game updates availability in milliseconds. Default is ‘10800000’.
+games_directory   | The name of the games directory folder, for example: *C:/{games_directory}/LauncherName/GameName/*. The folder will be created on the disk selected by a user and will contain files of all installed games from Launcher. Default is ‘Games‘.
 
 <details><summary>Example</summary>
  
@@ -117,7 +118,8 @@ check_update_interval | The interval for checking game updates availability in m
   "cdn_try_load_count": 3,
   "cdn_network_timeout": 30000,
   "enable_locate_button": true,
-  "check_update_interval": 10800000
+  "check_update_interval": 10800000,
+  "games_directory": "Games"
 }
 ```
 </details>
