@@ -6,7 +6,7 @@
 
 Launcher updates are delivered via this repository that has the following folders:
 * **launcher/win** — Launcher for Windows;
-* **launcher/PromoPage** — Launcher start page;
+* **launcher/PromoPage** — [Launcher start page](https://docs.google.com/document/d/1YuVftxN4efURR1ZnUJCjCoxx6skazaXRzVRbz2cLIVc/edit#heading=h.t0ksoifvtzar);
 * **portables/win** — 7zip archiver and a utility that creates the installer (Nullsoft Scriptable Install System);
 * **scripts/win** — scripts to generate the archive and installer.
 
@@ -48,7 +48,6 @@ Parameters required for Launcher configuration are represented as JSON objects i
  product_name            | Launcher name in the **Start** menu. Duplicate the name in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter.        
  link_support            | Link to the game’s technical support website.        
  link_community          | Link to the game’s community.     
- default_p2p_enabled     | Whether a P2P network is used for game and update delivery. Can be ‘true’ and ‘false’. Default is ‘true’. A user can change this setting in the Launcher UI.
  game_autoupdate         | Whether the game is updated automatically. Can be ‘true’ and ‘false’. Default is ‘false’. A user can change this setting in the Launcher UI.     
  hide_peer_seed_info     | Whether a number of peers and seeds is displayed in Launcher during games and updates download. Can be ‘true’ and ‘false’. Default is ‘false’.
  hide_email              | Whether the user email is hidden in Launcher. Can be ‘true’ and ‘false’. Default is ‘false’. A user can change this setting in the Launcher UI.                                                            
@@ -63,7 +62,6 @@ Parameters required for Launcher configuration are represented as JSON objects i
   "product_name": "Launcher",
   "link_support": "https://support_example.com",
   "link_community": "https://community_example.com",
-  "default_p2p_enabled": true,
   "game_autoupdate": false,
   "hide_peer_seed_info": false,
   "hide_email": false,
@@ -96,6 +94,7 @@ cdn_try_load_count	| Number of attempts to download the game file.
 cdn_network_timeout	| Wait time between the download attempts (in milliseconds). Recommended ‘30000‘. Must be used in pair with "cdn_block_size".
 cdn_block_size|Bytes in swap buffer. Default ‘1048576‘. Must be used in pair with "cdn_network_timeout".
 enable_locate_button | Whether to show the *Locate the game* button for game searching. Can be ‘true‘ or ‘false‘. ‘true‘ by default. 
+check_update_interval | The interval for checking game updates availability in milliseconds. Default is ‘10800000’.
 
 <details><summary>Example</summary>
  
@@ -117,7 +116,8 @@ enable_locate_button | Whether to show the *Locate the game* button for game sea
   "always_open_default_news_tab": true,
   "cdn_try_load_count": 3,
   "cdn_network_timeout": 30000,
-  "enable_locate_button": true
+  "enable_locate_button": true,
+  "check_update_interval": 10800000
 }
 ```
 </details>
