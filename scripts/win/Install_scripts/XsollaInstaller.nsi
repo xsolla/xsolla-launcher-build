@@ -53,13 +53,46 @@ Function .onInit
   !insertmacro MUI_LANGDLL_DISPLAY
 FunctionEnd
 
+Function isEmptyDir
+  Exch $0
+  Push $1
+  FindFirst $0 $1 "$0\*.*"
+  strcmp $1 "." 0 _notempty
+    FindNext $0 $1
+    strcmp $1 ".." 0 _notempty
+      ClearErrors
+      FindNext $0 $1
+      IfErrors 0 _notempty
+        FindClose $0
+        Pop $1
+        StrCpy $0 1
+        Exch $0
+        goto _end
+     _notempty:
+       FindClose $0
+       ClearErrors
+       Pop $1
+       StrCpy $0 0
+       Exch $0
+  _end:
+FunctionEnd
+
 Function DirectoryLeave
   ${If} ${FileExists} "$InstDir\launcher.exe"
     Return
   ${EndIf}
-  ${If} ${FileExists} "$InstDir\*.*"
-    MessageBox MB_OK `"$InstDir" already exists. Choose another directory`
-    Abort
+  
+  Push $InstDir
+	Call isEmptyDir
+  Pop $0
+  
+  ${If} $0 == 1
+	Return
+  ${Else}
+      ${If} ${FileExists} "$InstDir"
+		MessageBox MB_OK `"$InstDir" is not empty. Choose another directory`
+		Abort
+	  ${EndIf}
   ${EndIf}
 FunctionEnd
 
@@ -74,6 +107,8 @@ FunctionEnd
 
 Section "-MainSection" SEC01
   SetOutPath "$INSTDIR"
+  ExecWait '"cmd.exe" /C icacls "$INSTDIR" /grant:r %userdomain%\%username%:f /t /c'
+  
   SetOverwrite ifnewer
   File  /r "data"
   File  /r "fonts"
@@ -182,18 +217,13 @@ Section "-MainSection" SEC01
   File "api-ms-win-crt-stdio-l1-1-0.dll"              
   File "api-ms-win-crt-string-l1-1-0.dll"             
   File "api-ms-win-crt-time-l1-1-0.dll"  
-
   File "aws-cpp-sdk-core.dll"  
   File "aws-cpp-sdk-s3.dll"
   File "aws-cpp-sdk-transfer.dll"
-  
-  SetOutPath "$INSTDIR"
-
   File "vc_redist.x64.exe"
   DetailPrint "Running vcredist setup..."
   ExecWait "$INSTDIR\vc_redist.x64.exe /q /norestart"
   DetailPrint "Finished vcredist setup"
-
 
   ${StrRep} $0 "$INSTDIR" "\" "/"
 
@@ -226,6 +256,9 @@ Section -Post
 SectionEnd
 
 Section Uninstall
+  SetOutPath $INSTDIR
+  ExecWait "$INSTDIR\launcher.exe -uninstall_all_games"
+  SetOutPath "$INSTDIR\.."
   Delete "$INSTDIR\${PRODUCT_NAME}.url"
   Delete "$INSTDIR\boost_atomic-vc140-mt-1_65_1.dll"
   Delete "$INSTDIR\boost_chrono-vc140-mt-1_65_1.dll"
@@ -281,21 +314,22 @@ Section Uninstall
   Delete "$INSTDIR\XsollaAuth.dll"
   Delete "$INSTDIR\XsollaCore.dll"
   Delete "$INSTDIR\Changelog.txt"
+  Delete "$INSTDIR\qwebchannel.js"
   
-  Delete "$INSTDIR\api-ms-win-crt-utility-l1-1-0.dll"            
-  Delete "$INSTDIR\api-ms-win-core-console-l1-1-0.dll"           
-  Delete "$INSTDIR\api-ms-win-core-datetime-l1-1-0.dll"          
-  Delete "$INSTDIR\api-ms-win-core-debug-l1-1-0.dll"             
-  Delete "$INSTDIR\api-ms-win-core-errorhandling-l1-1-0.dll"     
-  Delete "$INSTDIR\api-ms-win-core-file-l1-1-0.dll"              
-  Delete "$INSTDIR\api-ms-win-core-file-l1-2-0.dll"              
-  Delete "$INSTDIR\api-ms-win-core-file-l2-1-0.dll"              
-  Delete "$INSTDIR\api-ms-win-core-handle-l1-1-0.dll"            
-  Delete "$INSTDIR\api-ms-win-core-heap-l1-1-0.dll"              
-  Delete "$INSTDIR\api-ms-win-core-interlocked-l1-1-0.dll"       
-  Delete "$INSTDIR\api-ms-win-core-libraryloader-l1-1-0.dll"     
-  Delete "$INSTDIR\api-ms-win-core-localization-l1-2-0.dll"      
-  Delete "$INSTDIR\api-ms-win-core-memory-l1-1-0.dll"            
+  Delete "$INSTDIR\api-ms-win-crt-utility-l1-1-0.dll"
+  Delete "$INSTDIR\api-ms-win-core-console-l1-1-0.dll"
+  Delete "$INSTDIR\api-ms-win-core-datetime-l1-1-0.dll"
+  Delete "$INSTDIR\api-ms-win-core-debug-l1-1-0.dll"
+  Delete "$INSTDIR\api-ms-win-core-errorhandling-l1-1-0.dll"
+  Delete "$INSTDIR\api-ms-win-core-file-l1-1-0.dll"
+  Delete "$INSTDIR\api-ms-win-core-file-l1-2-0.dll"
+  Delete "$INSTDIR\api-ms-win-core-file-l2-1-0.dll"
+  Delete "$INSTDIR\api-ms-win-core-handle-l1-1-0.dll"
+  Delete "$INSTDIR\api-ms-win-core-heap-l1-1-0.dll"
+  Delete "$INSTDIR\api-ms-win-core-interlocked-l1-1-0.dll"
+  Delete "$INSTDIR\api-ms-win-core-libraryloader-l1-1-0.dll"
+  Delete "$INSTDIR\api-ms-win-core-localization-l1-2-0.dll"
+  Delete "$INSTDIR\api-ms-win-core-memory-l1-1-0.dll"
   Delete "$INSTDIR\api-ms-win-core-namedpipe-l1-1-0.dll"         
   Delete "$INSTDIR\api-ms-win-core-processenvironment-l1-1-0.dll"
   Delete "$INSTDIR\api-ms-win-core-processthreads-l1-1-0.dll"    
@@ -322,13 +356,8 @@ Section Uninstall
   Delete "$INSTDIR\api-ms-win-crt-stdio-l1-1-0.dll"              
   Delete "$INSTDIR\api-ms-win-crt-string-l1-1-0.dll"             
   Delete "$INSTDIR\api-ms-win-crt-time-l1-1-0.dll" 
-  Delete "$INSTDIR\vc_redist.x64.exe"
-  Delete "$INSTDIR\qwebchannel.js"
   
-  Delete "$INSTDIR\aws-cpp-sdk-core.dll"  
-  Delete "$INSTDIR\aws-cpp-sdk-s3.dll"
-  Delete "$INSTDIR\aws-cpp-sdk-transfer.dll"
-  
+  RMDir /r "$INSTDIR\bearer"
   RMDir /r "$INSTDIR\data"
   RMDir /r "$INSTDIR\fonts"
   RMDir /r "$INSTDIR\imageformats"
@@ -340,6 +369,7 @@ Section Uninstall
   RMDir /r "$INSTDIR\QtQuick.2"
   RMDir /r "$INSTDIR\QtWebEngine"
   RMDir /r "$INSTDIR\translations"
+  RMDir /r "$INSTDIR"
 
   SetShellVarContext Current
   Delete "$DESKTOP\${PRODUCT_NAME}.lnk"
