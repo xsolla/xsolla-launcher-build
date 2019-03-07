@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Changed
+- Disabling user chat.
+
+## [1.6.37.360] - 2019-03-06
+### Fixed
+- Minor bugs fixed
 
 ## [1.6.37.355] - 2019-02-19
 ### Added
