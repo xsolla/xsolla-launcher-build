@@ -110,7 +110,7 @@ ECHO * Create deploy archive
 ECHO * Copying installer's stuff
 	
 COPY %BUILD_PATH%\img\launcherIcon.ico "%TARGET_PATH%"
-COPY %SCRIPTS_PATH%\XSollaInstaller.nsi "%TARGET_PATH%"
+COPY %SCRIPTS_PATH%\XsollaInstaller.nsi "%TARGET_PATH%"
 COPY %BUILD_PATH%\qwebchannel.js "%TARGET_PATH%"
 	
 pushd %NSIS_PATH%
@@ -119,7 +119,7 @@ popd
 	
 ECHO * Creating installer
 CD "%TARGET_PATH%"
-"%NSIS_PATH%\makensis.exe" XSollaInstaller.nsi
+"%NSIS_PATH%\makensis.exe" XsollaInstaller.nsi
 
 For /F "tokens=*" %%F In ('Dir %CD% /A:-D /B') Do (
 	If /I Not "%%F"=="bin" (Del /F /Q "%CD%\%%F")

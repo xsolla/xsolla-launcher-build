@@ -1,7 +1,27 @@
-# Changelog
+﻿# Changelog
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Changed
+- Disabling user chat.
+
+## [1.6.38.365] - 2019-03-22
+### Fixed
+- Minor bugs fixed
+
+## [1.6.37.360] - 2019-03-06
+### Fixed
+- Minor bugs fixed
+
+## [1.6.37.355] - 2019-02-19
+### Added
+- Request for admin rights upon the installation of redistributable packages
+
+### Updated
+- Inability to edit the username in Launcher with the Friends module disabled in Publisher Account
+
+### Fixed
+- Displaying the progress upon applying the patch with large files
 
 ## [1.6.36.350] - 2018-12-21
 ### Fixed
