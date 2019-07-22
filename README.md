@@ -17,34 +17,27 @@ The **scripts/win/deploy.bat** script generates:
 ## Steps to Integrate Launcher
 
 1. Register an [Xsolla Publisher Account](https://publisher.xsolla.com) and create a project.
-2. Set up Launcher in Publisher Account.
-3. Clone this repository and specify values for required [objects](#configjson) in **config.json**.
-4. [Customize](https://developers.xsolla.com/doc/launcher/#guides_launcher_ui_customization) Launcher UI.
-5. [Generate](https://developers.xsolla.com/doc/launcher/#guides_launcher_generate_archive_installation_file) a Launcher installation file and build archive.
-6. [Upload](https://developers.xsolla.com/doc/launcher/#guides_launcher_builds_upload) the game build to the Xsolla update server.
-7. Send the Launcher installation file to new users.
+2. Create the Launcher instance in Publisher Account.
+3. Clone this repository.
+4. [Make](#) Launcher main configuration.
+5. [Customize](#customizing-launcher-ui) Launcher UI.
+6. [Generate](https://developers.xsolla.com/doc/launcher/#guides_launcher_generate_archive_installation_file) a Launcher installation file and build archive.
+7. [Upload](https://developers.xsolla.com/doc/launcher/#guides_launcher_builds_upload) the game build to the Xsolla update server.
+8. Send the Launcher installation file to new users.
 
-## Steps to Update Launcher
+### Making Launcher Configuration
 
-1. Download updates from this repository.
-2. [Customize](https://developers.xsolla.com/doc/launcher/#guides_launcher_ui_customization) the updated Launcher part if needed.
-3. Launch the **scripts/win/deploy.bat** script.
-4. Upload the Launcher build archive to your Publisher Account so that updates are automatically delivered to users.
-
-## Files to Be Customized
-
-### config.json
+Parameters for Launcher configuration are represented as JSON objects in **launcher/win/config.json**.
 
 #### Required Objects
-
-Parameters required for Launcher configuration are represented as JSON objects in **launcher/win/config.json**.
 
 **Object**               | **Description**                             
 :------------------------|:-------------------------------------------------------------------
  launcher_project_id     | Launcher ID from Publisher Account. **Required.**
- login_project_id        | Login ID from Publisher Account. **Required.** 
- build_number	| Launcher build number. The value is generated automatically since version 1.6.32.320. **Required.** 
- callback_url            | **Callback URL** from Login settings in Publisher Account. This URL is used to redirect the user after successful authentication via a social network.        
+ login_project_id        | ID of Login connected to your Launcher in Publisher Account. **Required.** 
+ build_number	           | Launcher build number. The value is generated automatically since version 1.6.32.320. **Required.** 
+ use_local_config        | Whether to use the [local_theme.json](#local_themejson) file to customize Launcher UI. Can be ‘true’ or ‘false’. Must be ‘true’ for Xsolla Launcher v1.7.0 and higher. 
+ callback_url            | **Callback URL** from Login settings in Publisher Account. This URL is used to redirect the user after successful authentication via a social network. **Required** if there are several Callback URLs added in Login settings in Publisher Account.        
  product_name            | Launcher name in the **Start** menu. Duplicate the name in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter.        
  link_support            | Link to the game’s technical support website.        
  link_community          | Link to the game’s community.     
@@ -65,7 +58,8 @@ Parameters required for Launcher configuration are represented as JSON objects i
   "game_autoupdate": false,
   "hide_peer_seed_info": false,
   "hide_email": false,
-  "build_number": 1
+  "build_number": 1,
+  "use_local_config": true
 }
 ```
 </details>
@@ -76,17 +70,11 @@ Optional object in **config.json** are used to perform extended Launcher setting
 
 **Object**               | **Description**                             
 :------------------------|:-------------------------------------------------------------------
- store     | An array of objects to customize Launcher in-game Store. See the [guide](https://developers.xsolla.com/doc/launcher/#guides_launcher_store_customization).
- GA_trackingId        | Google Analytics tracking code. See the [recipe](https://developers.xsolla.com/recipes/launcher/game-analytics/).  
- playfab_project_id            | PlayFab project identifier. See the [recipe](https://developers.xsolla.com/recipes/launcher/playfab-auth/).        
- use_playfab_login            | ‘true’ to enable authentication via PlayFab. See the [recipe](https://developers.xsolla.com/recipes/launcher/playfab-auth/).     
- playfab_link_restore_pass            | Link to the password change page. If the value is not specified, the password change will be unavailable. See the [recipe](https://developers.xsolla.com/recipes/launcher/playfab-auth/).
- playfab_link_create_account          | Link to the account creation page. If the value is not specified, account creation will be unavailable. See the [recipe](https://developers.xsolla.com/recipes/launcher/playfab-auth/).     
- use_playfab_id_in_store |‘true’ to set the user ID from the PlayFab database as user ID in the in-game store. ‘false’ to set the user ID from the Xsolla database. Default is ‘false’. See the [recipe](https://developers.xsolla.com/recipes/launcher/playfab-auth/).
+ GA_trackingId        | Google Analytics tracking code. See the [recipe](https://developers.xsolla.com/recipes/launcher/game-analytics/).          
  steam_app_id | Steam app ID. See the [recipe](https://developers.xsolla.com/recipes/launcher/cross-authentication/#recipes_cross_authentication_steam).
  stone_app_id | Stone app ID. See the [recipe](https://developers.xsolla.com/recipes/launcher/cross-authentication/#recipes_cross_authentication_stone).
- create_account_link |	URL to redirect the user to the registration page on the game’s website with [Login Widget](https://developers.xsolla.com/doc/login/) already integrated.
-restore_password_link |	URL to redirect the user to the password change page on the game’s website with [Login Widget](https://developers.xsolla.com/doc/login/) already integrated.
+ create_account_link |	URL to redirect the user after successful registration.
+restore_password_link |	URL to redirect the user to after successful password recovery.
 is_username_email |	Whether to show the *Email* or the *Username* placeholder during authentication in Launcher. Can be ‘true’ (to show *Email*) and ‘false’ (to show *Username*). Default is ‘true’.
 default_news_tab | Whether to show news from all the games (‘all’) or from a particular one. To show news from a particular game, specify the project ID from Publisher Account.
 always_open_default_news_tab | Whether to always show news set up in the default_news_tab object. If ‘true’, the news are displayed as specified in the default_news_tab object. If ‘false’, the news are displayed as specified in "default_news_tab" object only for the first opening, and then each game shows its own news. Default is ‘false’.
@@ -101,13 +89,7 @@ games_directory   | The name of the games directory folder, for example: *C:/{ga
  
  ```
 {
-  "store": { "id" : 12345, "theme" : "default", "size" : "large", "view" : "horizontal_navigation" },
   "GA_trackingId": "UA-111111111-1",
-  "playfab_project_id": "FB8D",
-  "use_playfab_login": true,
-  "playfab_link_restore_pass": "http://collgame.com/restore_pass",
-  "playfab_link_create_account": "http://collgame.com/create_account",
-  "use_playfab_id_in_store": false,
   "steam_app_id": 123,
   "stone_app_id": 129,
   "create_account_link": "https://coolgame.com/create_account",
@@ -124,9 +106,18 @@ games_directory   | The name of the games directory folder, for example: *C:/{ga
 ```
 </details>
 
- ### UIStyle.json
+### Customizing Launcher UI
+
+> **Note:** The **UIStyle.json** file is used to customize the UI of Xsolla Launcher v1.6.38.365 and earlier. If you updated Xsolla Launcher to v1.7.0 or higher, use the **local_theme.json** file for UI customization settings.
+
+#### UIStyle.json for v1.6.38.365 and Earlier
+
 All parameters required for Launcher UI customization are represented as JSON objects in **launcher/win/UIStyle.json**. An object may contain window element styles and/or nested objects.
- 
+
+The code is self-describing, with object names directly referring to their purpose. For example, ```version_text_color``` refers to the color of the text indicating Launcher version.
+
+<details><summary>Objects and examples</summary>
+
  **Object**                                    | **Description**                             
 :----------------------------------------------|:-------------------------------------------------------------------
  app_icon                                      | Launcher icon.
@@ -172,8 +163,6 @@ All parameters required for Launcher UI customization are represented as JSON ob
  ui_components: shadow_window_background_image | Background image shadow.
  uninstall_window                              | Game uninstallation window.       
  fonts                                         | Fonts.    
-
- <details><summary>Example</summary>
  
  ```
 "error_window": {
@@ -204,6 +193,86 @@ All parameters required for Launcher UI customization are represented as JSON ob
 ]
 ```
 </details>
-<p></p>
 
-> **Note:** The code is self-describing, with object names directly referring to their purpose. For example, "version_text_color" refers to the color of the text indicating Launcher version.
+#### local_theme.json for v1.7.0 and Higher
+
+This file is temporary and requires the ```use_local_config``` parameter specified in **config.json**. It will be used until Launcher UI setup becomes available via Xsolla Publisher Account.
+
+All parameters required for Launcher UI customization are represented as JSON objects and divided into general Launcher styles (```general_styles```) and game specific styles (```game_specific_styles```).
+
+<details><summary>Objects and examples</summary>
+ 
+ ```general_styles```
+
+**Object**                                     | **Description**                             
+:----------------------------------------------|:-------------------------------------------------------------------
+start_page_bg                                 | The path to the image used as a background for the Launcher start page. Should be placed in the **launcher/win/img** folder. If the value is empty, ```primary_background_color``` is used instead. Other start page customization and content settings are performed in Publisher Account > **Launcher settings > Project setup > Project modules**.
+primary_background_color                       | The color of the Launcher background. Must be in the RGBA format.
+secondary_background_color                     | The color of the Launcher menu, buttons (cancellation and reset buttons) and input fields background. Must be in the RGBA format.
+primary_text_color                             | The color of most of the texts in Launcher windows excluding button texts. Must be in the RGBA format.
+secondary_text_color                           | The color of titles in Launcher. Must be in the RGBA format.
+links_color                                    | Accent texts & links color. Must be in the RGBA format.
+primary_button_bg                              | The color of the primary button background (confirmation buttons). Must be in the RGBA format.
+primary_button_text                            | The color of the text on primary buttons (confirmation) buttons. Must be in the RGBA format. 
+secondary_button_bg	                           | The color of the border and text on secondary buttons (cancellation and reset).
+
+```game_specific_styles```
+
+**Object**                                     | **Description**                             
+:----------------------------------------------|:-------------------------------------------------------------------
+game_id                                        | ID of the game added to Launcher. You can find it in Publisher Account > **Launcher settings > Project setup**.
+game_layout_image                              | The path to the image used as the background for the game page. Should be placed in the launcher/win/img folder. If the value is empty, primary_background_color is used instead.
+primary_button_bg                              | The color of the button to install/update/buy/launch the game. Must be in the RGBA format.
+primary_button_text                            | The color of the text on the button to install/update/buy/launch the game. Must be in the RGBA format.
+store_size                                     | Element size in Store. Can be 'small', 'medium', and 'large'. Default is 'large'.
+store_view                                     | Element location in Store (horizontal or vertical menu). Can be 'vertical_navigation' and 'horizontal_navigation'. Default is 'horizontal_navigation'.
+store_theme                                    |Store color theme. Can be 'default' and 'dark'. Default is 'dark’.
+
+```
+{
+  "general_styles": {
+    "start_page_bg": "img/BackGrounds/game1.png",
+    "primary_background_color": "rgba(54, 57, 63, 1)",
+    "secondary_background_color": "rgba(0, 0, 0, 0.2)",
+    "primary_text_color": "rgba(255, 255, 255, 1)",
+    "secondary_text_color": "rgba(255, 255, 255, 0.6)",
+    "links_color": "rgba(255, 255, 255, 1)",
+    "primary_button_bg": "rgba(0, 199, 126, 1)",
+    "primary_button_text": "rgba(255, 255, 255, 1)",
+    "secondary_button_bg": "rgba(160, 171, 184, 1)"
+  },
+  "game_specific_styles": [
+    {
+      "game_id": 29235,
+      "game_layout_image": "",
+      "primary_button_bg": "rgba(0, 199, 126, 1)",
+      "primary_button_text": "rgba(255, 255, 255, 1)",
+      "store_size": "large",
+      "store_view": "horizontal_navigation",
+      "store_theme": "dark"
+    },
+    {
+      "game_id": 29236,
+      "game_layout_image": "",
+      "primary_button_bg": "rgba(0, 199, 126, 1)",
+      "primary_button_text": "rgba(255, 255, 255, 1)",
+      "store_size": "large",
+      "store_view": "horizontal_navigation",
+      "store_theme": "dark"
+    }
+  ]
+}
+```
+After you complete settings in the **local_theme.json** file, please generate a new Xsolla Launcher installer to apply changes and test it locally.
+</details>
+
+
+
+
+
+## Steps to Update Launcher
+
+1. Download updates from this repository.
+2. [Customize](https://developers.xsolla.com/doc/launcher/#guides_launcher_ui_customization) the updated Launcher part if needed.
+3. Launch the **scripts/win/deploy.bat** script.
+4. Upload the Launcher build archive to your Publisher Account so that updates are automatically delivered to users.
