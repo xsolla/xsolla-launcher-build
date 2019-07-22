@@ -2,6 +2,12 @@
 
 [Wiki](https://github.com/xsolla/xsolla-launcher-build/wiki) is for getting details about Launcher releases.
 
+## Table of Contents
+
+1. [Repository Structure](#repository-structure)
+2. [Steps to Integrate Launcher](#steps-to-integrate-launcher)
+3. [Steps to Update Launcher](#steps-to-update-launcher)
+
 ## Repository Structure
 
 Launcher updates are delivered via this repository that has the following folders:
@@ -19,11 +25,11 @@ The **scripts/win/deploy.bat** script generates:
 1. Register an [Xsolla Publisher Account](https://publisher.xsolla.com) and create a project.
 2. Create the Launcher instance in Publisher Account.
 3. Clone this repository.
-4. [Make](#) Launcher main configuration.
+4. [Make](#making-launcher-configuration) Launcher main configuration.
 5. [Customize](#customizing-launcher-ui) Launcher UI.
 6. [Generate](https://developers.xsolla.com/doc/launcher/#guides_launcher_generate_archive_installation_file) a Launcher installation file and build archive.
 7. [Upload](https://developers.xsolla.com/doc/launcher/#guides_launcher_builds_upload) the game build to the Xsolla update server.
-8. Send the Launcher installation file to new users.
+8. Send the Launcher installation file to new users and upload the build archive to your Publisher Account > Launcher settings > **General settings > Customiza Launcher**.
 
 ### Making Launcher Configuration
 
@@ -36,7 +42,7 @@ Parameters for Launcher configuration are represented as JSON objects in **launc
  launcher_project_id     | Launcher ID from Publisher Account. **Required.**
  login_project_id        | ID of Login connected to your Launcher in Publisher Account. **Required.** 
  build_number	           | Launcher build number. The value is generated automatically since version 1.6.32.320. **Required.** 
- use_local_config        | Whether to use the [local_theme.json](#local_themejson) file to customize Launcher UI. Can be ‘true’ or ‘false’. Must be ‘true’ for Xsolla Launcher v1.7.0 and higher. 
+ use_local_config        | Whether to use the [local_theme.json](#local_themejson-for-v170-and-higher) file to customize Launcher UI. Can be ‘true’ or ‘false’. Must be ‘true’ for Xsolla Launcher v1.7.0 and higher. 
  callback_url            | **Callback URL** from Login settings in Publisher Account. This URL is used to redirect the user after successful authentication via a social network. **Required** if there are several Callback URLs added in Login settings in Publisher Account.        
  product_name            | Launcher name in the **Start** menu. Duplicate the name in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter.        
  link_support            | Link to the game’s technical support website.        
@@ -51,6 +57,7 @@ Parameters for Launcher configuration are represented as JSON objects in **launc
 {
   "launcher_project_id": "8c91ecf3-e7b0-46a8-aaf7-4c419ef8ef4b",
   "login_project_id": "bd2e1104-5494-48f9-ac50-98f230062df1", 
+  "use_local_config": true,
   "callback_url": "https://callback_url.com",
   "product_name": "Launcher",
   "link_support": "https://support_example.com",
@@ -58,8 +65,7 @@ Parameters for Launcher configuration are represented as JSON objects in **launc
   "game_autoupdate": false,
   "hide_peer_seed_info": false,
   "hide_email": false,
-  "build_number": 1,
-  "use_local_config": true
+  "build_number": 1
 }
 ```
 </details>
@@ -108,7 +114,7 @@ games_directory   | The name of the games directory folder, for example: *C:/{ga
 
 ### Customizing Launcher UI
 
-> **Note:** The **UIStyle.json** file is used to customize the UI of Xsolla Launcher v1.6.38.365 and earlier. If you updated Xsolla Launcher to v1.7.0 or higher, use the **local_theme.json** file for UI customization settings.
+The **UIStyle.json** file is used to customize the UI of Xsolla Launcher v1.6.38.365 and earlier. If you updated Xsolla Launcher to v1.7.0 or higher, use the **local_theme.json** file for UI customization settings.
 
 #### UIStyle.json for v1.6.38.365 and Earlier
 
@@ -196,7 +202,9 @@ The code is self-describing, with object names directly referring to their purpo
 
 #### local_theme.json for v1.7.0 and Higher
 
-This file is temporary and requires the ```use_local_config``` parameter specified in **config.json**. It will be used until Launcher UI setup becomes available via Xsolla Publisher Account.
+This file is temporary and requires the ```use_local_config``` parameter specified in [config.json](#required-objects). It will be used until Launcher UI setup becomes available via Xsolla Publisher Account.
+
+>**Note:** If the **UIStyle.json** file was used previously, you need to replace settings to **local_theme.json** and adapt them as described below.
 
 All parameters required for Launcher UI customization are represented as JSON objects and divided into general Launcher styles (```general_styles```) and game specific styles (```game_specific_styles```).
 
@@ -221,7 +229,7 @@ secondary_button_bg	                           | The color of the border and tex
 **Object**                                     | **Description**                             
 :----------------------------------------------|:-------------------------------------------------------------------
 game_id                                        | ID of the game added to Launcher. You can find it in Publisher Account > **Launcher settings > Project setup**.
-game_layout_image                              | The path to the image used as the background for the game page. Should be placed in the launcher/win/img folder. If the value is empty, primary_background_color is used instead.
+game_layout_image                              | The path to the image used as the background for the game page. Should be placed in the **launcher/win/img** folder. If the value is empty, "primary_background_color" is used instead.
 primary_button_bg                              | The color of the button to install/update/buy/launch the game. Must be in the RGBA format.
 primary_button_text                            | The color of the text on the button to install/update/buy/launch the game. Must be in the RGBA format.
 store_size                                     | Element size in Store. Can be 'small', 'medium', and 'large'. Default is 'large'.
@@ -263,16 +271,12 @@ store_theme                                    |Store color theme. Can be 'defau
   ]
 }
 ```
-After you complete settings in the **local_theme.json** file, please generate a new Xsolla Launcher installer to apply changes and test it locally.
+After you complete settings in the **local_theme.json** file, please [generate](https://developers.xsolla.com/doc/launcher/#guides_launcher_generate_archive_installation_file) a new Xsolla Launcher installer to apply changes and test it locally.
 </details>
-
-
-
-
 
 ## Steps to Update Launcher
 
 1. Download updates from this repository.
-2. [Customize](https://developers.xsolla.com/doc/launcher/#guides_launcher_ui_customization) the updated Launcher part if needed.
+2. [Customize](#customizing-launcher-ui) the updated Launcher part if needed.
 3. Launch the **scripts/win/deploy.bat** script.
-4. Upload the Launcher build archive to your Publisher Account so that updates are automatically delivered to users.
+4. Upload the Launcher build archive to your Publisher Account > Launcher settings > **General settings > Customiza Launcher** so that updates are automatically delivered to users.
