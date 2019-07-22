@@ -76,6 +76,11 @@ Optional object in **config.json** are used to perform extended Launcher setting
 
 **Object**               | **Description**                             
 :------------------------|:-------------------------------------------------------------------
+ store                   | An array of objects to customize Launcher in-game Store. 
+ store:id | 	Project ID in Publisher Account.
+ store:theme | Store color theme. Can be 'default' and 'dark'. Default is 'dark'.
+ store:size | Element size in Store. Can be 'small', 'medium', and 'large'. Default is 'large'.
+ store:view | Element location in Store (horizontal or vertical menu). Can be 'vertical_navigation' and 'horizontal_navigation'. Default is 'horizontal_navigation'.
  GA_trackingId        | Google Analytics tracking code. See the [recipe](https://developers.xsolla.com/recipes/launcher/game-analytics/).          
  steam_app_id | Steam app ID. See the [recipe](https://developers.xsolla.com/recipes/launcher/cross-authentication/#recipes_cross_authentication_steam).
  stone_app_id | Stone app ID. See the [recipe](https://developers.xsolla.com/recipes/launcher/cross-authentication/#recipes_cross_authentication_stone).
@@ -95,6 +100,7 @@ games_directory   | The name of the games directory folder, for example: *C:/{ga
  
  ```
 {
+  "store": { "id" : 12345, "theme" : "default", "size" : "large", "view" : "horizontal_navigation" },
   "GA_trackingId": "UA-111111111-1",
   "steam_app_id": 123,
   "stone_app_id": 129,
@@ -134,7 +140,7 @@ The code is self-describing, with object names directly referring to their purpo
  settings_screen: license_window               | Section in the Launcher settings window, containing information about the license of the used libraries and tools.                                                                   
  change_username_window                        | Change username window.            
  disconnect_account_window                     | Window to disconnect a social account, used for authentication, from Launcher.                                                                   
- login_window                                  | Login Widget window.                      
+ login_window                                  | Background image of the Login Widget window.                      
  login_window: regions_combo_box               | Block to select a region for the game.               
  steam_login_window                            | Authorization window for game launch from Steam.                
  error_window                                  | Error window for non-critical errors such as wrong username/password.  
