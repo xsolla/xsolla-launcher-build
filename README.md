@@ -44,7 +44,7 @@ Parameters for Launcher configuration are represented as JSON objects in **launc
  build_number	           | Launcher build number. The value is generated automatically since version 1.6.32.320. **Required.** 
  use_local_config        | Whether to use the [local_theme.json](#local_themejson-for-v170-and-higher) file to customize Launcher UI. Can be ‘true’ or ‘false’. Must be ‘true’ for Xsolla Launcher v1.7.0 and higher. 
  callback_url            | **Callback URL** from Login settings in Publisher Account. This URL is used to redirect the user after successful authentication via a social network. **Required** if there are several Callback URLs added in Login settings in Publisher Account.        
- product_name            | Launcher name in the **Start** menu. Duplicate the name in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter.        
+ product_name            | Launcher name in the **Start** menu. Duplicate the name in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter. The parameter is not used since version 1.7.1, please, specify the name from your Publisher Account settings in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter.         
  link_support            | Link to the game’s technical support website.        
  link_community          | Link to the game’s community.     
  game_autoupdate         | Whether the game is updated automatically. Can be ‘true’ and ‘false’. Default is ‘false’. A user can change this setting in the Launcher UI.     
