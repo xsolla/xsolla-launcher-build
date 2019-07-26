@@ -280,14 +280,14 @@ store_theme                                    |Store color theme. Can be 'defau
 After you complete settings in the **local_theme.json** file, please [generate](https://developers.xsolla.com/doc/launcher/#guides_launcher_generate_archive_installation_file) a new Xsolla Launcher installer to apply changes and test it locally.
 </details>
 
-#### Changing Launcher Icon
+#### Changing the Launcher Icon
 
 The icon for Launcher and the installer is located in:
 
 * the **img** folder for v1.6.38.365 and earlier.
 * the root folder for v1.7.0 and higher
 
-To change the icon, please replace the current image saving it name.
+To change the icon, please replace the current image saving its name.
 
 ## Steps to Update Launcher
 
