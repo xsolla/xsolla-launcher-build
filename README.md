@@ -208,7 +208,7 @@ The code is self-describing, with object names directly referring to their purpo
 
 #### local_theme.json for v1.7.0 and Higher
 
-This file is temporary and requires the ```use_local_config``` parameter specified in [config.json](#required-objects). It will be used until Launcher UI setup becomes available via Xsolla Publisher Account.
+This file is temporary. It will be used until Launcher UI setup becomes available via Xsolla Publisher Account.
 
 >**Note:** If the **UIStyle.json** file was used previously, you need to replace settings to **local_theme.json** and adapt them as described below.
 
