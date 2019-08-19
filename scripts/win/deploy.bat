@@ -109,7 +109,7 @@ ECHO * Create deploy archive
 
 ECHO * Copying installer's stuff
 	
-COPY %BUILD_PATH%\img\launcherIcon.ico "%TARGET_PATH%"
+COPY %BUILD_PATH%\launcherIcon.ico "%TARGET_PATH%"
 COPY %SCRIPTS_PATH%\XsollaInstaller.nsi "%TARGET_PATH%"
 COPY %BUILD_PATH%\qwebchannel.js "%TARGET_PATH%"
 	

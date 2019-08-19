@@ -2,16 +2,29 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-### Changed
-- Disabling user chat.
 
-## [1.6.38.365] - 2019-03-22
-### Fixed
-- Minor bugs fixed
+## [2.0.0] - 2019-08-19
+### Added
+- Ability to run the offline mode games
+- Passing custom arguments to start the game (see the Wiki page https://clck.ru/HgCpD)
 
-## [1.6.37.360] - 2019-03-06
+### Updated
+- UI customization flow (see the Wiki page https://clck.ru/HgCop)
+- Start page configuration flow (see the Wiki page https://clck.ru/HgCnW)
+- Displaying the game downloading progress in kbit/s and Mbit/s
+
+## [1.7] - 2019-07-03
+### Added
+- Color themes support
+- Hiding the News section
+- Setting up relative paths to the game installation folder
+- Setting up Launcher in Publisher Account
+
+### Removed
+- Friends and chat module
+
 ### Fixed
-- Minor bugs fixed
+- Minor bugs
 
 ## [1.6.37.355] - 2019-02-19
 ### Added

@@ -134,15 +134,16 @@ Section "-MainSection" SEC01
   File "crashrpt.dll"
   File "config.json"
   File "UIStyle.json"
+  File "local_theme.json"
   File "d3dcompiler_47.dll"
   File "dbghelp.dll"
   File "XsollaGUS.dll"
   File "icudtl.dat"
   File "launcher.exe"
+  File "launcherIcon.ico"
   File "libeay32.dll"
   File "libEGL.dll"
   File "libGLESv2.dll"
-  File "LifCore.dll"
   File "msvcp140.dll"
   File "ucrtbase.dll"
   File "vcruntime140.dll"
@@ -162,6 +163,7 @@ Section "-MainSection" SEC01
   File "Qt5WebSockets.dll"
   File "Qt5Widgets.dll"
   File "Qt5Xml.dll"
+  File "Qt5Svg.dll"
   File "qtwebengine_resources.pak"
   File "qtwebengine_resources_100p.pak"
   File "qtwebengine_resources_200p.pak"
@@ -178,6 +180,9 @@ Section "-MainSection" SEC01
   File "XsollaCore.dll"
   File "Changelog.txt"
   File "qwebchannel.js"
+  File "XsollaRPCServer.dll"
+  File "PocoFoundation64.dll"
+  File "PocoNet64.dll"
   
   File "api-ms-win-crt-utility-l1-1-0.dll"            
   File "api-ms-win-core-console-l1-1-0.dll"           
@@ -235,8 +240,8 @@ Section "-MainSection" SEC01
   SetShellVarContext Current
   CreateDirectory "$SMPROGRAMS\${PRODUCT_NAME}"
   CreateDirectory "$SMPROGRAMS\${PRODUCT_NAME}\Games"
-  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\${PRODUCT_NAME}.lnk" "$INSTDIR\launcher.exe" "" "$INSTDIR\img\launcherIcon.ico"
-  CreateShortCut "$DESKTOP\${PRODUCT_NAME}.lnk" "$INSTDIR\launcher.exe" "" "$INSTDIR\img\launcherIcon.ico"
+  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\${PRODUCT_NAME}.lnk" "$INSTDIR\launcher.exe" "" "$INSTDIR\launcherIcon.ico"
+  CreateShortCut "$DESKTOP\${PRODUCT_NAME}.lnk" "$INSTDIR\launcher.exe" "" "$INSTDIR\launcherIcon.ico"
   SimpleFC::AddApplication "${PRODUCT_NAME}: launcher" "$INSTDIR\launcher.exe" 0 2 "" 1
   Call RefreshShellIcons
 SectionEnd
@@ -244,7 +249,7 @@ SectionEnd
 Section -AdditionalIcons
   WriteIniStr "$INSTDIR\Official Site.url" "InternetShortcut" "URL" "${PRODUCT_WEB_SITE}"
   SetShellVarContext Current
-  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Official Site.lnk" "$INSTDIR\Official Site.url" "" "$INSTDIR\img\launcherIcon.ico"
+  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Official Site.lnk" "$INSTDIR\Official Site.url" "" "$INSTDIR\launcherIcon.ico"
   CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Uninstall.lnk" "$INSTDIR\uninst.exe"
   Call RefreshShellIcons
 SectionEnd
@@ -278,15 +283,16 @@ Section Uninstall
   Delete "$INSTDIR\crashrpt.dll"
   Delete "$INSTDIR\config.json"
   Delete "$INSTDIR\UIStyle.json"
+  Delete "$INSTDIR\local_theme.json"
   Delete "$INSTDIR\d3dcompiler_47.dll"
   Delete "$INSTDIR\dbghelp.dll"
   Delete "$INSTDIR\XsollaGUS.dll"
   Delete "$INSTDIR\icudtl.dat"
   Delete "$INSTDIR\launcher.exe"
+  Delete "$INSTDIR\launcherIcon.ico"
   Delete "$INSTDIR\libeay32.dll"
   Delete "$INSTDIR\libEGL.dll"
   Delete "$INSTDIR\libGLESv2.dll"
-  Delete "$INSTDIR\LifCore.dll"
   Delete "$INSTDIR\msvcp140.dll"
   Delete "$INSTDIR\ucrtbase.dll"
   Delete "$INSTDIR\vcruntime140.dll"
@@ -306,6 +312,7 @@ Section Uninstall
   Delete "$INSTDIR\Qt5WebSockets.dll"
   Delete "$INSTDIR\Qt5Widgets.dll"
   Delete "$INSTDIR\Qt5Xml.dll"
+  Delete "$INSTDIR\Qt5Svg.dll"
   Delete "$INSTDIR\qtwebengine_resources.pak"
   Delete "$INSTDIR\qtwebengine_resources_100p.pak"
   Delete "$INSTDIR\qtwebengine_resources_200p.pak"
@@ -322,6 +329,9 @@ Section Uninstall
   Delete "$INSTDIR\XsollaCore.dll"
   Delete "$INSTDIR\Changelog.txt"
   Delete "$INSTDIR\qwebchannel.js"
+  Delete "$INSTDIR\XsollaRPCServer.dll"
+  Delete "$INSTDIR\PocoFoundation64.dll"
+  Delete "$INSTDIR\PocoNet64.dll"
   
   Delete "$INSTDIR\api-ms-win-crt-utility-l1-1-0.dll"
   Delete "$INSTDIR\api-ms-win-core-console-l1-1-0.dll"
