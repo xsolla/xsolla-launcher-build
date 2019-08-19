@@ -1,4 +1,4 @@
->**Info**: If your Xsolla Launcher version is lower 2.0.0, please read [Wiki](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)) to get updates.
+>**Info**: If your Xsolla Launcher version is earlier than 2.0.0, please read [Wiki](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)) to get updates.
 
 [Documentation](https://developers.xsolla.com/doc/launcher) is for full Launcher integration.
 
@@ -31,7 +31,7 @@ The **scripts/win/deploy.bat** script generates:
 5. [Customize](#customizing-launcher-ui) Launcher UI.
 6. [Generate](https://developers.xsolla.com/doc/launcher/#guides_launcher_generate_archive_installation_file) a Launcher installation file and build archive.
 7. [Upload](https://developers.xsolla.com/doc/launcher/#guides_launcher_builds_upload) the game build to the Xsolla update server.
-8. Send the Launcher installation file to new users and upload the build archive to your Publisher Account > Launcher settings > **General settings > Customiza Launcher**.
+8. Send the Launcher installation file to new users and upload the build archive to your Publisher Account > Launcher settings > **General settings > Customize Launcher**.
 
 ### Making Launcher Configuration
 
@@ -121,7 +121,7 @@ games_directory   | The name of the games directory folder, for example: *C:/{ga
 
 ### Customizing Launcher UI
 
-The **UIStyle.json** file is used to customize the UI of Xsolla Launcher v1.6.38.365 and earlier. If you updated Xsolla Launcher to v2.0.0 or higher, use the **local_theme.json** file or both .json files for UI customization settings. Read more on the [Wiki page](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)#how-to-move-customization-settings-to-v200).
+The **UIStyle.json** file is used to customize the UI of Xsolla Launcher v1.6.38.365 and earlier. If you updated Xsolla Launcher to v2.0.0 or later, use the **local_theme.json** file or both .json files for UI customization settings. Read more on the [Wiki page](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)#how-to-move-customization-settings-to-v200).
 
 #### UIStyle.json
 
@@ -139,30 +139,30 @@ The code is self-describing, with object names directly referring to their purpo
  redemption_window                             | Game key activation window.     
  settings_screen                               | Launcher settings window.                   
  settings_screen: license_window               | Section in the Launcher settings window, containing information about the license of the used libraries and tools.                                                                   
- change_username_window                        | Change username window. **For v1.6.38.365 and eralier.**            
+ change_username_window                        | Change username window. **For v1.6.38.365 and earlier.**            
  disconnect_account_window                     | Window to disconnect a social account, used for authentication, from Launcher.                                                                   
  login_window                                  | Background image of the Login Widget window.                      
- login_window: regions_combo_box               | Block to select a region for the game. **For v1.6.38.365 and eralier.**
+ login_window: regions_combo_box               | Block to select a region for the game. **For v1.6.38.365 and earlier.**
  steam_login_window                            | Authorization window for game launch from Steam.                
  error_window                                  | Error window for non-critical errors such as wrong username/password.  
- error_report_window                           | Error window for criticial errors such as cannot load social links.      
- default_game_install_window                   | Game installation window with configuration parameters such as the installation folder, required disk space, etc. **For v1.6.38.365 and eralier.**
+ error_report_window                           | Error window for critical errors such as cannot load social links.      
+ default_game_install_window                   | Game installation window with configuration parameters such as the installation folder, required disk space, etc. **For v1.6.38.365 and earlier.**
  game_install_window                           | Game installation window with configuration parameters such as the installation folder, required disk space, etc. The object can be customized for each game using its project ID.              
- friends_window                                | Friends list window. **For v1.6.38.365 and eralier.**                   
+ friends_window                                | Friends list window. **For v1.6.38.365 and earlier.**                   
  friends_window: search_friend_window          | Search block in the Friends list window.     
  friends_window: search_text_field             | Text field to search friends by nickname or email.      
  connect_social_network_window                 | Window with the list of connected social profiles.     
- world_loading_window                          | Game world loading window. **For v1.6.38.365 and eralier.** 
- social_links_window                           | Window with links to social networks. **For v1.6.38.365 and eralier.**  
+ world_loading_window                          | Game world loading window. **For v1.6.38.365 and earlier.** 
+ social_links_window                           | Window with links to social networks. **For v1.6.38.365 and earlier.**  
  default_game_page                             | **Game** section.                 
  default_game_page: controll_button            | Button to install/update/launch the game.         
- game_page                                     | **Game** section. The object can be customized for each game using its project ID. See an example below. **For v1.6.38.365 and eralier.**                         
+ game_page                                     | **Game** section. The object can be customized for each game using its project ID. See an example below. **For v1.6.38.365 and earlier.**                         
  game_page: controll_button                    | Button to install/update/launch the game. The object can be customized for each game using its project ID. See an example below.                                                                 
- chars_window                                  | Window to select the character before the first launch. **For v1.6.38.365 and eralier.**                     
+ chars_window                                  | Window to select the character before the first launch. **For v1.6.38.365 and earlier.**                     
  news_screen                                   | **News** section.                       
  store_screen                                  | **Store** section.                      
  store_window                                  | Game key purchase window.       
- banner_component                              | Banners section. **For v1.6.38.365 and eralier.**                 
+ banner_component                              | Banners section. **For v1.6.38.365 and earlier.**                 
  ui_components: combobox                       | Combobox.                       
  ui_components: info_panel                     | Field with the banner title.
  ui_components: scrollbar                      | Scrollbar.                     
@@ -238,7 +238,7 @@ store_view                                     | Element location in Store (hori
 store_theme                                    | Store color theme. Can be 'default' and 'dark'. Default is 'dark’.
 news_layout_image                              | The path to the image used as the background for the News section on the game page. Should be placed in the **launcher/win/img** folder. If the value is empty, "primary_background_color" is used instead.
 store_layout_image                             | The path to the image used as the background for the Store section on the game page. Should be placed in the **launcher/win/img** folder. If the value is empty, "primary_background_color" is used instead.
-install_layout_image                           | The path to the image used as the background for game installation window. If the value is empty, "primary_background_color" is used instead.
+install_layout_image                           | The path to the image used as the background for the game installation window. If the value is empty, "primary_background_color" is used instead.
 
 ```
 {
@@ -281,19 +281,19 @@ install_layout_image                           | The path to the image used as t
     ]
 }
 ```
-After you complete settings for v2.0.0 or higher, please [generate](https://developers.xsolla.com/doc/launcher/#guides_launcher_generate_archive_installation_file) a new Xsolla Launcher installer to apply changes and test it locally.
+After you complete settings for v2.0.0 or higher, please [generate](https://developers.xsolla.com/doc/launcher/#guides_launcher_generate_archive_installation_file) a new Xsolla Launcher installer to apply changes and test them locally.
 </details>
 
 #### Changing Icons
 
-Icons for games, Launcher, installer and games logos are configured:
+Icons for games, Launcher, installer, and games logos are configured:
 
-* In **UIStyle.json** and located in the **img** folder for v1.6.38.365 and earlier. To change the icon, please replace the current image saving its name.
-* In Publisher Account > Launcher settings for v2.0.0 and higher.
+* In **UIStyle.json** and located in the **img** folder for v1.6.38.365 and earlier. To change the icon, please replace the current image with the new one saving the same name.
+* In Publisher Account > Launcher settings for v2.0.0 and later.
 
 ## Steps to Update Launcher
 
 1. Download updates from this repository.
 2. [Customize](#customizing-launcher-ui) the updated Launcher part if needed.
 3. Launch the **scripts/win/deploy.bat** script.
-4. Upload the Launcher build archive to your Publisher Account > Launcher settings > **General settings > Customiza Launcher** so that updates are automatically delivered to users.
+4. Upload the Launcher build archive to your Publisher Account > Launcher settings > **General settings > Customize Launcher** so that updates are automatically delivered to users.
