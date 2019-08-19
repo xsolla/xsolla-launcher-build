@@ -14,7 +14,7 @@
 
 Launcher updates are delivered via this repository that has the following folders:
 * **launcher/win** — Launcher for Windows;
-* **launcher/PromoPage** — Launcher start page: setup for [v1.6.38.365 or lower](https://docs.google.com/document/d/1YuVftxN4efURR1ZnUJCjCoxx6skazaXRzVRbz2cLIVc/edit#heading=h.t0ksoifvtzar) or [v2.0.0 or higher](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0));
+* **launcher/PromoPage** — Launcher start page: setup for [v1.6.38.365 and lower](https://docs.google.com/document/d/1YuVftxN4efURR1ZnUJCjCoxx6skazaXRzVRbz2cLIVc/edit#heading=h.t0ksoifvtzar) or [v2.0.0 and higher](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)#how-to-set-up-start-page-in-v200);
 * **portables/win** — 7zip archiver and a utility that creates the installer (Nullsoft Scriptable Install System);
 * **scripts/win** — scripts to generate the archive and installer.
 
@@ -121,7 +121,7 @@ games_directory   | The name of the games directory folder, for example: *C:/{ga
 
 ### Customizing Launcher UI
 
-The **UIStyle.json** file is used to customize the UI of Xsolla Launcher v1.6.38.365 and earlier. If you updated Xsolla Launcher to v2.0.0 or higher, use the **local_theme.json** file or both .json files for UI customization settings. Read more on the [Wiki page](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)).
+The **UIStyle.json** file is used to customize the UI of Xsolla Launcher v1.6.38.365 and earlier. If you updated Xsolla Launcher to v2.0.0 or higher, use the **local_theme.json** file or both .json files for UI customization settings. Read more on the [Wiki page](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)#how-to-move-customization-settings-to-v200).
 
 #### UIStyle.json
 
@@ -205,7 +205,7 @@ The code is self-describing, with object names directly referring to their purpo
 
 This file is temporary. It will be used until Launcher UI setup becomes available via Xsolla Publisher Account.
 
->**Note:** If the **UIStyle.json** file was used previously, please replace your settings as described on the [Wiki page](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)).
+>**Note:** If the **UIStyle.json** file was used previously, please replace your settings as described on the [Wiki page](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)#how-to-move-customization-settings-to-v200).
 
 All parameters required for Launcher UI customization are represented as JSON objects and divided into general Launcher styles (```general_styles```) and game specific styles (```game_specific_styles```).
 
