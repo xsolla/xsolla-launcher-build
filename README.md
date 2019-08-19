@@ -1,3 +1,5 @@
+>**Info**: If your Xsolla Launcher version is lower 2.0.0, please read [Wiki](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)) to get updates.
+
 [Documentation](https://developers.xsolla.com/doc/launcher) is for full Launcher integration.
 
 [Wiki](https://github.com/xsolla/xsolla-launcher-build/wiki) is for getting details about Launcher releases.
@@ -12,7 +14,7 @@
 
 Launcher updates are delivered via this repository that has the following folders:
 * **launcher/win** — Launcher for Windows;
-* **launcher/PromoPage** — [Launcher start page](https://docs.google.com/document/d/1YuVftxN4efURR1ZnUJCjCoxx6skazaXRzVRbz2cLIVc/edit#heading=h.t0ksoifvtzar);
+* **launcher/PromoPage** — Launcher start page: setup for [v1.6.38.365 or lower](https://docs.google.com/document/d/1YuVftxN4efURR1ZnUJCjCoxx6skazaXRzVRbz2cLIVc/edit#heading=h.t0ksoifvtzar) or [v2.0.0 or higher](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0));
 * **portables/win** — 7zip archiver and a utility that creates the installer (Nullsoft Scriptable Install System);
 * **scripts/win** — scripts to generate the archive and installer.
 
@@ -42,7 +44,6 @@ Parameters for Launcher configuration are represented as JSON objects in **launc
  launcher_project_id     | Launcher ID from Publisher Account. **Required.**
  login_project_id        | ID of Login connected to your Launcher in Publisher Account. **Required.** 
  build_number	           | Launcher build number. The value is generated automatically since version 1.6.32.320. **Required.** 
- use_local_config        | Whether to use the [local_theme.json](#local_themejson-for-v170-and-higher) file to customize Launcher UI. Can be ‘true’ or ‘false’. Must be ‘true’ for Xsolla Launcher v1.7.0 and higher. 
  callback_url            | **Callback URL** from Login settings in Publisher Account. This URL is used to redirect the user after successful authentication via a social network. **Required** if there are several Callback URLs added in Login settings in Publisher Account.        
  product_name            | Launcher name in the **Start** menu. Duplicate the name in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter. The parameter is not used since version 1.7.1, please, specify the name from your Publisher Account settings in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter.         
  link_support            | Link to the game’s technical support website.        
@@ -72,7 +73,7 @@ Parameters for Launcher configuration are represented as JSON objects in **launc
 
 #### Optional Objects
 
-Optional object in **config.json** are used to perform extended Launcher settings.
+Optional objects in **config.json** are used to perform extended Launcher settings.
 
 **Object**               | **Description**                             
 :------------------------|:-------------------------------------------------------------------
@@ -120,9 +121,9 @@ games_directory   | The name of the games directory folder, for example: *C:/{ga
 
 ### Customizing Launcher UI
 
-The **UIStyle.json** file is used to customize the UI of Xsolla Launcher v1.6.38.365 and earlier. If you updated Xsolla Launcher to v1.7.0 or higher, use the **local_theme.json** file for UI customization settings.
+The **UIStyle.json** file is used to customize the UI of Xsolla Launcher v1.6.38.365 and earlier. If you updated Xsolla Launcher to v2.0.0 or higher, use the **local_theme.json** file or both .json files for UI customization settings. Read more on [Wiki pages](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)).
 
-#### UIStyle.json for v1.6.38.365 and Earlier
+#### UIStyle.json
 
 All parameters required for Launcher UI customization are represented as JSON objects in **launcher/win/UIStyle.json**. An object may contain window element styles and/or nested objects.
 
@@ -138,30 +139,30 @@ The code is self-describing, with object names directly referring to their purpo
  redemption_window                             | Game key activation window.     
  settings_screen                               | Launcher settings window.                   
  settings_screen: license_window               | Section in the Launcher settings window, containing information about the license of the used libraries and tools.                                                                   
- change_username_window                        | Change username window.            
+ change_username_window                        | Change username window. **For v1.6.38.365 and eralier.**            
  disconnect_account_window                     | Window to disconnect a social account, used for authentication, from Launcher.                                                                   
  login_window                                  | Background image of the Login Widget window.                      
- login_window: regions_combo_box               | Block to select a region for the game.               
+ login_window: regions_combo_box               | Block to select a region for the game. **For v1.6.38.365 and eralier.**
  steam_login_window                            | Authorization window for game launch from Steam.                
  error_window                                  | Error window for non-critical errors such as wrong username/password.  
  error_report_window                           | Error window for criticial errors such as cannot load social links.      
- default_game_install_window                   | Game installation window with configuration parameters such as the installation folder, required disk space, etc.
+ default_game_install_window                   | Game installation window with configuration parameters such as the installation folder, required disk space, etc. **For v1.6.38.365 and eralier.**
  game_install_window                           | Game installation window with configuration parameters such as the installation folder, required disk space, etc. The object can be customized for each game using its project ID.              
- friends_window                                | Friends list window.                    
+ friends_window                                | Friends list window. **For v1.6.38.365 and eralier.**                   
  friends_window: search_friend_window          | Search block in the Friends list window.     
  friends_window: search_text_field             | Text field to search friends by nickname or email.      
  connect_social_network_window                 | Window with the list of connected social profiles.     
- world_loading_window                          | Game world loading window.                       
- social_links_window                           | Window with links to social networks.               
+ world_loading_window                          | Game world loading window. **For v1.6.38.365 and eralier.** 
+ social_links_window                           | Window with links to social networks. **For v1.6.38.365 and eralier.**  
  default_game_page                             | **Game** section.                 
  default_game_page: controll_button            | Button to install/update/launch the game.         
- game_page                                     | **Game** section. The object can be customized for each game using its project ID. See an example below.                         
+ game_page                                     | **Game** section. The object can be customized for each game using its project ID. See an example below. **For v1.6.38.365 and eralier.**                         
  game_page: controll_button                    | Button to install/update/launch the game. The object can be customized for each game using its project ID. See an example below.                                                                 
- chars_window                                  | Window to select the character before the first launch.                     
+ chars_window                                  | Window to select the character before the first launch. **For v1.6.38.365 and eralier.**                     
  news_screen                                   | **News** section.                       
  store_screen                                  | **Store** section.                      
  store_window                                  | Game key purchase window.       
- banner_component                              | Banners section.                  
+ banner_component                              | Banners section. **For v1.6.38.365 and eralier.**                 
  ui_components: combobox                       | Combobox.                       
  ui_components: info_panel                     | Field with the banner title.
  ui_components: scrollbar                      | Scrollbar.                     
@@ -177,40 +178,34 @@ The code is self-describing, with object names directly referring to their purpo
  fonts                                         | Fonts.    
  
  ```
-"error_window": {
-  "bg_color": "#313131",
-  "text_color": "white",
-  "bottom_line_color": "white"
-},
-"error_report_window": {
-  "bg_color": "#313131",
-  "header_text_color": "white",
-  "error_text_color": "white",
-  "send_error_text_color": "#80FFFFFF",
-  "bottom_line_color": "white"
-},
-"game_page": [
-  {
-    "game_id": 4,
-    "bg_game_image": "img/Backgrounds/game_screen_bg.jpg",
-    "version_text_color": "#7FFFFFFF",
-    "social_text_color": "#7FFFFFFF"
-  },
-  {
-    "game_id": 6,
-    "bg_game_image": "img/Backgrounds/div_background.jpg",
-    "version_text_color": "#7FFFFFFF",
-    "social_text_color": "#7FFFFFFF"
-  }
-]
+"app_icon":"launcherIcon.ico",
+    "shadow_window_background_image": "img/UI/shadowBackground.png",
+    "disconnect_account_window": {
+        "primary_window_bg_color"       : "#primary_background_color",
+        "secondary_window_bg_color"     : "#secondary_background_color",
+
+        "primary_window_text_color"     : "#primary_text_color",
+        "secondary_window_text_color"   : "#secondary_text_color",
+
+        "primary_button_bg_color"       : "#primary_button_bg",
+        "primary_button_text_color"     : "#primary_button_text",
+
+        "secondary_button_color"        : "#secondary_button_bg",
+        "secondary_button_text_color"   : "#primary_button_text",
+
+        "close_button_icon"             : "img/LoginWindow/new_login/close.svg",
+        "minimize_button_icon"          : "img/ui/window_button/minimize.svg",
+        "maximize_button_icon"          : "img/ui/window_button/maximize.svg",
+        "minimize2_button_icon"         : "img/ui/window_button/minimize2.svg"
+    }
 ```
 </details>
 
-#### local_theme.json for v1.7.0 and Higher
+#### local_theme.json for v2.0.0 and Higher
 
 This file is temporary. It will be used until Launcher UI setup becomes available via Xsolla Publisher Account.
 
->**Note:** If the **UIStyle.json** file was used previously, you need to replace settings to **local_theme.json** and adapt them as described below.
+>**Note:** If the **UIStyle.json** file was used previously, please replace your settings as described on [Wiki pages](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)).
 
 All parameters required for Launcher UI customization are represented as JSON objects and divided into general Launcher styles (```general_styles```) and game specific styles (```game_specific_styles```).
 
@@ -240,54 +235,61 @@ primary_button_bg                              | The color of the button to inst
 primary_button_text                            | The color of the text on the button to install/update/buy/launch the game. Must be in the RGBA format.
 store_size                                     | Element size in Store. Can be 'small', 'medium', and 'large'. Default is 'large'.
 store_view                                     | Element location in Store (horizontal or vertical menu). Can be 'vertical_navigation' and 'horizontal_navigation'. Default is 'horizontal_navigation'.
-store_theme                                    |Store color theme. Can be 'default' and 'dark'. Default is 'dark’.
+store_theme                                    | Store color theme. Can be 'default' and 'dark'. Default is 'dark’.
+news_layout_image                              | The path to the image used as the background for the News section on the game page. Should be placed in the **launcher/win/img** folder. If the value is empty, "primary_background_color" is used instead.
+store_layout_image                             | The path to the image used as the background for the Store section on the game page. Should be placed in the **launcher/win/img** folder. If the value is empty, "primary_background_color" is used instead.
+install_layout_image                           | The path to the image used as the background for game installation window. If the value is empty, "primary_background_color" is used instead.
 
 ```
 {
-  "general_styles": {
-    "start_page_bg": "img/BackGrounds/game1.png",
-    "primary_background_color": "rgba(54, 57, 63, 1)",
-    "secondary_background_color": "rgba(0, 0, 0, 0.2)",
-    "primary_text_color": "rgba(255, 255, 255, 1)",
-    "secondary_text_color": "rgba(255, 255, 255, 0.6)",
-    "links_color": "rgba(255, 255, 255, 1)",
-    "primary_button_bg": "rgba(0, 199, 126, 1)",
-    "primary_button_text": "rgba(255, 255, 255, 1)",
-    "secondary_button_bg": "rgba(160, 171, 184, 1)"
-  },
-  "game_specific_styles": [
-    {
-      "game_id": 29235,
-      "game_layout_image": "",
-      "primary_button_bg": "rgba(0, 199, 126, 1)",
-      "primary_button_text": "rgba(255, 255, 255, 1)",
-      "store_size": "large",
-      "store_view": "horizontal_navigation",
-      "store_theme": "dark"
+    "general_styles":{
+        "start_page_bg":"img/BackGrounds/start_page_bg.png",
+        "primary_background_color":"rgba(54, 57, 63, 1)",
+        "secondary_background_color":"rgba(0, 0, 0, 0.2)",
+        "primary_text_color":"rgba(255, 255, 255, 1)",
+        "secondary_text_color":"rgba(255, 255, 255, 0.6)",
+        "links_color":"rgba(255, 255, 255, 1)",
+        "primary_button_bg":"rgba(0, 199, 126, 1)",
+        "primary_button_text":"rgba(255, 255, 255, 1)",
+        "secondary_button_bg":"rgba(160, 171, 184, 1)"
     },
-    {
-      "game_id": 29236,
-      "game_layout_image": "",
-      "primary_button_bg": "rgba(0, 199, 126, 1)",
-      "primary_button_text": "rgba(255, 255, 255, 1)",
-      "store_size": "large",
-      "store_view": "horizontal_navigation",
-      "store_theme": "dark"
-    }
-  ]
+    "game_specific_styles":[
+        {
+            "game_id":29235,
+            "game_layout_image":"img/BackGrounds/game1_bg.png",
+            "news_layout_image":"img/BackGrounds/news1_bg.png",
+            "store_layout_image":"img/BackGrounds/news1_bg.png",
+            "install_layout_image":"img/BackGrounds/install_bg.png",
+            "primary_button_bg":"rgba(0, 199, 126, 1)",
+            "primary_button_text":"rgba(255, 255, 255, 1)",
+            "store_size":"large",
+            "store_view":"horizontal_navigation",
+            "store_theme":"dark"
+        },
+        {
+            "game_id":29236,
+            "game_layout_image":"img/BackGrounds/game2_bg.png",
+            "news_layout_image":"img/BackGrounds/news2_bg.png",
+            "store_layout_image":"img/BackGrounds/news2_bg.png",
+            "install_layout_image":"img/BackGrounds/install_bg.png",
+            "primary_button_bg":"rgba(0, 199, 126, 1)",
+            "primary_button_text":"rgba(255, 255, 255, 1)",
+            "store_size":"large",
+            "store_view":"horizontal_navigation",
+            "store_theme":"dark"
+        }
+    ]
 }
 ```
-After you complete settings in the **local_theme.json** file, please [generate](https://developers.xsolla.com/doc/launcher/#guides_launcher_generate_archive_installation_file) a new Xsolla Launcher installer to apply changes and test it locally.
+After you complete settings for v2.0.0 or higher, please [generate](https://developers.xsolla.com/doc/launcher/#guides_launcher_generate_archive_installation_file) a new Xsolla Launcher installer to apply changes and test it locally.
 </details>
 
-#### Changing the Launcher Icon
+#### Changing Icons
 
-The icon for Launcher and the installer is located in:
+Icons for games, Launcher, installer and games logos are configured:
 
-* the **img** folder for v1.6.38.365 and earlier.
-* the root folder for v1.7.0 and higher
-
-To change the icon, please replace the current image saving its name.
+* In **UIStyle.json** and located in the **img** folder for v1.6.38.365 and earlier. To change the icon, please replace the current image saving its name.
+* In Publisher Account > Launcher settings for v2.0.0 and higher.
 
 ## Steps to Update Launcher
 
