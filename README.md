@@ -121,7 +121,7 @@ games_directory   | The name of the games directory folder, for example: *C:/{ga
 
 ### Customizing Launcher UI
 
-The **UIStyle.json** file is used to customize the UI of Xsolla Launcher v1.6.38.365 and earlier. If you updated Xsolla Launcher to v2.0.0 or higher, use the **local_theme.json** file or both .json files for UI customization settings. Read more on [Wiki pages](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)).
+The **UIStyle.json** file is used to customize the UI of Xsolla Launcher v1.6.38.365 and earlier. If you updated Xsolla Launcher to v2.0.0 or higher, use the **local_theme.json** file or both .json files for UI customization settings. Read more on the [Wiki page](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)).
 
 #### UIStyle.json
 
@@ -205,7 +205,7 @@ The code is self-describing, with object names directly referring to their purpo
 
 This file is temporary. It will be used until Launcher UI setup becomes available via Xsolla Publisher Account.
 
->**Note:** If the **UIStyle.json** file was used previously, please replace your settings as described on [Wiki pages](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)).
+>**Note:** If the **UIStyle.json** file was used previously, please replace your settings as described on the [Wiki page](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)).
 
 All parameters required for Launcher UI customization are represented as JSON objects and divided into general Launcher styles (```general_styles```) and game specific styles (```game_specific_styles```).
 
@@ -216,13 +216,13 @@ All parameters required for Launcher UI customization are represented as JSON ob
 **Object**                                     | **Description**                             
 :----------------------------------------------|:-------------------------------------------------------------------
 start_page_bg                                 | The path to the image used as a background for the Launcher start page. Should be placed in the **launcher/win/img** folder. If the value is empty, ```primary_background_color``` is used instead. Other start page customization and content settings are performed in Publisher Account > **Launcher settings > Project setup > Project modules**.
-primary_background_color                       | The color of the Launcher background. Must be in the RGBA format.
-secondary_background_color                     | The color of the Launcher menu, buttons (cancellation and reset buttons) and input fields background. Must be in the RGBA format.
-primary_text_color                             | The color of most of the texts in Launcher windows excluding button texts. Must be in the RGBA format.
-secondary_text_color                           | The color of titles in Launcher. Must be in the RGBA format.
-links_color                                    | Accent texts & links color. Must be in the RGBA format.
-primary_button_bg                              | The color of the primary button background (confirmation buttons). Must be in the RGBA format.
-primary_button_text                            | The color of the text on primary buttons (confirmation) buttons. Must be in the RGBA format. 
+primary_background_color                       | The color of the Launcher background. Must be in the RGBA, ARGB HEX, or RGB HEX format.
+secondary_background_color                     | The color of the Launcher menu, buttons (cancellation and reset buttons) and input fields background. Must be in the RGBA, ARGB HEX, or RGB HEX format.
+primary_text_color                             | The color of most of the texts in Launcher windows excluding button texts. Must be in the RGBA, ARGB HEX, or RGB HEX format.
+secondary_text_color                           | The color of titles in Launcher. Must be in the RGBA, ARGB HEX, or RGB HEX format.
+links_color                                    | Accent texts & links color. Must be in the RGBA, ARGB HEX, or RGB HEX format.
+primary_button_bg                              | The color of the primary button background (confirmation buttons). Must be in the RGBA, ARGB HEX, or RGB HEX format.
+primary_button_text                            | The color of the text on primary buttons (confirmation) buttons. Must be in the RGBA, ARGB HEX, or RGB HEX format.
 secondary_button_bg	                           | The color of the border and text on secondary buttons (cancellation and reset).
 
 ```game_specific_styles```
@@ -231,8 +231,8 @@ secondary_button_bg	                           | The color of the border and tex
 :----------------------------------------------|:-------------------------------------------------------------------
 game_id                                        | ID of the game added to Launcher. You can find it in Publisher Account > **Launcher settings > Project setup**.
 game_layout_image                              | The path to the image used as the background for the game page. Should be placed in the **launcher/win/img** folder. If the value is empty, "primary_background_color" is used instead.
-primary_button_bg                              | The color of the button to install/update/buy/launch the game. Must be in the RGBA format.
-primary_button_text                            | The color of the text on the button to install/update/buy/launch the game. Must be in the RGBA format.
+primary_button_bg                              | The color of the button to install/update/buy/launch the game. Must be in the RGBA, ARGB HEX, or RGB HEX format.
+primary_button_text                            | The color of the text on the button to install/update/buy/launch the game. Must be in the RGBA, ARGB HEX, or RGB HEX format.
 store_size                                     | Element size in Store. Can be 'small', 'medium', and 'large'. Default is 'large'.
 store_view                                     | Element location in Store (horizontal or vertical menu). Can be 'vertical_navigation' and 'horizontal_navigation'. Default is 'horizontal_navigation'.
 store_theme                                    | Store color theme. Can be 'default' and 'dark'. Default is 'dark’.
