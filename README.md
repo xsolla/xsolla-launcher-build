@@ -96,6 +96,10 @@ cdn_block_size|Bytes in swap buffer. Default ‘1048576‘. Must be used in pair
 enable_locate_button | Whether to show the *Locate the game* button for game searching. Can be ‘true‘ or ‘false‘. ‘true‘ by default. 
 check_update_interval | The interval for checking game updates availability in milliseconds. Default is ‘10800000’.
 games_directory   | The name of the games directory folder, for example: *C:/{games_directory}/LauncherName/GameName/*. The folder will be created on the disk selected by a user and will contain files of all installed games from Launcher. Default is ‘Games‘.
+relative_game_paths | An array with relative paths to games added to Launcher.
+relative_game_paths:id | Project ID in Publisher Account.
+relative_game_paths:region_code | Game region code.
+relative_game_paths:path | The path to the game folder relative to the folder with Launcher installed.
 
 <details><summary>Example</summary>
  
@@ -114,7 +118,19 @@ games_directory   | The name of the games directory folder, for example: *C:/{ga
   "cdn_network_timeout": 30000,
   "enable_locate_button": true,
   "check_update_interval": 10800000,
-  "games_directory": "Games"
+  "games_directory": "Games",
+  "relative_game_paths": [
+            {
+                "id": 29235,
+                "region_code": "en",
+                "path": "Games/ИграТест1/en/game"
+            },
+            {
+                "id": 29236,
+                "region_code": "default",
+                "path": "Games/ИграТест2/default/game"
+            }
+        ]
 }
 ```
 </details>
