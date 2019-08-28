@@ -4,7 +4,7 @@
     "build_number": 0,
     "callback_url": "https://login.xsolla.com/api/blank",
     "stone_app_id": "",
-    "steam_app_id": "480",
+    "steam_app_id": 480,
     "playfab_project_id" : "FB8D",
     "use_playfab_login": false,
     "store_token_life_time": 23,

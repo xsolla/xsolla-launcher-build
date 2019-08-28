@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.1.0] - 2019-08-28
+### Fixed
+- Minor bugs
+
 ## [2.0.0] - 2019-08-19
 ### Added
 - Ability to run the offline mode games
