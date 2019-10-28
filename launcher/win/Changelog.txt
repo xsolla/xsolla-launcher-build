@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.2.1] - 2019-10-28
+### Fixed
+- Minor bugs
+
 ## [2.2.0] - 2019-09-30
 ### Fixed
 - Minor bugs
