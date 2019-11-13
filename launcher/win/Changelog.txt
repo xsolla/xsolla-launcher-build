@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.2.2] - 2019-11-13
+### Added
+- Seamless authorization in Launcher using the Xsolla Login JWT (see the Wiki page https://clck.ru/Jet2A) 
+
 ## [2.2.1] - 2019-10-28
 ### Fixed
 - Minor bugs
