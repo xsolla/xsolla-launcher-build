@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.2.3] - 2019-12-02
+### Added
+- Support of the game maintenance mode (see the Wiki page to set up https://clck.ru/KW2ni) 
+
 ## [2.2.2] - 2019-11-13
 ### Added
 - Seamless authorization in Launcher using the Xsolla Login JWT (see the Wiki page https://clck.ru/Jet2A) 

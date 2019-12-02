@@ -39,6 +39,7 @@
         "minimize2_button_icon"         : "img/ui/window_button/minimize2.svg",
 
         "window_links_text_color"       : "#links_color",
+        "maintenance_bg_color"          : "#7C1D00",
 
         "logo_placeholder_image"        : "img/LoginWindow/new_login/logo.png",
         "checkbox_checked_icon"         : "img/LoginWindow/new_login/checkbox_sel.svg",
@@ -427,6 +428,21 @@
             "bg_color"                      : "#primary_background_color",
             "title_text_color"              : "#primary_text_color"
         }
+    },
+    "maintenance_window": {
+        "primary_window_bg_color"       : "#primary_background_color",
+        "secondary_window_bg_color"     : "#secondary_background_color",
+
+        "primary_window_text_color"     : "#primary_text_color",
+        "secondary_window_text_color"   : "#secondary_text_color",
+
+        "primary_button_bg_color"       : "#primary_button_bg",
+        "primary_button_text_color"     : "#primary_button_text",
+
+        "secondary_button_color"        : "#secondary_button_bg",
+        "secondary_button_text_color"   : "#primary_button_text",
+
+        "attention_icon"                : "img/ui/attentionIcon.svg"
     },
     "notification_window": {
         "secondary_button_color"            : "#secondary_button_bg",
