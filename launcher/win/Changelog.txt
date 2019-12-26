@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.3.0] - 2019-12-26
+### Added
+- The additional request for the user email from the social network or from the user (https://clck.ru/LV5rq)
+- The ability to close desktop Launcher when the game is started. Works only for Xsolla Launchers published on Steam (https://clck.ru/LV5rq)
+
+### Fixed
+- Minor bugs
+
 ## [2.2.3] - 2019-12-02
 ### Added
 - Support of the game maintenance mode (see the Wiki page to set up https://clck.ru/KW2ni) 

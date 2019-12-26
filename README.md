@@ -77,12 +77,7 @@ Optional objects in **config.json** are used to perform extended Launcher settin
 
 **Object**               | **Description**                             
 :------------------------|:-------------------------------------------------------------------
- store                   | An array of objects to customize Launcher in-game Store. 
- store:id |   Project ID in Publisher Account.
- store:theme | Store color theme. Can be 'default' and 'dark'. Default is 'dark'.
- store:size | Element size in Store. Can be 'small', 'medium', and 'large'. Default is 'large'.
- store:view | Element location in Store (horizontal or vertical menu). Can be 'vertical_navigation' and 'horizontal_navigation'. Default is 'horizontal_navigation'.
- GA_trackingId        | Google Analytics tracking code. See the [recipe](https://developers.xsolla.com/recipes/launcher/game-analytics/).          
+ ga_tracking_id        | Google Analytics tracking code. See the [recipe](https://developers.xsolla.com/recipes/launcher/game-analytics/).          
  steam_app_id | Steam app ID. See the [recipe](https://developers.xsolla.com/recipes/launcher/cross-authentication/#recipes_cross_authentication_steam).
  stone_app_id | Stone app ID. See the [recipe](https://developers.xsolla.com/recipes/launcher/cross-authentication/#recipes_cross_authentication_stone).
  create_account_link |  URL to redirect the user after successful registration.
@@ -93,20 +88,20 @@ always_open_default_news_tab | Whether to always show news set up in the default
 cdn_try_load_count  | Number of attempts to download the game file.
 cdn_network_timeout | Wait time between the download attempts (in milliseconds). Recommended ‘30000‘. Must be used in pair with "cdn_block_size".
 cdn_block_size|Bytes in swap buffer. Default ‘1048576‘. Must be used in pair with "cdn_network_timeout".
-enable_locate_button | Whether to show the *Locate the game* button for game searching. Can be ‘true‘ or ‘false‘. ‘true‘ by default. 
 check_update_interval | The interval for checking game updates availability in milliseconds. Default is ‘10800000’.
 games_directory   | The name of the games directory folder, for example: *C:/{games_directory}/LauncherName/GameName/*. The folder will be created on the disk selected by a user and will contain files of all installed games from Launcher. Default is ‘Games‘.
 relative_game_paths | An array with relative paths to games added to Launcher.
 relative_game_paths:id | Project ID in Publisher Account.
 relative_game_paths:region_code | Game region code.
 relative_game_paths:path | The path to the game folder relative to the folder with Launcher installed.
+auth_fields| The list of parameters which must be requested from the user or social network additionally during social authentication. The parameters must be separated by a comma. If the specified parameter is not returned by a social network, the user will be asked to input the value to the corresponding form of desktop Launcher. Parameters are written to the user JWT. Note: Currently only the ‘email’ value is supported. After the email is requested from the user, a confirmation message is sent to specified email.
+close_steam_launcher_when_game_start| Whether to close desktop Launcher when the game is started. Works only for Xsolla Launcher published on Steam. Can be ‘true’ or ‘false’. Default is ‘false’.
 
 <details><summary>Example</summary>
  
  ```
 {
-  "store": { "id" : 12345, "theme" : "default", "size" : "large", "view" : "horizontal_navigation" },
-  "GA_trackingId": "UA-111111111-1",
+  "ga_tracking_id": "UA-111111111-1",
   "steam_app_id": 123,
   "stone_app_id": 129,
   "create_account_link": "https://coolgame.com/create_account",
@@ -116,9 +111,10 @@ relative_game_paths:path | The path to the game folder relative to the folder wi
   "always_open_default_news_tab": true,
   "cdn_try_load_count": 3,
   "cdn_network_timeout": 30000,
-  "enable_locate_button": true,
   "check_update_interval": 10800000,
   "games_directory": "Games",
+  "auth_fields":"email",
+  "close_steam_launcher_when_game_start": true
   "relative_game_paths": [
             {
                 "id": 29235,
