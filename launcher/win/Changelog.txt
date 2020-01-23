@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.4.0] - 2020-01-23
+### Fixed
+- Minor bugs
+
 ## [2.3.0] - 2019-12-26
 ### Added
 - The additional request for the user email from the social network or from the user (https://clck.ru/LV5rq)

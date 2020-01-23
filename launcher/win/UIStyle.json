@@ -196,7 +196,7 @@
         "maximize_button_icon"          : "img/ui/window_button/maximize.svg",
         "minimize2_button_icon"         : "img/ui/window_button/minimize2.svg",
 
-        "logo_placeholder_image"        : "img/LoginWindow/new_login/logo.png",
+        "logo_placeholder_image"        : "img/MainWindow/GamePage/logo.png",
         "checkbox_checked_icon"         : "img/LoginWindow/new_login/checkbox_sel.svg",
         "arrow_image"                   : "img/UI/settings_arrow.png",
 
