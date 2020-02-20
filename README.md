@@ -83,6 +83,7 @@ Optional objects in **config.json** are used to perform extended Launcher settin
  create_account_link |  URL to redirect the user after successful registration.
 restore_password_link | URL to redirect the user to after successful password recovery.
 is_username_email | Whether to show the *Email* or the *Username* placeholder during authentication in Launcher. Can be ‘true’ (to show *Email*) and ‘false’ (to show *Username*). Default is ‘true’.
+hide_all_news_button | Hidding a "All News" button on news screen. Can be ‘true’ and ‘false’. Default is ‘false’. Does not work when start page is enabled
 default_news_tab | Whether to show news from all the games (‘all’) or from a particular one. To show news from a particular game, specify the project ID from Publisher Account.
 always_open_default_news_tab | Whether to always show news set up in the default_news_tab object. If ‘true’, the news are displayed as specified in the default_news_tab object. If ‘false’, the news are displayed as specified in "default_news_tab" object only for the first opening, and then each game shows its own news. Default is ‘false’.
 cdn_try_load_count  | Number of attempts to download the game file.
