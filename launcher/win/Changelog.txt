@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.4.1] - 2020-02-19
+### Added
+- Config parameter for hidding "all news" button on news screen
+
 ## [2.4.0] - 2020-01-23
 ### Fixed
 - Minor bugs
