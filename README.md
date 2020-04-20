@@ -97,6 +97,7 @@ relative_game_paths:region_code | Game region code.
 relative_game_paths:path | The path to the game folder relative to the folder with Launcher installed.
 auth_fields| The list of parameters which must be requested from the user or social network additionally during social authentication. The parameters must be separated by a comma. If the specified parameter is not returned by a social network, the user will be asked to input the value to the corresponding form of desktop Launcher. Parameters are written to the user JWT. Note: Currently only the ‘email’ value is supported. After the email is requested from the user, a confirmation message is sent to specified email.
 close_steam_launcher_when_game_start| Whether to close desktop Launcher when the game is started. Works only for Xsolla Launcher published on Steam. Can be ‘true’ or ‘false’. Default is ‘false’.
+html_tabs| An array with parameters of custom HTML tabs, where name is a name of the tab (the length of the string should be less than 15 characters), url is a URL to the HTML page. [Wiki page](https://github.com/xsolla/xsolla-launcher-build/wiki/v2.4.4)
 
 <details><summary>Example</summary>
  
@@ -127,7 +128,18 @@ close_steam_launcher_when_game_start| Whether to close desktop Launcher when the
                 "region_code": "default",
                 "path": "Games/ИграТест2/default/game"
             }
-        ]
+        ],
+   "html_tabs": [
+        {
+            "name": "Google",
+            "url": "https://google.com"
+        },
+        {
+            "name": "Yandex",
+            "url": "https://yandex.com"
+ 
+        }
+    ]
 }
 ```
 </details>
