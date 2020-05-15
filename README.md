@@ -35,6 +35,7 @@ The **scripts/win/deploy.bat** script generates:
 
 ### Making Launcher Configuration
 
+
 Parameters for Launcher configuration are represented as JSON objects in **launcher/win/config.json**.
 
 #### Required Objects
@@ -343,6 +344,7 @@ Icons for games, Launcher, installer, and games logos are configured:
  
 Background images on other pages also should be in JPEG or PNG format.
 </details>
+
 
 ## Steps to Update Launcher
 
