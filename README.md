@@ -35,6 +35,7 @@ The **scripts/win/deploy.bat** script generates:
 
 ### Making Launcher Configuration
 
+
 Parameters for Launcher configuration are represented as JSON objects in **launcher/win/config.json**.
 
 #### Required Objects
@@ -98,6 +99,7 @@ relative_game_paths:path | The path to the game folder relative to the folder wi
 auth_fields| The list of parameters which must be requested from the user or social network additionally during social authentication. The parameters must be separated by a comma. If the specified parameter is not returned by a social network, the user will be asked to input the value to the corresponding form of desktop Launcher. Parameters are written to the user JWT. Note: Currently only the ‘email’ value is supported. After the email is requested from the user, a confirmation message is sent to specified email.
 close_steam_launcher_when_game_start| Whether to close desktop Launcher when the game is started. Works only for Xsolla Launcher published on Steam. Can be ‘true’ or ‘false’. Default is ‘false’.
 html_tabs| An array with parameters of custom HTML tabs, where name is a name of the tab (the length of the string should be less than 15 characters), url is a URL to the HTML page. [Wiki page](https://github.com/xsolla/xsolla-launcher-build/wiki/v2.4.4)
+default_p2p_enabled | Whether to use P2P or CDN game delivery. Can be ‘true’ or ‘false’. Default is ‘true’. You need to contact your account manager before changing to sign a license agreement amendment.
 
 <details><summary>Example</summary>
  
@@ -254,7 +256,7 @@ secondary_button_bg                            | The color of the border and tex
 
 **Object**                                     | **Description**                             
 :----------------------------------------------|:-------------------------------------------------------------------
-game_id                                        | ID of the game added to Launcher. You can find it in Publisher Account > **Launcher settings > Project setup**.
+game_id                                        | ID of the game added to Launcher. That is a required parameter. You can find it in Publisher Account > **Launcher settings > Project setup**.
 game_layout_image                              | The path to the image used as the background for the game page. Should be placed in the **launcher/win/img** folder. If the value is empty, "primary_background_color" is used instead.
 primary_button_bg                              | The color of the button to install/update/buy/launch the game. Must be in the RGBA, ARGB HEX, or RGB HEX format.
 primary_button_text                            | The color of the text on the button to install/update/buy/launch the game. Must be in the RGBA, ARGB HEX, or RGB HEX format.
@@ -315,6 +317,34 @@ Icons for games, Launcher, installer, and games logos are configured:
 
 * In **UIStyle.json** and located in the **img** folder for v1.6.38.365 and earlier. To change the icon, please replace the current image with the new one saving the same name.
 * In Publisher Account > Launcher settings for v2.0.0 and later.
+
+<details><summary>Assets Specs</summary>
+
+##### Authorization window
+![Authorization window](https://i.imgur.com/WJHCp4b.png)
+
+1. Logo
+ * Height: 52px;
+ * Formats: JPEG, PNG.
+2. Social provider icon
+ * Format: SVG.
+
+##### Main Window
+![Main window](https://i.imgur.com/XZVC5W8.png)
+1. Game Logo: 
+ * Height: 86px;
+ * Width: 180px;
+ * Formats: JPEG, PNG.
+2. Company logo: 
+ * Height: 52px;
+ * Width: 110px;
+ * Format:  JPEG, PNG.
+3.Background: 
+ * FullHD or 4k (in case Launcher is used on 4k monitors).
+ 
+Background images on other pages also should be in JPEG or PNG format.
+</details>
+
 
 ## Steps to Update Launcher
 
