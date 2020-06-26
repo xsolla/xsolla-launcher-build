@@ -51,6 +51,7 @@
         "eye_off_image"                 : "img/LoginWindow/new_login/password_closed.svg",
 
         "logo_amazon_image"         : "img/LoginWindow/social/amazon_logo.svg",
+        "logo_apple_image"          : "img/LoginWindow/social/apple_logo.svg",
         "logo_baidu_image"          : "img/LoginWindow/social/baidu_logo.svg",
         "logo_battlenet_image"      : "img/LoginWindow/social/battlenet_logo.svg",
         "logo_china_telecom_image"  : "img/LoginWindow/social/china_telecom_logo.svg",
@@ -81,12 +82,14 @@
         "logo_vk_image"             : "img/LoginWindow/social/vk_logo.svg",
         "logo_wechat_image"         : "img/LoginWindow/social/wechat_logo.svg",
         "logo_weibo_image"          : "img/LoginWindow/social/weibo_logo.svg",
+        "logo_xbox_image"           : "img/LoginWindow/social/xbox_logo.svg",
         "logo_yahoo_image"          : "img/LoginWindow/social/yahoo_logo.svg",
         "logo_yandex_image"         : "img/LoginWindow/social/yandex_logo.svg",
         "logo_youtube_image"        : "img/LoginWindow/social/youtube_logo.svg",
         "logo_more_image"           : "img/LoginWindow/social/more_logo.svg",
 
         "color_logo_amazon_image"         : "img/LoginWindow/social_color/amazon_logo.svg",
+        "color_logo_apple_image"          : "img/LoginWindow/social_color/apple_logo.svg",
         "color_logo_baidu_image"          : "img/LoginWindow/social_color/baidu_logo.svg",
         "color_logo_battlenet_image"      : "img/LoginWindow/social_color/battlenet_logo.svg",
         "color_logo_china_telecom_image"  : "img/LoginWindow/social_color/china_telecom_logo.svg",
@@ -117,6 +120,7 @@
         "color_logo_vk_image"             : "img/LoginWindow/social_color/vk_logo.svg",
         "color_logo_wechat_image"         : "img/LoginWindow/social_color/wechat_logo.svg",
         "color_logo_weibo_image"          : "img/LoginWindow/social_color/weibo_logo.svg",
+        "color_logo_xbox_image"           : "img/LoginWindow/social_color/xbox_logo.svg",
         "color_logo_yahoo_image"          : "img/LoginWindow/social_color/yahoo_logo.svg",
         "color_logo_yandex_image"         : "img/LoginWindow/social_color/yandex_logo.svg",
         "color_logo_youtube_image"        : "img/LoginWindow/social_color/youtube_logo.svg"
@@ -491,6 +495,24 @@
         "maximize_button_icon"              : "img/ui/window_button/maximize.svg",
         "minimize2_button_icon"             : "img/ui/window_button/minimize2.svg"
     },
+    "ui_components" : {
+        "window_buttons_bar": {
+            "primary_window_bg_color"           : "#primary_background_color",
+            "secondary_window_bg_color"         : "#secondary_background_color",
+
+            "primary_window_text_color"         : "#primary_text_color",
+            "secondary_window_text_color"       : "#secondary_text_color",
+
+            "primary_button_bg_color"           : "#primary_button_bg",
+            "primary_button_text_color"         : "#primary_button_text",
+
+            "secondary_button_color"            : "#secondary_button_bg",
+            "secondary_button_text_color"       : "#primary_button_text",
+
+            "button_close_image"                : "img/LoginWindow/new_login/close.svg"
+        }
+    },
+
     "fonts": {
         "regular"                           : "fonts/Lato-Regular.ttf",
         "medium"                            : "fonts/Lato-Medium.ttf",
