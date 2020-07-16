@@ -79,8 +79,8 @@ Optional objects in **config.json** are used to perform extended Launcher settin
 **Object**               | **Description**
 :------------------------|:-------------------------------------------------------------------
  ga_tracking_id        | Google Analytics tracking code. See the [recipe](https://developers.xsolla.com/recipes/launcher/game-analytics/).
- steam_app_id | Steam app ID. See the [recipe](https://developers.xsolla.com/recipes/launcher/cross-authentication/#recipes_cross_authentication_steam).
- stone_app_id | Stone app ID. See the [recipe](https://developers.xsolla.com/recipes/launcher/cross-authentication/#recipes_cross_authentication_stone).
+ steam_app_id | Steam app ID. See the [recipe](https://developers.xsolla.com/recipes/launcher/silent-authentication/#recipes_silent_authentication_steam).
+ stone_app_id | Stone app ID. See the [recipe](https://developers.xsolla.com/recipes/launcher/silent-authentication/#recipes_silent_authentication_stone).
  create_account_link | A URL to create an account. The link opens in a browser. By default it leads to the Xsolla Login account creation page. If the field is empty (или the value is not stated), the link will be hidden from the authorization page.default_p2p_enabled | Whether to use P2P or CDN game delivery. Can be ‘true’ or ‘false’. Default is ‘true’. You need to contact your account manager before changing to sign a license agreement amendment.
 restore_password_link | A URL to reset a password. The link opens in a browser. By default it leads to the Xsolla Login password reset page. If the field is empty (или the value is not stated), the link will be hidden from the authorization page.
 use_login_links | Whether to show the links to the Xsolla Login account creation and password reset pages. Can be ‘true’ or ‘false’. By default, the parameter is 'true' and the links mentioned above are displayed. If the create_account_link or restore_password_link parameters are not defined, then the link will lead to a default Login widget page. If it is ‘false’, then the links are not displayed.
