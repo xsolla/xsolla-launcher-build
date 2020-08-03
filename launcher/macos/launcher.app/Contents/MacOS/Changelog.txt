@@ -1,0 +1,256 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+## [Unreleased]
+
+## [2.6.0-beta] - 2020-08-03
+### Added
+- macOS support
+### Fixed
+- Minor bugs
+
+## [2.5.0] - 2020-06-26 
+### Added 
+- User authentication with the OAuth 2.0 protocol 
+### Fixed 
+- Minor bugs
+
+## [2.4.5] - 2020-05-27
+### Changed
+- Behavior when trying to launch the second instance of the Launcher
+
+## [2.4.4] - 2020-04-20
+### Added
+- Config parameter for adding custom tabs with HTML pages to Launcher (https://clck.ru/N4dzU)
+
+## [2.4.3] - 2020-03-25
+### Fixed
+- Minor bugs
+
+## [2.4.2] - 2020-03-17
+### Added
+- Multiple game keys activation
+
+## [2.4.1] - 2020-02-19
+### Added
+- Config parameter for hidding "all news" button on news screen
+
+## [2.4.0] - 2020-01-23
+### Fixed
+- Minor bugs
+
+## [2.3.0] - 2019-12-26
+### Added
+- The additional request for the user email from the social network or from the user (https://clck.ru/LV5rq)
+- The ability to close desktop Launcher when the game is started. Works only for Xsolla Launchers published on Steam (https://clck.ru/LV5rq)
+
+### Fixed
+- Minor bugs
+
+## [2.2.3] - 2019-12-02
+### Added
+- Support of the game maintenance mode (see the Wiki page to set up https://clck.ru/KW2ni) 
+
+## [2.2.2] - 2019-11-13
+### Added
+- Seamless authorization in Launcher using the Xsolla Login JWT (see the Wiki page https://clck.ru/Jet2A) 
+
+## [2.2.1] - 2019-10-28
+### Fixed
+- Minor bugs
+
+## [2.2.0] - 2019-09-30
+### Fixed
+- Minor bugs
+
+## [2.1.0] - 2019-08-28
+### Fixed
+- Minor bugs
+
+## [2.0.0] - 2019-08-19
+### Added
+- Ability to run the offline mode games
+- Passing custom arguments to start the game (see the Wiki page https://clck.ru/HgCpD)
+
+### Updated
+- UI customization flow (see the Wiki page https://clck.ru/HgCop)
+- Start page configuration flow (see the Wiki page https://clck.ru/HgCnW)
+- Displaying the game downloading progress in kbit/s and Mbit/s
+
+## [1.7] - 2019-07-03
+### Added
+- Color themes support
+- Hiding the News section
+- Setting up relative paths to the game installation folder
+- Setting up Launcher in Publisher Account
+
+### Removed
+- Friends and chat module
+
+### Fixed
+- Minor bugs
+
+## [1.6.37.355] - 2019-02-19
+### Added
+- Request for admin rights upon the installation of redistributable packages
+
+### Updated
+- Inability to edit the username in Launcher with the Friends module disabled in Publisher Account
+
+### Fixed
+- Displaying the progress upon applying the patch with large files
+
+## [1.6.36.350] - 2018-12-21
+### Fixed
+- Minor bugs fixed
+
+## [1.6.36.345] - 2018-12-14
+### Fixed
+- The working directory for the game launch is the directory with the game executable file.
+
+## [1.6.36.340] - 2018-12-05
+### Fixed
+- Minor bugs fixed
+
+## [1.6.35.335] - 2018-12-04
+### Added
+- Checking for free disk space before the game or update installation
+- Information message with the request to use admin rights for Launcher operation
+
+### Fixed
+- Minor bugs fixed
+
+## [1.6.34.330] - 2018-11-21
+### Added
+- Improved the process of applying the game patch
+- On the login window added the ability to manually open the link in the browser, if it does not open automatically
+
+### Fixed
+- Minor bugs fixed
+
+## [1.6.33.325] - 2018-11-14
+### Added
+- Locate the game. The availability of this button is configured via the config.json file.
+- Added support for sell game banners. For selling game packs.
+
+### Fixed
+- Minor bugs fixed
+
+## [1.6.32.320] - 2018-11-09
+### Added
+- Launcher window. Now the window title is set by the Launcher name field in Publisher Account
+- Game installation window. Now customization of this window is available for each game
+- News section. Now news display can be set up for all games or for a particular game
+- Game and updates downloading via CDN can now be resumed in case of connection error
+- Game section. Now renamed into “Library”
+- Home page is fully completed and localized
+- The build number is now incrementing automatically via a special script
+
+### Updated
+- Translations updated
+
+### Fixed
+- Minor bugs fixed
+
+## [1.6.31.315] - 2018-11-02
+### Added
+- Verification of ownership of the game for all packages drm
+
+## [1.6.30.310] - 2018-10-30
+### Added
+- Setting up the links for creating account and changing the password via the config.json file
+- Changing the placeholder for email or username input via the config.json file
+
+## [1.6.29.305] - 2018-10-22
+### Changed
+- Fixed opening a create account widget and restore password widget
+
+## [1.6.29.300] - 2018-10-08
+### Changed
+- Fixed opening a store when buying a key in the launcher
+- Fixed minor bugs in the process of activation key
+- Fixed display of error window
+
+### Added
+- Added the ability to change the name of the launcher window
+- Added a list of events for Google Analytics
+- Added the ability to set login_url in the config
+- Added the ability to use PlayFab User ID as a store user ID
+- Added the ability for the partner to control the display of peer\seed through the config file
+- Removed all sensitive information from the launcher logs
+
+## [1.6.28.295] - 2018-09-20
+### Changed
+- fixed minor bugs
+
+## [1.6.27.290] - 2018-09-12
+### Changed
+- fixed minor bugs
+
+## [1.6.26.285] - 2018-09-10
+### Added
+- Added ability to set default state for "Automatically Update Game at Launch"
+- Added Start page
+
+### Changed
+- Fixed "back to game" button operation when buying game key
+
+## [1.6.25.280] - 2018-08-30
+### Added
+- The ability to use promo codes when buying the game
+
+### Changed
+- fixed minor bugs
+
+## [1.6.24.275] - 2018-08-29
+### Added
+- The icon creation when installing the game added.
+- Administrative rights request added.
+- Checking if the user owns the game in Steam added.
+
+### Changed
+- fixed minor bugs
+
+## [1.6.23.270] - 2018-08-12
+### Added
+- added seamless buying experience
+
+## [1.6.22.265] - 2018-08-09
+### Added
+- added in the settings the choice of hiding in the tray, and added this setting in the config
+
+## [1.6.21.260] - 2018-08-02
+### Added
+- added hiding user's email option
+
+### Changed
+- fixed 4k monitor support
+- fixed showing notification about hides launcher to tray
+- fixed minor bugs
+
+## [1.6.20.255] - 2018-07-27
+### Changed
+- fixed minor bugs
+
+## [1.6.20.250] - 2018-07-25
+### Changed
+- fixed minor bugs
+
+## [1.6.20.245] - 2018-07-23
+### Changed
+- updated translations
+- fixed minor bugs
+
+## [1.6.20.240] - 2018-07-09
+### Added
+- added social account binding,
+- added interaction with social friends who already have the game
+
+## [1.6.19.235] - 2018-06-27
+### Changed
+- Updated French and German translations 
+
+## [1.6.19.230] - 2018-06-26
+### Added
+- Added display of necessary free disk space for game installation
+- Added support for Playfab authorization (login / password, via Steam)

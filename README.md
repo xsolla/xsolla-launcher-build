@@ -14,12 +14,18 @@
 
 Launcher updates are delivered via this repository that has the following folders:
 * **launcher/win** — Launcher for Windows;
+* **launcher/macos** — Launcher for macOS;
 * **launcher/PromoPage** — Launcher start page: setup for [v1.6.38.365 and lower](https://docs.google.com/document/d/1YuVftxN4efURR1ZnUJCjCoxx6skazaXRzVRbz2cLIVc/edit#heading=h.t0ksoifvtzar) or [v2.0.0 and higher](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)#how-to-set-up-start-page-in-v200);
 * **portables/win** — 7zip archiver and a utility that creates the installer (Nullsoft Scriptable Install System);
 * **scripts/win** — scripts to generate the archive and installer.
+* **scripts/macos** — scripts to generate DMG and sign code.
 
 The **scripts/win/deploy.bat** script generates:
 * a Launcher installer that you can send to new users,
+* an archive including the Launcher build used to deliver updates to users.
+
+The **scripts/macos/deploy.sh** script generates:
+* a Launcher DMG file that you can send to new users,
 * an archive including the Launcher build used to deliver updates to users.
 
 ## Steps to Integrate Launcher
@@ -46,7 +52,7 @@ Parameters for Launcher configuration are represented as JSON objects in **launc
  login_project_id        | ID of Login connected to your Launcher in Publisher Account. **Required.**
  build_number            | Launcher build number. The value is generated automatically since version 1.6.32.320. **Required.**
  callback_url            | **Callback URL** from Login settings in Publisher Account. This URL is used to redirect the user after successful authentication via a social network. **Required** if there are several Callback URLs added in Login settings in Publisher Account.
- product_name            | Launcher name in the **Start** menu. Duplicate the name in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter. The parameter is not used since version 1.7.1, please, specify the name from your Publisher Account settings in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter.
+ product_name            | Launcher name in the **Start** menu. Duplicate the name in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter. The parameter is not used since version 1.7.1, please, specify the name from your Publisher Account settings in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter.  **Required.**
  link_support            | A URL to the game’s technical support website.
  link_community          | A URL to the game’s community.
  game_autoupdate         | Whether the game is updated automatically. Can be ‘true’ and ‘false’. Default is ‘false’. A user can change this setting in the Launcher UI.
@@ -57,11 +63,11 @@ Parameters for Launcher configuration are represented as JSON objects in **launc
 
  ```
 {
+  "product_name": "Launcher",
   "launcher_project_id": "8c91ecf3-e7b0-46a8-aaf7-4c419ef8ef4b",
   "login_project_id": "bd2e1104-5494-48f9-ac50-98f230062df1",
   "use_local_config": true,
   "callback_url": "https://callback_url.com",
-  "product_name": "Launcher",
   "link_support": "https://support_example.com",
   "link_community": "https://community_example.com",
   "game_autoupdate": false,

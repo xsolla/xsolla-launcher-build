@@ -1,0 +1,56 @@
+<style>
+
+// fix h tegs sizes
+h1 {font-size: 2em;}
+h2 {font-size: 1.5em;}
+h3 {font-size: 1.17em;}
+h4 {font-size: 1em;}
+h5 {font-size: .83em;}
+h6 {font-size: .67em;}
+
+a:link {
+    color: #C69046;
+    text-decoration: none;
+}
+a:hover {
+    color: #F7A330;
+    text-decoration: underline;
+}
+
+   @font-face {
+    font-family: regular;
+    src: $FONT_REGULAR
+   }
+   @font-face {
+    font-family: medium;
+    src: $FONT_MEDIUM
+   }
+   @font-face {
+    font-family: bold;
+    src: $FONT_BOLD
+   }
+
+   @font-face {
+    font-family: black;
+    src: $FONT_BLACK
+   }
+* {
+    color: white;
+    font-family: regular;
+    font-size: 16px;
+}
+body {
+    color: white;
+    font-family: regular;
+    font-size: 16px;
+}
+
+div {
+    color: white;
+    font-family: regular;
+    font-size: 16px;
+}
+ul {
+    list-style: circle outside;
+}
+</style>
