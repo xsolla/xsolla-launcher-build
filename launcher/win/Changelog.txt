@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.5.1] - 2020-08-07
+### Fixed
+- Minor bugs
+
 ## [2.5.0] - 2020-06-26 
 ### Added 
 - User authentication with the OAuth 2.0 protocol 
