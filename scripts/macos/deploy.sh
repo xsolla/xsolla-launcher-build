@@ -1,68 +1,31 @@
 #!/bin/bash
 
-apppath=""
-username=""
-password=""
+#Named params
+while [ $# -gt 0 ]; do
+   if [[ $1 == *"--"* ]]; then
+        param="${1/--/}"
+        declare $param="$2"
+   fi
+  shift
+done
 
-signature=""
-teamid=""
-bundleid="com.template.launcher"
+apppath=${apppath:-../../launcher/macos}
+username=${username?:"need a Apple Dev Username"}
+password=${password?:"need a Apple Dev Password"}
+appname=${appname:-launcher}
+signature=${signature?:"need a Signature"}
+teamid=${teamid?:"need a TeamId"}
+bundleid=${teamid:-com.template.launcher}
+outpath=${outpath:-$apppath/../../target/macos}
 
-
-_appfolder=`basename -a $apppath`
-_appbasefoldername="$(cut -d'.' -f1 <<<$apppath)"
-_appname="$(cut -d'.' -f1 <<<$_appfolder)"
+_appfile="$appname.app"
+_apppath="$apppath/$_appfile"
+_outpath="$outpath"
 _scriptabspath=$(cd "$(dirname "$0")"; pwd)
-_dmgpath=$_appbasefoldername.dmg
-_7zpath=$_appbasefoldername.7z
-
-rm "$_dmgpath"
-rm "$_7zpath"
-xattr -rc "$apppath"
-find "$apppath" -exec xattr -d com.apple.quarantine {} \;
-find "$apppath" -name *.cstemp -print0 | xargs -I $ -0 rm $
-
-_signopt="-o runtime --timestamp"
-
-find "$apppath" -name "*.dylib*" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s "$signature" $
-find "$apppath" -name "Qt*" -type f | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
-find "$apppath" -name "*.qml" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
-find "$apppath" -name "*.qmltypes" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
-find "$apppath" -name "*.js" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
-find "$apppath" -name "*qmldir" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
-find "$apppath" -name "*.png" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
-find "$apppath" -name "*.ttf" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
-find "$apppath" -name "*.metainfo" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
-find "$apppath" -name "*.icns" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
-find "$apppath" -name "*.xml" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
-find "$apppath" -name "*.txt" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
-find "$apppath" -name "*.json" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
-find "$apppath" -name "*.jpg" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
-find "$apppath" -name "*.ico" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
-find "$apppath" -name "*.svg" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
-find "$apppath" -name "*.sh" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
-find "$apppath" -name "*.qm" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
-
-codesign --preserve-metadata=identifier,entitlements --verify --verbose --force -s "$signature" "${apppath}/Contents/MacOS/7zr" $_signopt
-codesign --preserve-metadata=identifier,entitlements --verify --verbose --force -s "$signature" "${apppath}/Contents/MacOS/launcher" $_signopt
-codesign --preserve-metadata=identifier,entitlements --verify --verbose --force -s "$signature" "$apppath" $_signopt
-
-codesign -dv -r- "$apppath"
-
-sh -x $_scriptabspath/create-dmg/create-dmg \
-    --volname "$_appname" \
-    --volicon "$apppath/Contents/Resources/launcher.icns" \
-    --window-pos 200 120 \
-    --window-size 800 400 \
-    --icon-size 100 \
-    --icon "$_appname.app" 200 190 \
-    --hide-extension "$_appname.app" \
-    --app-drop-link 600 185 \
-    --hdiutil-quiet \
-    "$_dmgpath" \
-    "$apppath"
-
-codesign --preserve-metadata=identifier,entitlements --verify --verbose --force -s "$signature" "$_dmgpath" $_signopt
+_dmgfile="$appname.dmg"
+_dmgpath="$_outpath/$_dmgfile"
+_7zfile="$appname.7z"
+_7zpath="$_outpath/$_7zfile"
 
 requeststatus() { # $1: requestUUID
     requestUUID=${1?:"need a request UUID"}
@@ -78,15 +41,19 @@ notarizefile() { # $1: path to file to notarize, $2: identifier
     identifier=${2:?"need an identifier"}
 
     # upload file
-    echo "## uploading $filepath for notarization"
+    echo "> uploading $filepath for notarization"
 
-    requestUUID=$(xcrun altool --notarize-app \
-                               --primary-bundle-id "$identifier" \
-                               --username $username \
-                               --password $password \
-                               --asc-provider "$teamid" \
-                               --file "$filepath" 2>&1 \
-                  | awk '/RequestUUID/ { print $NF; }')
+    result=$(xcrun --verbose --log altool \
+                   --notarize-app \
+                   --primary-bundle-id "$identifier" \
+                   --username $username \
+                   --password $password \
+                   --asc-provider "$teamid" \
+                   --file "$filepath" 2>&1)
+
+    echo $result
+
+    requestUUID=$(echo $result | awk '/RequestUUID/ { print $NF; }')
 
     echo "Notarization RequestUUID: $requestUUID"
 
@@ -99,7 +66,7 @@ notarizefile() { # $1: path to file to notarize, $2: identifier
     request_status="in progress"
     while [[ "$request_status" == "in progress" ]]; do
         echo -n "waiting... "
-        sleep 10
+        sleep 60
         request_status=$(requeststatus "$requestUUID")
         echo "$request_status"
     done
@@ -116,11 +83,83 @@ notarizefile() { # $1: path to file to notarize, $2: identifier
     fi
 
 }
+
+echo "> Cleanup"
+rm -r "$_outpath"
+rm "$_dmgpath"
+rm "$_7zpath"
+
+echo "> Make outpath"
+mkdir -p $_outpath
+
+echo "> Copy App bundle to target folder"
+cp -a $_apppath $_outpath
+_apppath="$_outpath/$_appfile"
+
+echo "> Increase build number"
+./../../portables/macos/buildIncreaser//BuildIncreaser -config_json $_apppath/Contents/MacOS/config.json -log
+
+if [ "$?" != "0" ]; then exit 1; fi
+
+echo "> Remove unnecessary attributes from files"
+xattr -rc "$_apppath"
+xattr -dr com.apple.quarantine "$_apppath"
+find "$_apppath" -name *.cstemp -print0 | xargs -I $ -0 rm $
+
+echo "> Codesign"
+_signopt="-o runtime --timestamp"
+
+find "$_apppath" -name "*.dylib*" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s "$signature" $
+find "$_apppath" -name "Qt*" -type f | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
+find "$_apppath" -name "*.qml" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
+find "$_apppath" -name "*.qmltypes" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
+find "$_apppath" -name "*.js" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
+find "$_apppath" -name "*qmldir" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
+find "$_apppath" -name "*.png" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
+find "$_apppath" -name "*.ttf" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
+find "$_apppath" -name "*.metainfo" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
+find "$_apppath" -name "*.icns" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
+find "$_apppath" -name "*.xml" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
+find "$_apppath" -name "*.txt" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
+find "$_apppath" -name "*.json" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
+find "$_apppath" -name "*.jpg" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
+find "$_apppath" -name "*.ico" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
+find "$_apppath" -name "*.svg" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
+find "$_apppath" -name "*.sh" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
+find "$_apppath" -name "*.qm" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
+
+codesign --preserve-metadata=identifier,entitlements --verify --verbose --force -s "$signature" "${_apppath}/Contents/MacOS/7zr" $_signopt
+codesign --preserve-metadata=identifier,entitlements --verify --verbose --force -s "$signature" "${_apppath}/Contents/MacOS/launcher" $_signopt
+codesign --preserve-metadata=identifier,entitlements --verify --verbose --force -s "$signature" "$_apppath" $_signopt
+
+codesign -dv -r- "$_apppath"
+
+echo "> Create Disk Image (DMG)"
+cd $_outpath
+sh -x $_scriptabspath/create-dmg/create-dmg \
+    --volname "$appname" \
+    --window-pos 200 120 \
+    --window-size 800 400 \
+    --icon-size 100 \
+    --icon "$_appfile" 200 190 \
+    --hide-extension "$_appfile" \
+    --app-drop-link 600 190 \
+    --hdiutil-quiet \
+    "$_dmgfile" \
+    "$_apppath"
+
+echo "> Codesign Disk Image"
+codesign --preserve-metadata=identifier,entitlements --verify --verbose --force -s "$signature" "$_dmgpath" $_signopt
+
+echo "> Notarization"
+
+# notarize disk image
 notarizefile "$_dmgpath" "$bundleid"
 spctl -a -t open --context context:primary-signature -vv "$_dmgpath"
 xcrun stapler staple "$_dmgpath"
 
+echo "> Create Launcher Archive"
 
-hdiutil attach "$_dmgpath"
-"$apppath/Contents/MacOS/7zr" a -t7z "$_7zpath" "$apppath/Contents/." -mx=9 -m0=lzma
-hdiutil detach "/Volumes/$_appname"
+hdiutil attach "$_dmgpath" -quiet
+"$_apppath/Contents/MacOS/7zr" a -t7z "$_7zpath" "$_apppath/Contents/." -mx=9 -m0=lzma 
+hdiutil detach "/Volumes/$appname" -quiet

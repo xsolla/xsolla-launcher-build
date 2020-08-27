@@ -110,6 +110,8 @@ default_p2p_enabled | Whether to use P2P or CDN game delivery. Can be ‘true’
 restore_password_link | A URL to reset a password. The link opens in a browser. By default it leads to the Xsolla Login password reset page. If the field is empty (или the value is not stated), the link will be hidden from the authorization page.
 use_login_links | Whether to use the OAuth 2.0 authentication. Can be ‘true’ or ‘false’. By default, the parameter is ‘false’ and the OAuth 2.0 authentication is not enabled. If this parameter is missing or has an invalid value, launcher will authenticate users without the OAuth 2.0 protocol. 
 oauth_client_id | Client ID in the Login project. Contact your Account Manager to get your client ID. If this parameter is missing or has an invalid value, launcher will authenticate users without the OAuth 2.0 protocol.
+hide_game_banners | disable banners on game page
+hide_news_page | disable news page in launcher
 
 <details><summary>Example</summary>
 
