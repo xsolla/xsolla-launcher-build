@@ -113,9 +113,12 @@ ECHO * Copying installer's stuff
 	
 COPY %BUILD_PATH%\launcherIcon.ico "%TARGET_PATH%"
 COPY %SCRIPTS_PATH%\XsollaInstaller.nsi "%TARGET_PATH%"
-COPY %SCRIPTS_PATH%\XsollaWebInstaller.nsi "%TARGET_PATH%"
 XCOPY %SCRIPTS_PATH%\installer_images "%TARGET_PATH%"
 COPY %BUILD_PATH%\qwebchannel.js "%TARGET_PATH%"
+
+pushd %SCRIPTS_PATH%
+SET ABS_SCRIPTS_PATH=%CD%
+popd
 pushd %NSIS_PATH%
 SET NSIS_PATH=%CD%
 popd
@@ -131,7 +134,8 @@ if "%SKIP_WEB_INSTALLER%" == "FALSE" (
 	if "%ASK_TO_CONTINUE_WEB_INSTALLER%" == "TRUE" (
 		SET /P _=Before make WebInstaller you have to upload big installer to any cdn and put URL link to XsollaWebInstaller.nsi line 11. Press ENTER if you did that already to continue.
 	)
-	"%NSIS_PATH%\makensis.exe" XsollaWebInstaller.nsi   
+	COPY %ABS_SCRIPTS_PATH%\XsollaWebInstaller.nsi %CD%
+	"%NSIS_PATH%\makensis.exe" XsollaWebInstaller.nsi  
 )
 
 For /F "tokens=*" %%F In ('Dir %CD% /A:-D /B') Do (
