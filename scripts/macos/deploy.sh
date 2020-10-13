@@ -128,7 +128,7 @@ find "$_apppath" -name "*.svg" | xargs -I $ codesign --preserve-metadata=identif
 find "$_apppath" -name "*.sh" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
 find "$_apppath" -name "*.qm" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
 
-codesign --force --verify --verbose --sign "$signature" --entitlements QtWebEngineProcess.entitlements --options runtime "${_apppath}/Contents/Frameworks/QtWebEngineCore.framework/Helpers/QtWebEngineProcess.app/Contents/MacOS/QtWebEngineProcess"
+codesign --force --verify --verbose --sign "$signature" --entitlements QtWebEngineProcess.entitlements --options runtime "${_apppath}/Contents/Frameworks/QtWebEngineCore.framework/Versions/5/Helpers/QtWebEngineProcess.app/Contents/MacOS/QtWebEngineProcess"
 codesign --force --verify --verbose --sign "$signature" --options runtime "${_apppath}/Contents/MacOS/launcher"
 
 codesign --preserve-metadata=identifier,entitlements --verify --verbose --force -s "$signature" "${_apppath}/Contents/MacOS/7zr" $_signopt
