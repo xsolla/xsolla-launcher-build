@@ -107,7 +107,7 @@ xattr -dr com.apple.quarantine "$_apppath"
 find "$_apppath" -name *.cstemp -print0 | xargs -I $ -0 rm $
 
 echo "> Codesign"
-_signopt="-o runtime --timestamp"
+_signopt="-o runtime --timestamp=http://timestamp.apple.com/ts01"
 
 find "$_apppath" -name "*.dylib*" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s "$signature" $
 find "$_apppath" -name "Qt*" -type f | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
