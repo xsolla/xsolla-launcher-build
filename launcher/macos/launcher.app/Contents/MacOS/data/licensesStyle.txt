@@ -1,0 +1,27 @@
+<style>
+.caption {
+	color: #ffffff;
+	font-size: 13px;
+	line-height:16px;
+}
+.header {
+	color: #ffffff;
+	font-size: 16px;
+	line-height:19px;
+}
+a {
+	color: #ffffff;
+	font-weight:bold;
+}
+div {
+	font-size: 13px;
+	color: #80ffffff;
+	line-height:16px;
+}
+p {
+	color: #ffffff;
+	line-height: 22px;
+	font-size: 15px;
+	padding-bottom: 12px;
+}
+</style>

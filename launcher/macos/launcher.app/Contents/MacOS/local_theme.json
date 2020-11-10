@@ -1,0 +1,40 @@
+{
+    "general_styles":{
+        "start_page_bg":"img/Backgrounds/start_page_bg.png",
+        "primary_background_color":"rgba(54, 57, 63, 1)",
+        "secondary_background_color":"rgba(0, 0, 0, 0.2)",
+        "primary_text_color":"rgba(255, 255, 255, 1)",
+        "secondary_text_color":"rgba(255, 255, 255, 0.6)",
+        "links_color":"rgba(255, 255, 255, 1)",
+        "primary_button_bg":"rgba(0, 199, 126, 1)",
+        "primary_button_text":"rgba(255, 255, 255, 1)",
+        "secondary_button_bg":"rgba(160, 171, 184, 1)"
+    },
+    "game_specific_styles":[
+        {
+            "game_id":29235,
+            "game_layout_image":"img/Backgrounds/game1_bg.png",
+            "news_layout_image":"img/Backgrounds/news1_bg.png",
+            "store_layout_image":"img/Backgrounds/news1_bg.png",
+            "install_layout_image":"img/Backgrounds/install_bg.png",
+            "primary_button_bg":"rgba(0, 199, 126, 1)",
+            "primary_button_text":"rgba(255, 255, 255, 1)",
+            "store_size":"large",
+            "store_view":"horizontal_navigation",
+            "store_theme":"dark"
+        },
+        {
+            "game_id":29236,
+            "game_layout_image":"img/Backgrounds/game2_bg.png",
+            "news_layout_image":"img/Backgrounds/news2_bg.png",
+            "store_layout_image":"img/Backgrounds/news2_bg.png",
+            "install_layout_image":"img/Backgrounds/install_bg.png",
+            "primary_button_bg":"rgba(0, 199, 126, 1)",
+            "primary_button_text":"rgba(255, 255, 255, 1)",
+            "store_size":"large",
+            "store_view":"horizontal_navigation",
+            "store_theme":"dark"
+        }
+    ]
+}
+

@@ -178,6 +178,8 @@ Section "-MainSection" SEC01
   File "XsollaDownloader.dll"
   File "XsollaAuth.dll"
   File "XsollaCore.dll"
+  File "XsollaCommerce.dll"
+  File "XsollaSteam.dll"
   File "LauncherGUI.dll"
   File "Changelog.txt"
   File "qwebchannel.js"
@@ -240,7 +242,6 @@ Section "-MainSection" SEC01
 
   SetShellVarContext Current
   CreateDirectory "$SMPROGRAMS\${PRODUCT_NAME}"
-  CreateDirectory "$SMPROGRAMS\${PRODUCT_NAME}\Games"
   CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\${PRODUCT_NAME}.lnk" "$INSTDIR\launcher.exe" "" "$INSTDIR\launcherIcon.ico"
   CreateShortCut "$DESKTOP\${PRODUCT_NAME}.lnk" "$INSTDIR\launcher.exe" "" "$INSTDIR\launcherIcon.ico"
   SimpleFC::AddApplication "${PRODUCT_NAME}: launcher" "$INSTDIR\launcher.exe" 0 2 "" 1
@@ -328,6 +329,8 @@ Section Uninstall
   Delete "$INSTDIR\XsollaDownloader.dll"
   Delete "$INSTDIR\XsollaAuth.dll"
   Delete "$INSTDIR\XsollaCore.dll"
+  Delete "$INSTDIR\XsollaCommerce.dll"
+  Delete "$INSTDIR\XsollaSteam.dll"
   Delete "$INSTDIR\LauncherGUI.dll"
   Delete "$INSTDIR\Changelog.txt"
   Delete "$INSTDIR\qwebchannel.js"
@@ -398,6 +401,7 @@ Section Uninstall
   Delete "$DESKTOP\${PRODUCT_NAME}.lnk"
   SetOutPath "$TEMP"
   RMDir /r "$SMPROGRAMS\${PRODUCT_NAME}"
+  RMDir /r "$LOCALAPPDATA\${PRODUCT_NAME}" ;Remove default dirictory with logs, settings and cache files
 
   DeleteRegKey ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
   DeleteRegKey HKLM "${PRODUCT_DIR_REGKEY}"

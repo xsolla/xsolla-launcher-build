@@ -1,0 +1,10 @@
+{
+    "product_name": "Product Launcher",
+    "launcher_project_id": "8c91ecf3-e7b0-46a8-aaf7-4c419ef8ef4b",
+    "login_project_id": "bd2e1104-5494-48f9-ac50-98f230062df1",
+    "build_number": 0,
+    "callback_url": "https://login.xsolla.com/api/blank",
+    "ga_tracking_id": "UA-117660045-1",
+    "link_support":      "https://xsolla.com",
+    "link_community":    "https://xsolla.com"
+}

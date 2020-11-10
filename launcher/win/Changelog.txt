@@ -3,6 +3,23 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.6.0] - 2020-11-10
+### Added 
+- Support of macOS 10.14 and higher
+- Config parameter for hiding banners on the Game page
+- Config parameter for disabling resizing of the main window
+### Updated 
+- In the Start menu, the game shortcut appears beside the Launcher shortcut
+- Improvements of the key activation system
+- Increased speed of the game/package ownership validation
+- Game items banners are hidden until the game is bought
+### Fixed
+- Flickering of a social networks button on the authorization window
+- Auto-update of a game when the Home page is enabled
+- Inability to activate game keys that contain spaces
+- Mistakes in French UI texts
+- Other minor bugs
+
 ## [2.5.1] - 2020-08-07
 ### Fixed
 - Minor bugs
