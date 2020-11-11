@@ -13,13 +13,21 @@
 ## Repository Structure
 
 Launcher updates are delivered via this repository that has the following folders:
+* **buildloader/win** — Build Loader for Windows;
+* **buildloader/macos** — Build Loader for macOS;
 * **launcher/win** — Launcher for Windows;
+* **launcher/macos** — Launcher for macOS;
 * **launcher/PromoPage** — Launcher start page: setup for [v1.6.38.365 and lower](https://docs.google.com/document/d/1YuVftxN4efURR1ZnUJCjCoxx6skazaXRzVRbz2cLIVc/edit#heading=h.t0ksoifvtzar) or [v2.0.0 and higher](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)#how-to-set-up-start-page-in-v200);
 * **portables/win** — 7zip archiver and a utility that creates the installer (Nullsoft Scriptable Install System);
 * **scripts/win** — scripts to generate the archive and installer.
+* **scripts/macos** — scripts to generate DMG and sign code.
 
 The **scripts/win/deploy.bat** script generates:
 * a Launcher installer that you can send to new users,
+* an archive including the Launcher build used to deliver updates to users.
+
+The **scripts/macos/deploy.sh** script generates:
+* a Launcher DMG file that you can send to new users,
 * an archive including the Launcher build used to deliver updates to users.
 
 ## Steps to Integrate Launcher
@@ -46,27 +54,21 @@ Parameters for Launcher configuration are represented as JSON objects in **launc
  login_project_id        | ID of Login connected to your Launcher in Publisher Account. **Required.**
  build_number            | Launcher build number. The value is generated automatically since version 1.6.32.320. **Required.**
  callback_url            | **Callback URL** from Login settings in Publisher Account. This URL is used to redirect the user after successful authentication via a social network. **Required** if there are several Callback URLs added in Login settings in Publisher Account.
- product_name            | Launcher name in the **Start** menu. Duplicate the name in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter. The parameter is not used since version 1.7.1, please, specify the name from your Publisher Account settings in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter.
+ product_name            | Launcher name in the **Start** menu. Duplicate the name in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter. The parameter is not used since version 1.7.1, please, specify the name from your Publisher Account settings in the **scripts/win/Install_scripts/XsollaInstaller.nsi** file of the repository in the **PRODUCT_NAME** parameter.  **Required.**
  link_support            | A URL to the game’s technical support website.
  link_community          | A URL to the game’s community.
- game_autoupdate         | Whether the game is updated automatically. Can be ‘true’ and ‘false’. Default is ‘false’. A user can change this setting in the Launcher UI.
- hide_peer_seed_info     | Whether a number of peers and seeds is displayed in Launcher during games and updates download. Can be ‘true’ and ‘false’. Default is ‘false’.
- hide_email              | Whether the user email is hidden in Launcher. Can be ‘true’ and ‘false’. Default is ‘false’. A user can change this setting in the Launcher UI.
 
 <details><summary>Example</summary>
 
  ```
 {
+  "product_name": "Launcher",
   "launcher_project_id": "8c91ecf3-e7b0-46a8-aaf7-4c419ef8ef4b",
   "login_project_id": "bd2e1104-5494-48f9-ac50-98f230062df1",
   "use_local_config": true,
   "callback_url": "https://callback_url.com",
-  "product_name": "Launcher",
   "link_support": "https://support_example.com",
   "link_community": "https://community_example.com",
-  "game_autoupdate": false,
-  "hide_peer_seed_info": false,
-  "hide_email": false,
   "build_number": 1
 }
 ```
@@ -101,9 +103,17 @@ auth_fields| The list of parameters which must be requested from the user or soc
 close_steam_launcher_when_game_start| Whether to close desktop Launcher when the game is started. Works only for Xsolla Launcher published on Steam. Can be ‘true’ or ‘false’. Default is ‘false’.
 html_tabs| An array with parameters of custom HTML tabs, where name is a name of the tab (the length of the string should be less than 15 characters), url is a URL to the HTML page. [Wiki page](https://github.com/xsolla/xsolla-launcher-build/wiki/v2.4.4)
 default_p2p_enabled | Whether to use P2P or CDN game delivery. Can be ‘true’ or ‘false’. Default is ‘true’. You need to contact your account manager before changing to sign a license agreement amendment.
-restore_password_link | A URL to reset a password. The link opens in a browser. By default it leads to the Xsolla Login password reset page. If the field is empty (или the value is not stated), the link will be hidden from the authorization page.
 oauth_enabled | Whether to use the OAuth 2.0 authentication. Can be ‘true’ or ‘false’. By default, the parameter is ‘false’ and the OAuth 2.0 authentication is not enabled. If this parameter is missing or has an invalid value, launcher will authenticate users without the OAuth 2.0 protocol.
 oauth_client_id | Client ID in the Login project. Contact your Account Manager to get your client ID. If this parameter is missing or has an invalid value, launcher will authenticate users without the OAuth 2.0 protocol.
+game_autoupdate         | Whether the game is updated automatically. Can be ‘true’ and ‘false’. Default is ‘false’. A user can change this setting in the Launcher UI.
+hide_peer_seed_info     | Whether a number of peers and seeds is displayed in Launcher during games and updates download. Can be ‘true’ and ‘false’. Default is ‘false’.
+hide_email              | Whether the user email is hidden in Launcher. Can be ‘true’ and ‘false’. Default is ‘false’. A user can change this setting in the Launcher UI.
+custom_launcher_version | Сustom Launcher version.
+ hide_launcher_in_tray | Whether to hide Launcher in tray when a user clicks **Minimize**. Can be 'true' or 'false'. By default, the parameter is 'false' and Launcher does not hide in tray.
+ disable_launcher_updates_in_steam |  Whether to disable Launcher updates when the game is distributed via Steam. Can be 'true' or 'false'.  By default, the parameter is 'false' and Launcher updates in Steam are enabled.
+ disable_game_updates_in_steam |  Whether to disable game updates when the game is distributed via Steam. Can be 'true' or 'false'.  By default, the parameter is 'false' and game updates in Steam are enabled.
+hide_news_page | Whether to hide the **News** page in Launcher. Can be 'true' or 'false'.  By default, the parameter is  'false', and the **News** page is not hidden.
+hide_game_banners | Whether to hide banners on the **Game** screen. Can be 'true' or 'false'.  By default, the parameter is 'false' and the banners are not hidden.
 
 <details><summary>Example</summary>
 
@@ -121,33 +131,42 @@ oauth_client_id | Client ID in the Login project. Contact your Account Manager t
   "cdn_network_timeout": 30000,
   "check_update_interval": 10800000,
   "games_directory": "Games",
-  "auth_fields":"email",
+  "auth_fields": "email",
   "close_steam_launcher_when_game_start": true,
   "use_login_links": true,
   "oauth_client_id": 1,
   "relative_game_paths": [
-            {
-                "id": 29235,
-                "region_code": "en",
-                "path": "Games/ИграТест1/en/game"
-            },
-            {
-                "id": 29236,
-                "region_code": "default",
-                "path": "Games/ИграТест2/default/game"
-            }
-        ],
-   "html_tabs": [
-        {
-            "name": "Google",
-            "url": "https://google.com"
-        },
-        {
-            "name": "Yandex",
-            "url": "https://yandex.com"
-
-        }
-    ]
+    {
+      "id": 29235,
+      "region_code": "en",
+      "path": "Games/ИграТест1/en/game"
+    },
+    {
+      "id": 29236,
+      "region_code": "default",
+      "path": "Games/ИграТест2/default/game"
+    }
+  ],
+  "html_tabs": [
+    {
+      "name": "Google",
+      "url": "https://google.com"
+    },
+    {
+      "name": "Yandex",
+      "url": "https://yandex.com"
+    }
+  ],
+  "default_p2p_enabled": true,
+  "game_autoupdate": true,
+  "hide_peer_seed_info": false,
+  "hide_email": true,
+  "custom_launcher_version": "0.0.1",
+  "hide_launcher_in_tray": true,
+  "disable_launcher_updates_in_steam": false,
+  "disable_game_updates_in_steam": false,
+  "hide_news_page": "false",
+  "hide_game_banners": true
 }
 ```
 </details>
@@ -358,5 +377,5 @@ Background images on other pages also should be in JPEG or PNG format.
 
 1. Download updates from this repository.
 2. [Customize](#customizing-launcher-ui) the updated Launcher part if needed.
-3. Launch the **scripts/win/deploy.bat** script.
+3. [Generate](https://developers.xsolla.com/doc/launcher/#guides_launcher_generate_archive_installation_file) Launcher archive and installer.
 4. Upload the Launcher build archive to your Publisher Account > Launcher settings > **General settings > Customize Launcher** so that updates are automatically delivered to users.
