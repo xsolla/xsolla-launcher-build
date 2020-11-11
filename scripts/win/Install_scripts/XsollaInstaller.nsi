@@ -49,6 +49,8 @@ InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show
 ShowUnInstDetails show
 
+Var launcherAlreadyExists
+
 Function .onInit
   !insertmacro MUI_LANGDLL_DISPLAY
 FunctionEnd
@@ -79,6 +81,7 @@ FunctionEnd
 
 Function DirectoryLeave
   ${If} ${FileExists} "$InstDir\launcher.exe"
+    StrCpy $launcherAlreadyExists "TRUE"
     Return
   ${EndIf}
   
@@ -107,8 +110,9 @@ FunctionEnd
 
 Section "-MainSection" SEC01
   SetOutPath "$INSTDIR"
-  ExecWait '"cmd.exe" /C icacls "$INSTDIR" /grant:r %userdomain%\%username%:f /t /c'
-  
+  ${If} $launcherAlreadyExists != "TRUE" ; assume this command was executed with previous install, or even in silent mode CMD window appears.
+    ExecWait '"cmd.exe" /C icacls "$INSTDIR" /grant:r %userdomain%\%username%:f /t /c'
+  ${EndIf}
   SetOverwrite ifnewer
   File  /r "data"
   File  /r "fonts"

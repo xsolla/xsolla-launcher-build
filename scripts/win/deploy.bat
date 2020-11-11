@@ -5,6 +5,9 @@ SET BUILD_PATH=..\..\launcher\win
 SET ARCHIVER_PATH=..\..\portables\win\7zip
 SET NSIS_PATH=..\..\portables\win\NSIS
 SET SCRIPTS_PATH=..\win\Install_scripts
+SET SKIP_BIG_INSTALLER=FALSE
+SET SKIP_WEB_INSTALLER=FALSE
+SET ASK_TO_CONTINUE_WEB_INSTALLER=TRUE
 
 SET NEED_OUT=""
 
@@ -106,20 +109,34 @@ XCOPY "%BUILD_PATH%" "%TARGET_PATH%" /E /R
 
 ECHO * Create deploy archive
 "%ARCHIVER_PATH%\7za.exe" a -t7z "%TARGET_PATH%\bin\XsollaLauncher.7z" "%TARGET_PATH%\." -mx=9 -m0=lzma
-
 ECHO * Copying installer's stuff
 	
 COPY %BUILD_PATH%\launcherIcon.ico "%TARGET_PATH%"
 COPY %SCRIPTS_PATH%\XsollaInstaller.nsi "%TARGET_PATH%"
+XCOPY %SCRIPTS_PATH%\installer_images "%TARGET_PATH%"
 COPY %BUILD_PATH%\qwebchannel.js "%TARGET_PATH%"
-	
+
+pushd %SCRIPTS_PATH%
+SET ABS_SCRIPTS_PATH=%CD%
+popd
 pushd %NSIS_PATH%
 SET NSIS_PATH=%CD%
 popd
 	
 ECHO * Creating installer
 CD "%TARGET_PATH%"
-"%NSIS_PATH%\makensis.exe" XsollaInstaller.nsi
+
+if "%SKIP_BIG_INSTALLER%" == "FALSE" (
+	"%NSIS_PATH%\makensis.exe" XsollaInstaller.nsi  
+)
+
+if "%SKIP_WEB_INSTALLER%" == "FALSE" (
+	if "%ASK_TO_CONTINUE_WEB_INSTALLER%" == "TRUE" (
+		SET /P _=Before make WebInstaller you have to upload big installer to any cdn and put URL link to XsollaWebInstaller.nsi line 11. Press ENTER if you did that already to continue.
+	)
+	COPY %ABS_SCRIPTS_PATH%\XsollaWebInstaller.nsi %CD%
+	"%NSIS_PATH%\makensis.exe" XsollaWebInstaller.nsi  
+)
 
 For /F "tokens=*" %%F In ('Dir %CD% /A:-D /B') Do (
 	If /I Not "%%F"=="bin" (Del /F /Q "%CD%\%%F")
