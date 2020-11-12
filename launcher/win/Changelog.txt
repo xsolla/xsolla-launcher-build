@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.6.1] - 2020-11-12
+### Fixed
+- Background pictures bug
+
 ## [2.6.0] - 2020-11-10
 ### Added 
 - Support of macOS 10.14 and higher
