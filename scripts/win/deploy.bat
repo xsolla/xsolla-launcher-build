@@ -3,8 +3,6 @@ SETLOCAL EnableDelayedExpansion
 
 SET BUILD_PATH=..\..\launcher\win
 SET ARCHIVER_PATH=..\..\portables\win\7zip
-SET NSIS_PATH=..\..\portables\win\NSIS
-SET SCRIPTS_PATH=..\win\Install_scripts
 
 SET NEED_OUT=""
 
@@ -105,21 +103,15 @@ ECHO.
 XCOPY "%BUILD_PATH%" "%TARGET_PATH%" /E /R
 
 ECHO * Create deploy archive
-"%ARCHIVER_PATH%\7za.exe" a -t7z "%TARGET_PATH%\bin\XsollaLauncher.7z" "%TARGET_PATH%\." -mx=9 -m0=lzma
+"%ARCHIVER_PATH%\x64\7za.exe" a -tzip "%TARGET_PATH%\bin\XsollaLauncher.zip" "%TARGET_PATH%\."
 
 ECHO * Copying installer's stuff
 	
 COPY %BUILD_PATH%\launcherIcon.ico "%TARGET_PATH%"
-COPY %SCRIPTS_PATH%\XsollaInstaller.nsi "%TARGET_PATH%"
 COPY %BUILD_PATH%\qwebchannel.js "%TARGET_PATH%"
-	
-pushd %NSIS_PATH%
-SET NSIS_PATH=%CD%
-popd
 	
 ECHO * Creating installer
 CD "%TARGET_PATH%"
-"%NSIS_PATH%\makensis.exe" XsollaInstaller.nsi
 
 For /F "tokens=*" %%F In ('Dir %CD% /A:-D /B') Do (
 	If /I Not "%%F"=="bin" (Del /F /Q "%CD%\%%F")
