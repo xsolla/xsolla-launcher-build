@@ -1,10 +1,9 @@
 {
-    "build_number": 1,
-    "callback_url": "https://login.xsolla.com/api/blank",
-    "ga_tracking_id": "UA-117660045-1",
-    "launcher_project_id": "8c91ecf3-e7b0-46a8-aaf7-4c419ef8ef4b",
-    "link_community": "https://xsolla.com",
-    "link_support": "https://xsolla.com",
-    "login_project_id": "bd2e1104-5494-48f9-ac50-98f230062df1",
-    "product_name": "Product Launcher"
+"product_name": "Launcher",
+    "launcher_project_id": "79e7f3d4-b341-4976-92c5-73e5e67c30ac",
+   "login_project_id": "05f60d71-aed6-11ea-a85b-42010aa80004",
+   "product_name": "Launcher",
+   "link_support": "https://vk.com/mironov7789",
+   "link_community": "https://vk.com/rpstor",
+   "build_number": 1
 }
