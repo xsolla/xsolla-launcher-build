@@ -79,5 +79,7 @@
     "redeem_key_url"            : "https://store.xsolla.com/api/v1/game_delivery/xsolla_login/redeem_key",
 
     "social_networks_groups_url": "",
-    "metricsCollection_url"     : "https://datagather.xsolla.com/launcher_metrics"
+    "metricsCollection_url"     : "https://datagather.xsolla.com/launcher_metrics",
+    "loginapi_auth_via_social_network": "https://login.xsolla.com/api/oauth2/social/%1/login_redirect",
+	"exchange_otp_url": "https://launcher.xsolla.com/otp/%1"
 }

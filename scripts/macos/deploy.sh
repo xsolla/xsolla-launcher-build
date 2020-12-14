@@ -129,9 +129,9 @@ find "$_apppath" -name "*.sh" | xargs -I $ codesign --preserve-metadata=identifi
 find "$_apppath" -name "*.qm" | xargs -I $ codesign --preserve-metadata=identifier,entitlements --verify --verbose --force $_signopt -s  "$signature" $
 
 codesign --force --verify --verbose --sign "$signature" --entitlements QtWebEngineProcess.entitlements --options runtime "${_apppath}/Contents/Frameworks/QtWebEngineCore.framework/Versions/5/Helpers/QtWebEngineProcess.app/Contents/MacOS/QtWebEngineProcess"
-
+codesign --preserve-metadata=identifier,entitlements --verify --verbose --force -s "$signature" "${_apppath}/Contents/MacOS/crashpad_handler" $_signopt
 codesign --preserve-metadata=identifier,entitlements --verify --verbose --force -s "$signature" "${_apppath}/Contents/MacOS/7zr" $_signopt
-codesign --preserve-metadata=identifier,entitlements --verify --verbose --force -s "$signature" "${_apppath}/Contents/MacOS/launcher" $_signopt
+codesign --preserve-metadata=identifier,entitlements --verify --verbose --force -s "$signature" --entitlements launcher.entitlements "${_apppath}/Contents/MacOS/launcher" $_signopt
 codesign --preserve-metadata=identifier,entitlements --verify --verbose --force -s "$signature" "$_apppath" $_signopt
 
 codesign -dv -r- "$_apppath"
