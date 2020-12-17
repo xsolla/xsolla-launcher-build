@@ -495,6 +495,24 @@
         "maximize_button_icon"              : "img/ui/window_button/maximize.svg",
         "minimize2_button_icon"             : "img/ui/window_button/minimize2.svg"
     },
+    "game_update_window": {
+        "primary_window_bg_color"           : "#primary_background_color",
+        "secondary_window_bg_color"         : "#secondary_background_color",
+
+        "primary_window_text_color"         : "#primary_text_color",
+        "secondary_window_text_color"       : "#secondary_text_color",
+
+        "primary_button_bg_color"           : "#primary_button_bg",
+        "primary_button_text_color"         : "#primary_button_text",
+
+        "secondary_button_color"            : "#secondary_button_bg",
+        "secondary_button_text_color"       : "#primary_button_text",
+
+        "close_button_icon"                 : "img/LoginWindow/new_login/close.svg",
+        "minimize_button_icon"              : "img/ui/window_button/minimize.svg",
+        "maximize_button_icon"              : "img/ui/window_button/maximize.svg",
+        "minimize2_button_icon"             : "img/ui/window_button/minimize2.svg"
+    },
     "ui_components" : {
         "window_buttons_bar": {
             "primary_window_bg_color"           : "#primary_background_color",
@@ -510,6 +528,12 @@
             "secondary_button_text_color"       : "#primary_button_text",
 
             "button_close_image"                : "img/LoginWindow/new_login/close.svg"
+        },
+        "game_update_notification": {
+            "primary_background_color"          : "#primary_button_bg",
+            "primary_text_color"                : "#primary_button_text",
+            "secondary_text_color"              : "#secondary_text_color",
+            "icon"                              : "img/UI/game_update_notification/notification.svg"
         }
     },
 

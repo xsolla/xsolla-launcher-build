@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.9.0] - 2020-12-17
+### Added 
+- Optional game update
+
 ## [2.8.0] - 2020-12-14
 ### Added 
 - Support of web games
