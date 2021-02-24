@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.9.1] - 2021-02-19
+### Updated 
+- The maximum size of a game logo on the game page was increased
+### Fixed
+- Failure to display installed games after updating Launcher to v.2.9.0
+
 ## [2.9.0] - 2020-12-17
 ### Added 
 - Optional game update
