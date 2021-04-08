@@ -69,14 +69,12 @@
 
     "validate_jwt_url"          : "https://login.xsolla.com/api/token/validate",
 
-    "get_store_token_url"       : "https://store.xsolla.com/api/v1/xsolla_login/paystation/token",
-    "store_payment_url"         : "https://secure.xsolla.com/paystation3/desktop/payment/?access_token=",
-    "store_url"                 : "https://secure.xsolla.com/paystation3/?access_token=",
-    "store_items_list_url"      : "https://secure.xsolla.com/paystation2/api/virtualitems/?access_token=",
-    "store_purchase_url"        : "https://store.xsolla.com/api/v1/payment/token/",
-
-    "check_game_access_url"     : "https://store.xsolla.com/api/v1/user/xsolla_login/game_access?xsolla_login_user_id=%1&user_id=%2",
-    "redeem_key_url"            : "https://store.xsolla.com/api/v1/game_delivery/xsolla_login/redeem_key",
+    "redeem_key_url"      : "https://store.xsolla.com/api/v1/game_delivery/xsolla_login/redeem_key",
+    "store_token_url"     : "https://store.xsolla.com/api/v1/xsolla_login/paystation/token",
+    "paystation_url"      : "https://secure.xsolla.com/paystation3",
+    "purchase_token_url"  : "https://store.xsolla.com/api/v1/payment/token/",
+    "virtual_items_url"   : "https://secure.xsolla.com/paystation2/api/virtualitems/",
+    "access_url" : "https://store.xsolla.com/api/v2/projects/entitlement",
 
     "social_networks_groups_url": "",
     "metricsCollection_url"     : "https://datagather.xsolla.com/launcher_metrics",
