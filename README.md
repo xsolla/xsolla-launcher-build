@@ -1,4 +1,4 @@
->**Info**: The latest Xsolla Launcher version is 2.5.0. If your Xsolla Launcher version is earlier than 2.6.0, please read [Wiki](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)) to get updates.
+>**Info**: The latest Xsolla Launcher version is 2.10.1. If your Xsolla Launcher version is earlier than 2.6.0, please read [Wiki](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)) to get updates.
 
 [Documentation](https://developers.xsolla.com/doc/launcher) is for full Launcher integration.
 
@@ -116,6 +116,7 @@ hide_email              | Whether the user email is hidden in Launcher. Can be �
 custom_launcher_version | Сustom Launcher version.
 hide_news_page | Whether to hide the **News** page in Launcher. Can be 'true' or 'false'.  By default, the parameter is  'false', and the **News** page is not hidden.
 hide_game_banners | Whether to hide banners on the **Game** screen. Can be 'true' or 'false'.  By default, the parameter is 'false' and the banners are not hidden.
+multiple_instances_game_on_same_account_enabled | Whether to allow users to simultaneously launch the game on different devices using one account. Can be ‘true’ and ‘false’. Default is ‘false’.
 
 <details><summary>Example</summary>
 
@@ -159,7 +160,8 @@ hide_game_banners | Whether to hide banners on the **Game** screen. Can be 'true
             "url": "https://yandex.com"
 
         }
-    ]
+    ],
+  "multiple_instances_game_on_same_account_enabled": false
 }
 ```
 </details>
