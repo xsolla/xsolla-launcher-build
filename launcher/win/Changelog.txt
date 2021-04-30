@@ -3,7 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [2.10.1] - 2021-04-27
+## [2.10.2] - 2021-04-30
+### Fixed
+- Occasional settings reset after restarting Launcher
+
+## [2.10.1] - 2021-04-28
 ### Added
 - Possibility of simultaneous multi-device game launch on one gamer’s account
 - Display of current quantity of applied patches during the game update
