@@ -98,8 +98,8 @@ cdn_try_load_count  | Number of attempts to download the game file.
 cdn_network_timeout | Wait time between the download attempts (in milliseconds). Recommended ‘30000‘. Must be used in pair with "cdn_block_size".
 cdn_block_size|Bytes in swap buffer. Default ‘1048576‘. Must be used in pair with "cdn_network_timeout".
 check_update_interval | The interval for checking game updates availability in milliseconds. Default is ‘10800000’.
-games_directory   | The name of the games directory folder, for example: *C:/{games_directory}/LauncherName/GameName/*. The folder will be created on the disk selected by a user and will contain files of all installed games from Launcher. Default is ‘Games‘.
-relative_game_paths | An array with relative paths to games added to Launcher.
+games_directory   | The name of the games directory folder, for example: *C:/{games_directory}/{games_directory}/{product_name}/*. The folder will be created on the disk selected by a user and will contain files of all installed games from Launcher. Default is ‘Games‘.
+relative_game_paths | An array with relative paths to games added to Launcher. Required only if the partner themselves distributes the game along with the Launcher.
 relative_game_paths:id | Project ID in Publisher Account.
 relative_game_paths:region_code | Game region code.
 relative_game_paths:path | The path to the game folder relative to the folder with Launcher installed.
@@ -361,7 +361,7 @@ Icons for games, Launcher, installer, and games logos are configured:
  * Height: 52px;
  * Width: 110px;
  * Format:  JPEG, PNG.
-3.Background:
+3. Background:
  * FullHD or 4k (in case Launcher is used on 4k monitors).
 
 Background images on other pages also should be in JPEG or PNG format.
