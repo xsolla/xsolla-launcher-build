@@ -1,17 +1,11 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import './index.css';
 
-import {
-  View,
-  Title,
-  Text,
-  Button,
-  ArrowButton,
-} from '../../elements';
+import {View, Title, Text, Button, ArrowButton} from '../../elements';
 
 import ProgressBar from '../ProgressBar';
 
-import { text } from '../../../langs';
+import {text} from '../../../langs';
 const uuidv4 = require('uuid/v4');
 const step = 2;
 
@@ -23,12 +17,12 @@ class AllGames extends React.Component {
 
     this.state = {
       pagerPage: 0,
-      lastInPager: 0,
+      lastInPager: 0
     };
   }
 
   turnLeft = () => {
-    let { pagerPage, lastInPager } = this.state;
+    let {pagerPage, lastInPager} = this.state;
 
     if (pagerPage === 1) {
       lastInPager = 0;
@@ -37,12 +31,12 @@ class AllGames extends React.Component {
     if (pagerPage > 0) {
       this.setState({pagerPage: pagerPage - 1, lastInPager});
     }
-  }
+  };
 
   turnRight = () => {
     const curPage = this.state.pagerPage;
     const L = this.props.games.length;
-    const lastCount = L - ((curPage + 1) * step);
+    const lastCount = L - (curPage + 1) * step;
 
     let lastInPager = 0;
 
@@ -50,10 +44,10 @@ class AllGames extends React.Component {
       lastInPager = lastCount - step;
     }
 
-    if (curPage < Math.floor(this.props.games.length / curPage * step)) {
+    if (curPage < Math.floor((this.props.games.length / curPage) * step)) {
       this.setState({pagerPage: curPage + 1, lastInPager});
     }
-  }
+  };
 
   openGame = game => () => {
     if (game.hasUserGame) {
@@ -61,10 +55,10 @@ class AllGames extends React.Component {
     } else {
       this.props.selectGame(game);
     }
-  }
+  };
 
   onClickBtn = (game, action) => () => {
-    switch(action) {
+    switch (action) {
       case 'buy': {
         window.buyGame(game.id);
         break;
@@ -82,10 +76,9 @@ class AllGames extends React.Component {
         break;
       }
       default: {
-        
       }
     }
-  }
+  };
 
   render() {
     // const { lastInPager, pagerPage } = this.state;
@@ -94,22 +87,17 @@ class AllGames extends React.Component {
 
     return (
       <View className={`${this.className}`}>
-        <View style={{ direction: this.props.pageDirection }}>
-          <Title header
+        <View style={{direction: this.props.pageDirection}}>
+          <Title
+            header
             // nav={ this.renderNav() }
           >
-            { text('HOME.TITLE_ALL_GAMES') }
+            {text('HOME.TITLE_ALL_GAMES')}
           </Title>
         </View>
 
-        {/* <View className="all__games">
-          <View className="all__lenta" style={{ left: `calc(-${pers}% - ${px}px)` }}>
-            { this.props.games.slice(0, 5).map(g => this.renderGameBlock(g)) }
-          </View>
-        </View> */}
-
-         <View className="all__games">
-          { this.props.games.slice(0, 5).map(g => this.renderGameBlock(g)) }
+        <View className="all__games">
+          {this.props.games.map(g => this.renderGameBlock(g))}
         </View>
       </View>
     );
@@ -119,44 +107,48 @@ class AllGames extends React.Component {
     if (this.props.pageDirection !== 'ltr') {
       return (
         <View className="all__header__nav">
-          <ArrowButton onClick={ this.turnRight } right />
-          <ArrowButton onClick={ this.turnLeft } />
-        </View>      );
+          <ArrowButton onClick={this.turnRight} right />
+          <ArrowButton onClick={this.turnLeft} />
+        </View>
+      );
     }
 
     return (
       <View className="all__header__nav">
-        <ArrowButton onClick={ this.turnLeft } />
-        <ArrowButton onClick={ this.turnRight } right />
+        <ArrowButton onClick={this.turnLeft} />
+        <ArrowButton onClick={this.turnRight} right />
       </View>
     );
   }
 
-  renderGameBlock(g) {
-    const { curGame } = this.props;
+  renderGameBlock(game) {
+    const {curGame} = this.props;
     const installing = curGame.status === 'INSTALLING' || curGame.status === 'PAUSED';
-    const installProccess = curGame.id === g.id && installing;
+    const installProccess = curGame.id === game.id && installing;
 
     return (
-      <View className="all__game" key={uuidv4()} style={{ direction: this.props.pageDirection }}>
-        <View className="all__game__img">
-          <img
-            onClick={ this.openGame(g) }
-            className="all__game__img__fon"
-            src={ g.getGameBanner(true) }
-            alt={uuidv4()}
+      <View className="all__game" key={uuidv4()} style={{direction: this.props.pageDirection}}>
+        <img
+          onClick={this.openGame(game)}
+          className="all__game__img"
+          src={game.getGameBanner(true)}
+          alt={uuidv4()}
+        />
+
+        <div className="all__game__info">
+          <Title link onClick={this.openGame(game)}>
+            {game.name}
+          </Title>
+          <div
+            className="all__game__description"
+            dangerouslySetInnerHTML={{__html: `${game.description}${game.description}${game.description}${game.description}`}}
           />
-          <View className="all__game__info">
-            <Title link onClick={ this.openGame(g) }>
-              { g.name }
-            </Title>
-            { this.renderBtn(g, installProccess, curGame.status, installing) }
-            {
-              installProccess &&
-                <ProgressBar className="all__progress-bar" />
-            }
-          </View>
-        </View>
+        </div>
+
+        <div className="all__game__footer">
+          {installProccess && <ProgressBar className="all__progress-bar" />}
+          {this.renderBtn(game, installProccess, curGame.status, installing)}
+        </div>
       </View>
     );
   }
@@ -164,18 +156,15 @@ class AllGames extends React.Component {
   renderBtn(game, installProccess, status, installing) {
     if (installProccess) {
       if (status === 'INSTALLING') {
-        return <Text>{ text('ELEMENT.LABEL_INSTALLING') }</Text>;
+        return <div className="all__game__status">{text('ELEMENT.LABEL_INSTALLING')}</div>;
       }
-      return <Text>{ text('ELEMENT.LABEL_PAUSED') }</Text>;
+      return <div className="all__game__status">{text('ELEMENT.LABEL_PAUSED')}</div>;
     }
 
     if (game.hasUserGame && game.installed) {
       return (
-        <Button
-          className="all__game__info__btn"
-          onClick={ this.onClickBtn(game, 'launch') }
-        >
-          { text('ELEMENT.BTN_LAUNCH') }
+        <Button className="all__game__info__btn" onClick={this.onClickBtn(game, 'launch')}>
+          {text('ELEMENT.BTN_LAUNCH')}
         </Button>
       );
     }
@@ -184,57 +173,43 @@ class AllGames extends React.Component {
       return (
         <Button
           className="all__game__info__btn"
-          disabled={ installing }
-          onClick={ this.onClickBtn(game, 'install') }
-        >
-          { text('ELEMENT.BTN_INSTALL') }
+          disabled={installing}
+          onClick={this.onClickBtn(game, 'install')}>
+          {text('ELEMENT.BTN_INSTALL')}
         </Button>
       );
     }
 
     if (game.buy_option_enabled && !game.key_redeem_enabled) {
       return (
-        <Button
-          className="all__game__info__btn"
-          green
-          onClick={ this.onClickBtn(game, 'buy') }
-        >
-          { text('ELEMENT.BTN_BUY') }
+        <Button className="all__game__info__btn" green onClick={this.onClickBtn(game, 'buy')}>
+          {text('ELEMENT.BTN_BUY')}
         </Button>
       );
     }
 
     if (game.buy_option_enabled && game.key_redeem_enabled) {
       return (
-        <View className="all__game__info__btn__wrap">
+        <Fragment>
           <Button
             redeem
             small
             toolpitClassName="all__game__info__btn_redeem__toolpit"
             className="all__game__info__btn_redeem"
-            onClick={ this.onClickBtn(game, 'redeem') }
-          >
-            { text('ELEMENT.BTN_REDEEM') }
+            onClick={this.onClickBtn(game, 'redeem')}>
+            {text('ELEMENT.BTN_REDEEM')}
           </Button>
-          <Button
-            green
-            className="all__game__info__btn"
-            onClick={ this.onClickBtn(game, 'buy') }
-          >
-            { text('ELEMENT.BTN_BUY') }
+          <Button green className="all__game__info__btn" onClick={this.onClickBtn(game, 'buy')}>
+            {text('ELEMENT.BTN_BUY')}
           </Button>
-        </View>
+        </Fragment>
       );
     }
 
     if (game.key_redeem_enabled) {
       return (
-        <Button
-          redeem
-          className="all__game__info__btn"
-          onClick={ this.onClickBtn(game, 'redeem') }
-        >
-          { text('ELEMENT.BTN_REDEEM') }
+        <Button redeem className="all__game__info__btn" onClick={this.onClickBtn(game, 'redeem')}>
+          {text('ELEMENT.BTN_REDEEM')}
         </Button>
       );
     }

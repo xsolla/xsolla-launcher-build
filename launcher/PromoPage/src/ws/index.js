@@ -1,12 +1,17 @@
+import qtWeb from './qwebchannel';
+
 export function initConnectionFunc(callbacks) {
   window.openConnection = (port, lang = 'en', rtl = false) => {
-    connect(port, callbacks);
-    callbacks.onChangeLang({ lang, direction: rtl ? 'rtl' : 'ltr' });
+    connect(
+      port,
+      callbacks
+    );
+    callbacks.onChangeLang({lang, direction: rtl ? 'rtl' : 'ltr'});
   };
 
   window.changeLang = (lang, rtl = false) => {
-    callbacks.onChangeLang({ lang, direction: rtl ? 'rtl' : 'ltr' });
-  }
+    callbacks.onChangeLang({lang, direction: rtl ? 'rtl' : 'ltr'});
+  };
 }
 
 export function connect(port, callbacks) {
@@ -17,7 +22,7 @@ export function connect(port, callbacks) {
     onChangeNews,
     initCurrentGame,
     initCurrentProgress,
-    initCurGameStatus,
+    initCurGameStatus
   } = callbacks;
 
   // window.testInit = id => {initCurrentGame(id)}
@@ -41,23 +46,23 @@ export function connect(port, callbacks) {
   };
 
   socket.onopen = function() {
-    new window.QWebChannel(socket, function(channel) {
+    new qtWeb.QWebChannel(socket, function(channel) {
       window.wsChannel = channel.objects.core;
       const {
         gamesModel: games,
         newsModel: news,
         gamesModelChanged,
         newsModelChanged,
-        installGameByID,                // для установки игры нужно вызвать метод installGameByID и передать id игры.
-        launchGameByID,                 // для запуска игры нужно вызвать метод launchGameByID и передать id игры.
-        buyGameByID,                    // для покупки игры нужно вызвать метод buyGameByID и передать id игры.
-        openGameByID,                   // для открытия странички игры нужно вызвать метод openGameByID и передать id игры.
+        installGameByID, // для установки игры нужно вызвать метод installGameByID и передать id игры.
+        launchGameByID, // для запуска игры нужно вызвать метод launchGameByID и передать id игры.
+        buyGameByID, // для покупки игры нужно вызвать метод buyGameByID и передать id игры.
+        openGameByID, // для открытия странички игры нужно вызвать метод openGameByID и передать id игры.
         currentGameStatusChanged,
         progressChanged,
         openOneNewsById,
         getNextNews,
         redeemKeyByGameID,
-        publisherLogo,
+        publisherLogo
       } = channel.objects.core;
 
       window.publisher_logo = publisherLogo;
@@ -66,30 +71,46 @@ export function connect(port, callbacks) {
       initCurrentProgress(window.wsChannel.progress);
       initCurGameStatus(window.wsChannel.currentGameStatus);
 
-      window.installGame = id => { installGameByID(id) };
-      window.launchGame = id => { launchGameByID(id) };
-      window.buyGame = id => { buyGameByID(id) };
-      window.openGame = id => { openGameByID(id) };
-      window.getCurrentGameId = () => { initCurrentGame(window.wsChannel.currentGameId) };
-      window.getCurrentProgress = () => { initCurrentProgress(window.wsChannel.progress) };
-      window.openOneNews = id => { openOneNewsById(id) };
+      window.installGame = id => {
+        installGameByID(id);
+      };
+      window.launchGame = id => {
+        launchGameByID(id);
+      };
+      window.buyGame = id => {
+        buyGameByID(id);
+      };
+      window.openGame = id => {
+        openGameByID(id);
+      };
+      window.getCurrentGameId = () => {
+        initCurrentGame(window.wsChannel.currentGameId);
+      };
+      window.getCurrentProgress = () => {
+        initCurrentProgress(window.wsChannel.progress);
+      };
+      window.openOneNews = id => {
+        openOneNewsById(id);
+      };
       window.getNextNewsArray = () => {
-        output("Has news: " + window.wsChannel.haveNextNews)
+        output('Has news: ' + window.wsChannel.haveNextNews);
         if (window.wsChannel.haveNextNews) {
           getNextNews();
         }
       };
-      window.redeemKeyByGameID = id => { redeemKeyByGameID(id) }
+      window.redeemKeyByGameID = id => {
+        redeemKeyByGameID(id);
+      };
 
-      onSuccess({ games, news });
+      onSuccess({games, news});
 
       output(games);
-  
+
       // коллбек вызывается, когда изменяются модели
       gamesModelChanged.connect(function(gamesModel) {
         onChangeGames(gamesModel);
       });
-  
+
       newsModelChanged.connect(function(newsModel) {
         onChangeNews(newsModel);
       });
@@ -103,9 +124,9 @@ export function connect(port, callbacks) {
         initCurGameStatus(currentGameStatus); // статус игры, над которой выполняется действие "NONE" - ничего не происходит "INSTALLING" - идёт установка игры "UNINSTALLING" - идёт удаление игры
       });
     });
-  }
+  };
 }
 
-function output(message) { 
-  console.log(message)
+function output(message) {
+  console.log(message);
 }

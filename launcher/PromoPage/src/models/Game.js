@@ -70,13 +70,7 @@ class Game {
       return this.big_feature_image;
     }
 
-    // for (let i = 0; i < this.arts.length; i++) {
-    //   if (this.arts[i].type !== 'video') {
-    //     return this.arts[i].link;
-    //   }
-    // }
-  
-    return require('../imgs/placeholder_image@2x.png');
+    return require('../imgs/game_placeholder@2x.png');
   }
 
   wasBuy() {

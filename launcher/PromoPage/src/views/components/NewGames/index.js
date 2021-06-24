@@ -110,7 +110,7 @@ class AllGames extends React.Component {
 
         <View className="new__games">
           <View className="new__lenta" style={{ left: `calc(-${pers}% - ${px}px)` }}>
-            { this.props.games.slice(0, 5).map(g => this.renderGameBlock(g)) }
+            { this.props.games.map(g => this.renderGameBlock(g)) }
           </View>
         </View>
       </View>

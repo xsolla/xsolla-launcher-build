@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 import ProgressBar from '../ProgressBar';
-import { text } from '../../../langs';
+import {text} from '../../../langs';
 
 import {
   View,
@@ -9,7 +9,7 @@ import {
   Title,
   Text,
   // Description,
-  Button,
+  Button
 } from '../../elements';
 
 class Details extends React.Component {
@@ -24,7 +24,7 @@ class Details extends React.Component {
   }
 
   onClickBtn = (game, action) => () => {
-    switch(action) {
+    switch (action) {
       case 'buy': {
         window.buyGame(game.id);
         break;
@@ -42,50 +42,52 @@ class Details extends React.Component {
         break;
       }
       default: {
-        
       }
     }
-  }
+  };
 
   render() {
-    const { game, curGame } = this.props;
-    const installProccess = curGame.id === game.id && (curGame.status === 'INSTALLING' || curGame.status === 'PAUSED');
+    const {game, curGame} = this.props;
+    const installProccess =
+      curGame.id === game.id && (curGame.status === 'INSTALLING' || curGame.status === 'PAUSED');
     return (
-      <View className={`gdetails ${this.className}`} style={{ direction: this.props.pageDirection }}>
-        <View className="gdetails__main-info" >
-          <View style={{ flexDirection: 'row' }}>
-            <img
-              // src={`../img/web/game_logo_${game.publisher_project_id}.png`}
-              src={ game.game_logo }
-              alt="logo"
-              className="gdetails__logo"
-            />
-          </View>
-          
-          <Title className="gdetails__main-info__title">{ game.name }</Title>
+      <View className={`gdetails ${this.className}`} style={{direction: this.props.pageDirection}}>
+        <View className="gdetails__main-info">
+          {game.game_logo && (
+            <View style={{flexDirection: 'row'}}>
+              <img src={game.game_logo} alt="" className="gdetails__logo" />
+            </View>
+          )}
 
-          <div dangerouslySetInnerHTML={{ __html: game.title }}></div>
+          <Title className="gdetails__main-info__title">{game.name}</Title>
+
+          <div dangerouslySetInnerHTML={{__html: game.title}}></div>
 
           <View className="gdetails__buy-btn_wrap">
-            {
-              installProccess &&
-                <ProgressBar className="gdetails__progress-bar" />
-            }
-            { !installProccess && this.renderBtn(game) }
-            { curGame.status === 'INSTALLING' && installProccess && <Text className="gdetails__status">{ text('ELEMENT.LABEL_INSTALLING') }</Text> }
-            { curGame.status === 'PAUSED' && installProccess && <Text className="gdetails__status">{ text('ELEMENT.LABEL_PAUSED') }</Text> }
+            {installProccess && <ProgressBar className="gdetails__progress-bar" />}
+            {!installProccess && this.renderBtn(game)}
+            {curGame.status === 'INSTALLING' && installProccess && (
+              <Text className="gdetails__status">{text('ELEMENT.LABEL_INSTALLING')}</Text>
+            )}
+            {curGame.status === 'PAUSED' && installProccess && (
+              <Text className="gdetails__status">{text('ELEMENT.LABEL_PAUSED')}</Text>
+            )}
           </View>
         </View>
-        
+
         <View className="gdetails__info_container">
-          <Subtitle containerClassName="gdetails__title_container" header>{ text('GAME_PAGE.TITLE_DETAILS') }</Subtitle>
-          <div dangerouslySetInnerHTML={{ __html: game.details }}></div>
+          <Subtitle containerClassName="gdetails__title_container" header>
+            {text('GAME_PAGE.TITLE_DETAILS')}
+          </Subtitle>
+          <div dangerouslySetInnerHTML={{__html: game.details}}></div>
         </View>
 
         <View className="gdetails__info_container">
-          <Subtitle containerClassName="gdetails__title_container" header>{ text('GAME_PAGE.TITLE_SYS_REQ') }</Subtitle>
+          <Subtitle containerClassName="gdetails__title_container" header>
+            {text('GAME_PAGE.TITLE_SYS_REQ')}
+          </Subtitle>
 
-          <div dangerouslySetInnerHTML={{ __html: game.system_requirements }}></div>
+          <div dangerouslySetInnerHTML={{__html: game.system_requirements}}></div>
         </View>
       </View>
     );
@@ -94,34 +96,24 @@ class Details extends React.Component {
   renderBtn(game) {
     if (game.hasUserGame && !game.installed) {
       return (
-        <Button
-          className="gdetails__buy-btn"
-          onClick={ this.onClickBtn(game, 'install') }
-        >
-          { text('ELEMENT.BTN_INSTALL') }
+        <Button className="gdetails__buy-btn" onClick={this.onClickBtn(game, 'install')}>
+          {text('ELEMENT.BTN_INSTALL')}
         </Button>
       );
     }
 
     if (game.hasUserGame && game.installed) {
       return (
-        <Button
-          className="gdetails__buy-btn"
-          onClick={ this.onClickBtn(game, 'launch') }
-        >
-          { text('ELEMENT.BTN_LAUNCH') }
+        <Button className="gdetails__buy-btn" onClick={this.onClickBtn(game, 'launch')}>
+          {text('ELEMENT.BTN_LAUNCH')}
         </Button>
       );
     }
 
     if (game.buy_option_enabled && !game.key_redeem_enabled) {
       return (
-        <Button
-          className="gdetails__buy-btn"
-          green
-          onClick={ this.onClickBtn(game, 'buy') }
-        >
-          { text('ELEMENT.BTN_BUY') }
+        <Button className="gdetails__buy-btn" green onClick={this.onClickBtn(game, 'buy')}>
+          {text('ELEMENT.BTN_BUY')}
         </Button>
       );
     }
@@ -129,19 +121,15 @@ class Details extends React.Component {
     if (game.buy_option_enabled && game.key_redeem_enabled) {
       return (
         <View className="gdetails__info__btns_redeem__wrap">
-          <Button
-            green
-            className="gdetails__buy-btn"
-            onClick={ this.onClickBtn(game, 'buy') }
-          >
-            { text('ELEMENT.BTN_BUY') }
+          <Button green className="gdetails__buy-btn" onClick={this.onClickBtn(game, 'buy')}>
+            {text('ELEMENT.BTN_BUY')}
           </Button>
           <Button
             redeem
             small
             toolpitClassName="fe-pager__info__btn_redeem__toolpit"
             className="gdetails__btn_redeem"
-            onClick={ this.onClickBtn(game, 'redeem') }
+            onClick={this.onClickBtn(game, 'redeem')}
           />
         </View>
       );
@@ -149,11 +137,9 @@ class Details extends React.Component {
 
     if (!game.buy_option_enabled && game.key_redeem_enabled) {
       return (
-        <Button
-          redeem
-          className="gdetails__buy-btn"
-          onClick={ this.onClickBtn(game, 'redeem') }
-        >{ text('ELEMENT.BTN_REDEEM') }</Button>
+        <Button redeem className="gdetails__buy-btn" onClick={this.onClickBtn(game, 'redeem')}>
+          {text('ELEMENT.BTN_REDEEM')}
+        </Button>
       );
     }
   }

@@ -62,7 +62,7 @@ class FeatucheringViewPager extends React.Component {
     if (curPage > 0) {
       this.setState({pagerPage: curPage - 1});
     } else if (curPage === 0) {
-      this.setState({pagerPage: this.props.games.slice(0, 5).length - 1});
+      this.setState({pagerPage: this.props.games.length - 1});
     }
 
     clearInterval(autoShowInterval);
@@ -71,7 +71,7 @@ class FeatucheringViewPager extends React.Component {
   turnRight = (userClick = false) => {
     const curPage = this.state.pagerPage;
 
-    if (curPage < this.props.games.slice(0, 5).length - 1) {
+    if (curPage < this.props.games.length - 1) {
       this.setState({pagerPage: curPage + 1});
     } else {
       this.setState({pagerPage: 0});
@@ -128,7 +128,7 @@ class FeatucheringViewPager extends React.Component {
           className="fe-pager__lenta"
           style={{ left: `${this.props.pageDirection === 'ltr' ? '-' : ''}${this.state.pagerPage * 100}%` }}
         >
-          { this.props.games.slice(0, 5).map(g => this.renderGame(g)) }
+          { this.props.games.map(g => this.renderGame(g)) }
         </View>
         {
           this.props.games.length > 1 &&

@@ -18,3 +18,8 @@
 .home__last-update, .home__all-games {
   margin-bottom: 40px;
 }
+
+.home-logo-placeholder {
+  margin-bottom: 24px;
+  height: 96px;
+}

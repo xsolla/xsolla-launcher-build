@@ -1,8 +1,18 @@
 .bg__container {
   max-height: calc(100vh - 5px);
   overflow: scroll;
+  animation: bgContainerAnimation 160ms ease-in-out;
 }
 
 .bg {
   position: relative;
+}
+
+@keyframes bgContainerAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

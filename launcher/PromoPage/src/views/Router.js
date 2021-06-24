@@ -1,31 +1,24 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 import Home from './pages/Home';
 import Game from './pages/GamePage';
-import { initConnectionFunc } from '../ws';
-import { pageSetCurPageReq, pageSetLangReq } from '../actions/pages';
+import {initConnectionFunc} from '../ws';
+import {pageSetCurPageReq, pageSetLangReq} from '../actions/pages';
 import {
   gamesSetListReq,
   gamesSelectGameReq,
   gamesSetCurLauncherGameReq,
   gamesSetCurProgressGameReq,
-  gamesSetCurStatusGameReq,
+  gamesSetCurStatusGameReq
 } from '../actions/games';
-import { newsSetListReq } from '../actions/news';
+import {newsSetListReq} from '../actions/news';
 
 class Router extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      //
-    };
-  }
-
   componentWillMount() {
     initConnectionFunc({
-      onSuccess: ({ games, news }) => {
+      onSuccess: ({games, news}) => {
         this.props.gamesSetListReq(games);
         this.props.newsSetListReq(news);
       },
@@ -47,21 +40,27 @@ class Router extends React.Component {
       onChangeLang: lang => {
         this.props.pageSetLangReq(lang);
       },
-      onError: () => {},
+      onError: () => {}
     });
+
+    window.openConnection(55551); // @todo update dev socket connection
   }
 
   openPage = page => {
     this.props.pageSetCurPageReq(page);
-  }
+  };
 
   render() {
+    if (!this.props.loaded) {
+      return null;
+    }
+
     if (this.props.curPage === 'Home') {
-      return (<Home {...this.props} openPage={ this.openPage } />);
+      return <Home {...this.props} openPage={this.openPage} />;
     }
 
     if (this.props.curPage === 'Game') {
-      return (<Game {...this.props} openPage={ this.openPage } />);
+      return <Game {...this.props} openPage={this.openPage} />;
     }
 
     return null;
@@ -69,21 +68,28 @@ class Router extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  loaded: state.games.list.length,
   curPage: state.pages.curPage,
-  lang: state.pages.lang,
+  lang: state.pages.lang
 });
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators({
-    pageSetCurPageReq,
-    gamesSetListReq,
-    newsSetListReq,
-    gamesSelectGameReq,
-    gamesSetCurLauncherGameReq,
-    gamesSetCurProgressGameReq,
-    gamesSetCurStatusGameReq,
-    pageSetLangReq,
-  }, dispatch),
+  ...bindActionCreators(
+    {
+      pageSetCurPageReq,
+      gamesSetListReq,
+      newsSetListReq,
+      gamesSelectGameReq,
+      gamesSetCurLauncherGameReq,
+      gamesSetCurProgressGameReq,
+      gamesSetCurStatusGameReq,
+      pageSetLangReq
+    },
+    dispatch
+  )
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Router);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Router);

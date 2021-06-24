@@ -30,10 +30,11 @@
 }
 
 .lu__game__img {
+  background-position: center;
+  background-size: cover;
+  background-image: url('../../../imgs/placeholder_image@2x.png');
   width: calc(100% - 2px);
   height: 124px;
-  
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   object-fit: cover;

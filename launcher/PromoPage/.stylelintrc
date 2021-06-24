@@ -1,0 +1,43 @@
+{
+  "extends": "stylelint-config-idiomatic-order",
+  "ignoreFiles": [
+    "**.jsx",
+    "**.js"
+  ],
+  "rules": {
+    "no-empty-source": null,
+    "block-no-empty": null,
+    "color-no-invalid-hex": true,
+    "comment-empty-line-before": [
+      "always",
+      {
+        "ignore": [
+          "stylelint-commands",
+          "after-comment"
+        ]
+      }
+    ],
+    "declaration-colon-space-after": "always",
+    "declaration-colon-newline-after": null,
+    "value-list-comma-newline-after": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "indentation": [
+      2,
+      {
+        "severity": "error"
+      }
+    ],
+    "max-empty-lines": 1,
+    "rule-empty-line-before": [
+      "always",
+      {
+        "except": [
+          "first-nested"
+        ],
+        "ignore": [
+          "after-comment"
+        ]
+      }
+    ]
+  }
+}

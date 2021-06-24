@@ -1,11 +1,22 @@
 @font-face {
-  font-family: "Lato";
-  src: url("./Lato-Regular.ttf") format('truetype');
+  font-family: 'Lato';
+  src: url('./Lato-Regular.ttf') format('truetype');
 }
 
-p, .title, .link,
-.subtitle, .link,
-.tag, .btn, .time_label__text,
+body {
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-size: 14px;
+}
+
+p,
+.title,
+.link,
+.subtitle,
+.link,
+.tag,
+.btn,
+.time_label__text,
 .btn__redeem__toolpit__text {
   font-family: Lato;
   font-smooth: antialiased;
@@ -28,8 +39,8 @@ p {
   font-weight: 500;
   line-height: 24px;
   font-size: 20px;
-  
-  color: #FFFFFF;
+
+  color: #ffffff;
 }
 
 .subtitle {
@@ -37,24 +48,27 @@ p {
   font-weight: normal;
   line-height: 20px;
   font-size: 16px;
-  
-  color: #FFFFFF;
+
+  color: #ffffff;
 }
 
-.title_header, .subtitle_header {
+.title_header,
+.subtitle_header {
   padding-bottom: 10px;
   margin-bottom: 20px;
 
   border-bottom: solid 1px rgba(255, 255, 255, 0.5);
 }
 
-.title_header__nav, .subtitle_header__nav {
+.title_header__nav,
+.subtitle_header__nav {
   flex-direction: row;
   justify-content: space-between;
 }
 
-.link:active, .link:hover {
-  color: #F3B61F;
+.link:active,
+.link:hover {
+  color: #f3b61f;
 }
 
 .description {
@@ -91,7 +105,7 @@ p {
 }
 
 .link {
-  color: #D49B11;
+  color: #d49b11;
   text-decoration: none;
   cursor: pointer;
   user-select: none;
@@ -107,7 +121,7 @@ p {
   align-items: center;
 
   border-radius: 12px;
-  background: #006E90;
+  background: #006e90;
 
   font-family: Lato;
   font-style: normal;
@@ -117,7 +131,7 @@ p {
   text-align: center;
   text-transform: uppercase;
 
-  color: #FFFFFF;
+  color: #ffffff;
   mix-blend-mode: normal;
 
   /* cursor: pointer; */
@@ -125,19 +139,19 @@ p {
 }
 
 .tag__blue {
-  background: #006E90;
+  background: #006e90;
 }
 
 .tag__green {
-  background: #99C24D;
+  background: #99c24d;
 }
 
 .tag__purpur {
-  background: #3D348B;
+  background: #3d348b;
 }
 
 .tag__orange {
-  background: #F3672B;
+  background: #f3672b;
 }
 
 .tag__mini {
@@ -154,7 +168,8 @@ p {
   justify-content: center;
   align-items: center;
 
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 50%), linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%), #3076D7;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 50%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%), #3076d7;
   box-sizing: border-box;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
@@ -170,17 +185,21 @@ p {
   text-transform: uppercase;
   text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
 
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .btn:hover {
   color: rgba(0, 0, 0, 0.72);
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 50%), linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%), #3076D7;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 50%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%), #3076d7;
 }
 
 .btn:active {
   color: rgba(0, 0, 0, 0.72);
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 50%), linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%), #3076D7;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 50%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%), #3076d7;
 }
 
 .btn__black {
@@ -188,15 +207,20 @@ p {
 }
 
 .btn__green {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 50%), linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%), #77B63A;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 50%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%), #77b63a;
 }
 
 .btn__green:hover {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 50%), linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%), #77B63A;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 50%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%), #77b63a;
 }
 
 .btn__green:active {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 50%), linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%), #77B63A;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 50%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%), #77b63a;
 }
 
 .btn__black_text {
@@ -213,7 +237,7 @@ p {
   flex-direction: row;
   background: rgba(0, 0, 0, 0.26);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #FFFFFF;
+  color: #ffffff;
   text-transform: none;
   font-style: normal;
   font-weight: normal;
@@ -251,7 +275,7 @@ p {
   line-height: normal;
   font-size: 15px;
 
-  color: #FFFFFF;
+  color: #ffffff;
 
   height: 42px;
   width: 110px;
@@ -288,7 +312,7 @@ p {
 }
 
 .btn__redeem__disabled .btn__redeem__union {
-  opacity: .2;
+  opacity: 0.2;
 }
 
 .btn__redeem__union {
@@ -298,10 +322,12 @@ p {
 }
 
 .btn__redeem_small .btn__redeem__union {
-  margin-right: 0; 
+  margin-right: 0;
 }
 
-.btn__disabled, .btn__disabled:hover, .btn__disabled:active {
+.btn__disabled,
+.btn__disabled:hover,
+.btn__disabled:active {
   background: #979797;
   color: rgba(0, 0, 0, 0.72);
   cursor: default;
@@ -320,7 +346,7 @@ p {
 
   margin-left: 5px;
 
-  color: #F3B61F;
+  color: #f3b61f;
 }
 
 .arrow_btn {
@@ -331,7 +357,7 @@ p {
 
   justify-content: center;
   align-items: center;
-  
+
   background: rgba(0, 0, 0, 0.5);
   transform: matrix(-1, 0, 0, 1, 0, 0);
 }
@@ -342,7 +368,7 @@ p {
 
   justify-content: center;
   align-items: center;
-  
+
   background: rgba(0, 0, 0, 0.5);
   transform: matrix(-1, 0, 0, 1, 0, 0);
 }
@@ -360,7 +386,7 @@ p {
 }
 
 .arrow_btn__disabled .arrow_btn__arrow {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .arrow_btn:hover .arrow_btn__arrow {
@@ -439,8 +465,8 @@ p {
   bottom: -4px;
 
   border-radius: 50%;
-  
-  background: #0AD100;
+
+  background: #0ad100;
 }
 
 .header__chat {
