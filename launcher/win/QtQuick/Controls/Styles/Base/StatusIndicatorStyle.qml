@@ -92,8 +92,8 @@ Style {
 
             Connections {
                 target: control
-                onActiveChanged: backgroundCanvas.requestPaint()
-                onColorChanged: backgroundCanvas.requestPaint()
+                function onActiveChanged() { backgroundCanvas.requestPaint() }
+                function onColorChanged() { backgroundCanvas.requestPaint() }
             }
 
             onPaint: {
@@ -124,8 +124,8 @@ Style {
 
                 Connections {
                     target: control
-                    onActiveChanged: colorCanvas.requestPaint()
-                    onColorChanged: colorCanvas.requestPaint()
+                    function onActiveChanged() { colorCanvas.requestPaint() }
+                    function onColorChanged() { colorCanvas.requestPaint() }
                 }
 
                 onPaint: {
@@ -157,8 +157,8 @@ Style {
 
             Connections {
                 target: control
-                onActiveChanged: foregroundCanvas.requestPaint()
-                onColorChanged: foregroundCanvas.requestPaint()
+                function onActiveChanged() { foregroundCanvas.requestPaint() }
+                function onColorChanged() { foregroundCanvas.requestPaint() }
             }
 
             onPaint: {
@@ -204,7 +204,7 @@ Style {
                     gradient.addColorStop(1.0, "transparent");
                 } else {
                     // Draw the radial shine.
-                    gradient = ctx.createRadialGradient(width / 2, height / 2, width * 0.25, width / 2, height / 2, width * 0.25);
+                    gradient = ctx.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, width * 0.5 /* (same as height) */);
                     gradient.addColorStop(0.0, Qt.lighter(baseColor, 1.4));
                     gradient.addColorStop(1.0, "transparent");
                 }

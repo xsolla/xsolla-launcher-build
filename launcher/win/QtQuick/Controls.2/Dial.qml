@@ -34,29 +34,30 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.10
-import QtQuick.Controls 2.3
-import QtQuick.Controls.impl 2.3
-import QtQuick.Templates 2.3 as T
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import QtQuick.Controls.impl 2.12
+import QtQuick.Templates 2.12 as T
 
 T.Dial {
     id: control
 
-    implicitWidth: 184
-    implicitHeight: 184
+    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                            implicitContentWidth + leftPadding + rightPadding) || 184 // ### remove 184 in Qt 6
+    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                             implicitContentHeight + topPadding + bottomPadding) || 184 // ### remove 184 in Qt 6
 
     background: DialImpl {
-        width: control.availableWidth
-        height: control.availableHeight
+        implicitWidth: 184
+        implicitHeight: 184
         color: control.visualFocus ? control.palette.highlight : control.palette.dark
         progress: control.position
         opacity: control.enabled ? 1 : 0.3
     }
 
     handle: ColorImage {
-        id: handleItem
-        x: background.x + background.width / 2 - handle.width / 2
-        y: background.y + background.height / 2 - handle.height / 2
+        x: control.background.x + control.background.width / 2 - control.handle.width / 2
+        y: control.background.y + control.background.height / 2 - control.handle.height / 2
         width: 14
         height: 10
         defaultColor: "#353637"
@@ -66,12 +67,12 @@ T.Dial {
         opacity: control.enabled ? 1 : 0.3
         transform: [
             Translate {
-                y: -Math.min(background.width, background.height) * 0.4 + handle.height / 2
+                y: -Math.min(control.background.width, control.background.height) * 0.4 + control.handle.height / 2
             },
             Rotation {
                 angle: control.angle
-                origin.x: handle.width / 2
-                origin.y: handle.height / 2
+                origin.x: control.handle.width / 2
+                origin.y: control.handle.height / 2
             }
         ]
     }

@@ -34,9 +34,9 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.1
+import QtQuick 2.12
 import HelperWidgets 2.0
-import QtQuick.Layouts 1.0
+import QtQuick.Layouts 1.12
 
 Column {
     width: parent.width
@@ -73,14 +73,22 @@ Column {
                     Layout.fillWidth: true
                 }
             }
+
+            Label {
+                text: qsTr("Interactive")
+                tooltip: qsTr("Whether the control is interactive.")
+            }
+            SecondColumnLayout {
+                CheckBox {
+                    text: backendValues.interactive.valueToString
+                    backendValue: backendValues.interactive
+                    Layout.fillWidth: true
+                }
+            }
         }
     }
 
     ControlSection {
-        width: parent.width
-    }
-
-    FontSection {
         width: parent.width
     }
 

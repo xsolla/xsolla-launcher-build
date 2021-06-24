@@ -34,22 +34,21 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.10
-import QtQuick.Templates 2.3 as T
-import QtQuick.Controls 2.3
-import QtQuick.Controls.impl 2.3
-import QtQuick.Controls.Imagine 2.3
-import QtQuick.Controls.Imagine.impl 2.3
+import QtQuick 2.12
+import QtQuick.Templates 2.12 as T
+import QtQuick.Controls 2.12
+import QtQuick.Controls.impl 2.12
+import QtQuick.Controls.Imagine 2.12
+import QtQuick.Controls.Imagine.impl 2.12
 
 T.SwitchDelegate {
     id: control
 
-    implicitWidth: Math.max(background ? background.implicitWidth : 0,
-                            contentItem.implicitWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(background ? background.implicitHeight : 0,
-                             Math.max(contentItem.implicitHeight,
-                                      indicator ? indicator.implicitHeight : 0) + topPadding + bottomPadding)
-    baselineOffset: contentItem.y + contentItem.baselineOffset
+    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                            implicitContentWidth + leftPadding + rightPadding)
+    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                             implicitContentHeight + topPadding + bottomPadding,
+                             implicitIndicatorHeight + topPadding + bottomPadding)
 
     spacing: 12 // ###
 
@@ -58,12 +57,17 @@ T.SwitchDelegate {
     rightPadding: background ? background.rightPadding : 0
     bottomPadding: background ? background.bottomPadding : 0
 
+    topInset: background ? -background.topInset || 0 : 0
+    leftInset: background ? -background.leftInset || 0 : 0
+    rightInset: background ? -background.rightInset || 0 : 0
+    bottomInset: background ? -background.bottomInset || 0 : 0
+
     icon.width: 24
     icon.height: 24
     icon.color: control.palette.text
 
     indicator: NinePatchImage {
-        x: text ? (control.mirrored ? control.leftPadding : control.width - width - control.rightPadding) : control.leftPadding + (control.availableWidth - width) / 2
+        x: control.text ? (control.mirrored ? control.leftPadding : control.width - width - control.rightPadding) : control.leftPadding + (control.availableWidth - width) / 2
         y: control.topPadding + (control.availableHeight - height) / 2
         width: Math.max(implicitWidth, handle.leftPadding && handle.rightPadding ? handle.implicitWidth : 2 * handle.implicitWidth)
         height: Math.max(implicitHeight, handle.implicitHeight)
@@ -81,11 +85,12 @@ T.SwitchDelegate {
             ]
         }
 
-        NinePatchImage {
-            id: handle
+        property NinePatchImage handle: NinePatchImage {
             readonly property real minPos: parent.leftPadding - leftPadding
             readonly property real maxPos: parent.width - width + rightPadding - parent.rightPadding
             readonly property real dragPos: control.visualPosition * parent.width - (width / 2)
+
+            parent: control.indicator
 
             x: Math.max(minPos, Math.min(maxPos, control.visualPosition * parent.width - (width / 2)))
             y: (parent.height - height) / 2
@@ -126,10 +131,6 @@ T.SwitchDelegate {
     }
 
     background: NinePatchImage {
-        x: -leftInset; y: -topInset
-        width: control.width + leftInset + rightInset
-        height: control.height + topInset + bottomInset
-
         source: Imagine.url + "switchdelegate-background"
         NinePatchImageSelector on source {
             states: [

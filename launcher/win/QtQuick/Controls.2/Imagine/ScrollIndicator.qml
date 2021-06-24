@@ -34,23 +34,28 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.10
-import QtQuick.Templates 2.3 as T
-import QtQuick.Controls.Imagine 2.3
-import QtQuick.Controls.Imagine.impl 2.3
+import QtQuick 2.12
+import QtQuick.Templates 2.12 as T
+import QtQuick.Controls.Imagine 2.12
+import QtQuick.Controls.Imagine.impl 2.12
 
 T.ScrollIndicator {
     id: control
 
-    implicitWidth: Math.max(background ? background.implicitWidth : 0,
-                            contentItem.implicitWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(background ? background.implicitHeight : 0,
-                             contentItem.implicitHeight + topPadding + bottomPadding)
+    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                            implicitContentWidth + leftPadding + rightPadding)
+    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                             implicitContentHeight + topPadding + bottomPadding)
 
     topPadding: background ? background.topPadding : 0
     leftPadding: background ? background.leftPadding : 0
     rightPadding: background ? background.rightPadding : 0
     bottomPadding: background ? background.bottomPadding : 0
+
+    topInset: background ? -background.topInset || 0 : 0
+    leftInset: background ? -background.leftInset || 0 : 0
+    rightInset: background ? -background.rightInset || 0 : 0
+    bottomInset: background ? -background.bottomInset || 0 : 0
 
     contentItem: NinePatchImage {
         width: control.availableWidth
@@ -70,10 +75,6 @@ T.ScrollIndicator {
     }
 
     background: NinePatchImage {
-        x: -leftInset; y: -topInset
-        width: control.width + leftInset + rightInset
-        height: control.height + topInset + bottomInset
-
         source: Imagine.url + "scrollindicator-background"
         NinePatchImageSelector on source {
             states: [
@@ -97,13 +98,13 @@ T.ScrollIndicator {
     transitions: [
         Transition {
             to: "active"
-            NumberAnimation { targets: [contentItem, background]; property: "opacity"; to: 1.0 }
+            NumberAnimation { targets: [contentItem, control.background]; property: "opacity"; to: 1.0 }
         },
         Transition {
             from: "active"
             SequentialAnimation {
                 PauseAnimation { duration: 5000 }
-                NumberAnimation { targets: [contentItem, background]; property: "opacity"; to: 0.0 }
+                NumberAnimation { targets: [contentItem, control.background]; property: "opacity"; to: 0.0 }
             }
         }
     ]

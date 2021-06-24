@@ -46,7 +46,7 @@ import QtQuick.Controls.Private 1.0
     \inqmlmodule QtQuick.Controls.Styles
     \since 5.3
     \ingroup controlsstyling
-    \brief Provides custom styling for \l Calendar
+    \brief Provides custom styling for \l Calendar.
 
     \section2 Component Map
 
@@ -369,6 +369,7 @@ Style {
         property int hoveredCellIndex: -1
         property int pressedCellIndex: -1
         property int pressCellIndex: -1
+        property var pressDate: null
 
         Rectangle {
             anchors.fill: parent
@@ -409,6 +410,7 @@ Style {
                 anchors.leftMargin: (control.weekNumbersVisible ? weekNumbersItem.width : 0)
                 anchors.right: parent.right
                 spacing: gridVisible ? __gridLineWidth : 0
+                property alias __repeater: repeater
 
                 Repeater {
                     id: repeater
@@ -465,13 +467,21 @@ Style {
 
                             Connections {
                                 target: control
-                                onVisibleMonthChanged: __weekNumber = control.__model.weekNumberAt(index)
-                                onVisibleYearChanged: __weekNumber = control.__model.weekNumberAt(index)
+
+                                function onVisibleMonthChanged() {
+                                    __weekNumber = control.__model.weekNumberAt(index)
+                                }
+
+                                function onVisibleYearChanged() {
+                                    __weekNumber = control.__model.weekNumberAt(index)
+                                }
                             }
 
                             Connections {
                                 target: control.__model
-                                onCountChanged: __weekNumber = control.__model.weekNumberAt(index)
+                                function onCountChanged() {
+                                    __weekNumber = control.__model.weekNumberAt(index)
+                                }
                             }
 
                             property QtObject styleData: QtObject {
@@ -581,9 +591,11 @@ Style {
 
                         onPressed: {
                             pressCellIndex = cellIndexAt(mouse.x, mouse.y);
+                            pressDate = null;
                             if (pressCellIndex !== -1) {
                                 var date = view.model.dateAt(pressCellIndex);
                                 pressedCellIndex = pressCellIndex;
+                                pressDate = date;
                                 if (__isValidDate(date)) {
                                     control.selectedDate = date;
                                     control.pressed(date);
@@ -608,9 +620,8 @@ Style {
                         onClicked: {
                             var indexOfCell = cellIndexAt(mouse.x, mouse.y);
                             if (indexOfCell !== -1 && indexOfCell === pressCellIndex) {
-                                var date = view.model.dateAt(indexOfCell);
-                                if (__isValidDate(date))
-                                    control.clicked(date);
+                                if (__isValidDate(pressDate))
+                                    control.clicked(pressDate);
                             }
                         }
 
@@ -635,7 +646,7 @@ Style {
 
                     Connections {
                         target: control
-                        onSelectedDateChanged: view.selectedDateChanged()
+                        function onSelectedDateChanged() { view.selectedDateChanged() }
                     }
 
                     Repeater {
@@ -671,7 +682,9 @@ Style {
 
                             property QtObject styleData: QtObject {
                                 readonly property alias index: delegateLoader.__index
-                                readonly property bool selected: control.selectedDate.getTime() === date.getTime()
+                                readonly property bool selected: control.selectedDate.getFullYear() === date.getFullYear() &&
+                                                                 control.selectedDate.getMonth() === date.getMonth() &&
+                                                                 control.selectedDate.getDate() === date.getDate()
                                 readonly property alias date: delegateLoader.__date
                                 readonly property bool valid: delegateLoader.valid
                                 // TODO: this will not be correct if the app is running when a new day begins.

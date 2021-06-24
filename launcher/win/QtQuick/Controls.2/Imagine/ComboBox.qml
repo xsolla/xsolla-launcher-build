@@ -34,29 +34,34 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.10
-import QtQuick.Window 2.3
-import QtQuick.Templates 2.3 as T
-import QtQuick.Controls 2.3
-import QtQuick.Controls.Imagine 2.3
-import QtQuick.Controls.Imagine.impl 2.3
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Templates 2.15 as T
+import QtQuick.Controls 2.15
+import QtQuick.Controls.Imagine 2.15
+import QtQuick.Controls.Imagine.impl 2.15
 
 T.ComboBox {
     id: control
 
-    implicitWidth: Math.max(background ? background.implicitWidth : 0,
+    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             contentItem.implicitWidth + background ? (background.leftPadding + background.rightPadding) : 0)
-    implicitHeight: Math.max(background ? background.implicitHeight : 0,
-                             Math.max(contentItem.implicitHeight,
-                                      indicator ? indicator.implicitHeight : 0) + background ? (background.topPadding + background.bottomPadding) : 0)
-    baselineOffset: contentItem.y + contentItem.baselineOffset
+    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                             Math.max(implicitContentHeight,
+                                      implicitIndicatorHeight) + background ? (background.topPadding + background.bottomPadding) : 0)
 
     leftPadding: padding + (!control.mirrored || !indicator || !indicator.visible ? 0 : indicator.width + spacing)
     rightPadding: padding + (control.mirrored || !indicator || !indicator.visible ? 0 : indicator.width + spacing)
 
+    topInset: background ? -background.topInset || 0 : 0
+    leftInset: background ? -background.leftInset || 0 : 0
+    rightInset: background ? -background.rightInset || 0 : 0
+    bottomInset: background ? -background.bottomInset || 0 : 0
+
     delegate: ItemDelegate {
-        width: parent.width
+        width: ListView.view.width
         text: control.textRole ? (Array.isArray(control.model) ? modelData[control.textRole] : model[control.textRole]) : modelData
+        font.weight: control.currentIndex === index ? Font.DemiBold : Font.Normal
         highlighted: control.highlightedIndex === index
         hoverEnabled: control.hoverEnabled
     }
@@ -71,7 +76,7 @@ T.ComboBox {
                 {"disabled": !control.enabled},
                 {"pressed": control.pressed},
                 {"editable": control.editable},
-                {"open": control.popup.visible},
+                {"open": control.down},
                 {"focused": control.visualFocus},
                 {"mirrored": control.mirrored},
                 {"hovered": control.hovered},
@@ -90,30 +95,26 @@ T.ComboBox {
 
         enabled: control.editable
         autoScroll: control.editable
-        readOnly: control.popup.visible
+        readOnly: control.down
         inputMethodHints: control.inputMethodHints
         validator: control.validator
+        selectByMouse: control.selectTextByMouse
 
         font: control.font
         color: control.flat ? control.palette.windowText : control.editable ? control.palette.text : control.palette.buttonText
         selectionColor: control.palette.highlight
         selectedTextColor: control.palette.highlightedText
-        horizontalAlignment: Text.AlignLeft
         verticalAlignment: Text.AlignVCenter
     }
 
     background: NinePatchImage {
-        x: -leftInset; y: -topInset
-        width: control.width + leftInset + rightInset
-        height: control.height + topInset + bottomInset
-
         source: Imagine.url + "combobox-background"
         NinePatchImageSelector on source {
             states: [
                 {"disabled": !control.enabled},
                 {"pressed": control.pressed},
                 {"editable": control.editable},
-                {"open": control.popup.visible},
+                {"open": control.down},
                 {"focused": control.visualFocus || (control.editable && control.activeFocus)},
                 {"mirrored": control.mirrored},
                 {"hovered": control.hovered},
@@ -134,6 +135,11 @@ T.ComboBox {
         rightPadding: background.rightPadding
         bottomPadding: background.bottomPadding
 
+        topInset: background ? -background.topInset || 0 : 0
+        leftInset: background ? -background.leftInset || 0 : 0
+        rightInset: background ? -background.rightInset || 0 : 0
+        bottomInset: background ? -background.bottomInset || 0 : 0
+
         palette.text: control.palette.text
         palette.highlight: control.palette.highlight
         palette.highlightedText: control.palette.highlightedText
@@ -143,7 +149,7 @@ T.ComboBox {
         contentItem: ListView {
             clip: true
             implicitHeight: contentHeight
-            model: control.popup.visible ? control.delegateModel : null
+            model: control.delegateModel
             currentIndex: control.highlightedIndex
             highlightMoveDuration: 0
 
@@ -151,10 +157,6 @@ T.ComboBox {
         }
 
         background: NinePatchImage {
-            x: -leftInset; y: -topInset
-            width: control.popup.width + leftInset + rightInset
-            height: control.popup.height + topInset + bottomInset
-
             source: Imagine.url + "combobox-popup"
             NinePatchImageSelector on source {
                 states: [

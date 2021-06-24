@@ -47,7 +47,7 @@ import QtQuick.Controls.Private 1.0
     \inqmlmodule QtQuick.Controls
     \since 5.3
     \ingroup controls
-    \brief Provides a way to select dates from a calendar
+    \brief Provides a way to select dates from a calendar.
 
     \image calendar.png
 
@@ -244,7 +244,7 @@ Control {
 
         Emitted when the mouse hovers over a valid date in the calendar.
 
-        \a date is the date that was hovered over.
+        \e date is the date that was hovered over.
 
         The corresponding handler is \c onHovered.
     */
@@ -257,7 +257,7 @@ Control {
 
         This is also emitted when dragging the mouse to another date while it is pressed.
 
-        \a date is the date that the mouse was pressed on.
+        \e date is the date that the mouse was pressed on.
 
         The corresponding handler is \c onPressed.
     */
@@ -268,7 +268,7 @@ Control {
 
         Emitted when the mouse is released over a valid date in the calendar.
 
-        \a date is the date that the mouse was released over.
+        \e date is the date that the mouse was released over.
 
         The corresponding handler is \c onReleased.
     */
@@ -279,7 +279,7 @@ Control {
 
         Emitted when the mouse is clicked on a valid date in the calendar.
 
-        \a date is the date that the mouse was clicked on.
+        \e date is the date that the mouse was clicked on.
 
         The corresponding handler is \c onClicked.
     */
@@ -290,7 +290,7 @@ Control {
 
         Emitted when the mouse is double-clicked on a valid date in the calendar.
 
-        \a date is the date that the mouse was double-clicked on.
+        \e date is the date that the mouse was double-clicked on.
 
         The corresponding handler is \c onDoubleClicked.
     */
@@ -302,7 +302,7 @@ Control {
 
         Emitted when the mouse is pressed and held on a valid date in the calendar.
 
-        \a date is the date that the mouse was pressed on.
+        \e date is the date that the mouse was pressed on.
 
         The corresponding handler is \c onPressAndHold.
     */

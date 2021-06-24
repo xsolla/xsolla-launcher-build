@@ -34,7 +34,7 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.0
+import QtQuick 2.12
 
 /*
    A cross-graphics API implementation of QtGraphicalEffects' RectangularGlow.
@@ -224,7 +224,7 @@ Item {
         height: parent.height + rootItem.glowRadius * 2 + cornerRadius * 2
 
         function clampedCornerRadius() {
-            var maxCornerRadius = Math.min(rootItem.width, rootItem.height) / 2 + glowRadius;
+            var maxCornerRadius = Math.min(rootItem.width, rootItem.height) / 2 + rootItem.glowRadius;
             return Math.max(0, Math.min(rootItem.cornerRadius, maxCornerRadius))
         }
 

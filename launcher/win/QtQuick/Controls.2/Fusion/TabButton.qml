@@ -34,25 +34,23 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.10
-import QtQuick.Templates 2.3 as T
-import QtQuick.Controls 2.3
-import QtQuick.Controls.impl 2.3
-import QtQuick.Controls.Fusion 2.3
-import QtQuick.Controls.Fusion.impl 2.3
+import QtQuick 2.12
+import QtQuick.Templates 2.12 as T
+import QtQuick.Controls 2.12
+import QtQuick.Controls.impl 2.12
+import QtQuick.Controls.Fusion 2.12
+import QtQuick.Controls.Fusion.impl 2.12
 
 T.TabButton {
     id: control
 
-    implicitWidth: Math.max(background ? background.implicitWidth : 0,
-                            contentItem.implicitWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(background ? background.implicitHeight : 0,
-                             contentItem.implicitHeight + topPadding + bottomPadding)
-    baselineOffset: contentItem.y + contentItem.baselineOffset
+    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                            implicitContentWidth + leftPadding + rightPadding)
+    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                             implicitContentHeight + topPadding + bottomPadding)
 
     padding: 2
-    leftPadding: 4
-    rightPadding: 4
+    horizontalPadding: 4
     spacing: 6
 
     icon.width: 16
@@ -77,33 +75,22 @@ T.TabButton {
         height: control.height - (control.checked ? 0 : 2)
 
         border.color: Qt.lighter(Fusion.outline(control.palette), 1.1)
-        gradient: control.checked ? selectedGradient : normalGradient
 
-        Gradient {
-            id: selectedGradient
+        gradient: Gradient {
             GradientStop {
                 position: 0
-                color: Qt.lighter(Fusion.tabFrameColor(control.palette), 1.04)
+                color: control.checked ? Qt.lighter(Fusion.tabFrameColor(control.palette), 1.04)
+                                       : Qt.darker(Fusion.tabFrameColor(control.palette), 1.08)
+            }
+            GradientStop {
+                position: control.checked ? 0 : 0.85
+                color: control.checked ? Qt.lighter(Fusion.tabFrameColor(control.palette), 1.04)
+                                       : Qt.darker(Fusion.tabFrameColor(control.palette), 1.08)
             }
             GradientStop {
                 position: 1
-                color: Fusion.tabFrameColor(control.palette)
-            }
-        }
-
-        Gradient {
-            id: normalGradient
-            GradientStop {
-                position: 0
-                color: Qt.darker(Fusion.tabFrameColor(control.palette), 1.08)
-            }
-            GradientStop {
-                position: 0.85
-                color: Qt.darker(Fusion.tabFrameColor(control.palette), 1.08)
-            }
-            GradientStop {
-                position: 1
-                color: Qt.darker(Fusion.tabFrameColor(control.palette), 1.16)
+                color: control.checked ? Fusion.tabFrameColor(control.palette)
+                                       : Qt.darker(Fusion.tabFrameColor(control.palette), 1.16)
             }
         }
     }

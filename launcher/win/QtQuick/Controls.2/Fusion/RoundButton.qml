@@ -34,21 +34,20 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.10
-import QtQuick.Templates 2.3 as T
-import QtQuick.Controls 2.3
-import QtQuick.Controls.impl 2.3
-import QtQuick.Controls.Fusion 2.3
-import QtQuick.Controls.Fusion.impl 2.3
+import QtQuick 2.12
+import QtQuick.Templates 2.12 as T
+import QtQuick.Controls 2.12
+import QtQuick.Controls.impl 2.12
+import QtQuick.Controls.Fusion 2.12
+import QtQuick.Controls.Fusion.impl 2.12
 
 T.RoundButton {
     id: control
 
-    implicitWidth: Math.max(background ? background.implicitWidth : 0,
-                            contentItem.implicitWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(background ? background.implicitHeight : 0,
-                             contentItem.implicitHeight + topPadding + bottomPadding)
-    baselineOffset: contentItem.y + contentItem.baselineOffset
+    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                            implicitContentWidth + leftPadding + rightPadding)
+    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                             implicitContentHeight + topPadding + bottomPadding)
 
     padding: 6
     spacing: 6
@@ -72,18 +71,16 @@ T.RoundButton {
         implicitHeight: 32
         visible: !control.flat || control.down || control.checked
 
-        color: Fusion.buttonColor(control.palette, control.highlighted, control.down || control.checked, control.hovered)
-        gradient: control.down || control.checked ? null : buttonGradient
-
-        Gradient {
-            id: buttonGradient
+        gradient: Gradient {
             GradientStop {
                 position: 0
-                color: Fusion.gradientStart(Fusion.buttonColor(control.palette, control.highlighted, control.down, control.hovered))
+                color: control.down || control.checked ? Fusion.buttonColor(control.palette, control.highlighted, control.down || control.checked, control.hovered)
+                                                       : Fusion.gradientStart(Fusion.buttonColor(control.palette, control.highlighted, control.down, control.hovered))
             }
             GradientStop {
                 position: 1
-                color: Fusion.gradientStop(Fusion.buttonColor(control.palette, control.highlighted, control.down, control.hovered))
+                color: control.down || control.checked ? Fusion.buttonColor(control.palette, control.highlighted, control.down || control.checked, control.hovered)
+                                                       : Fusion.gradientStop(Fusion.buttonColor(control.palette, control.highlighted, control.down, control.hovered))
             }
         }
 

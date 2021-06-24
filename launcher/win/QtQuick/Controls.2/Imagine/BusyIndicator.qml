@@ -34,29 +34,34 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.10
-import QtQuick.Templates 2.3 as T
-import QtQuick.Controls.Imagine 2.3
-import QtQuick.Controls.Imagine.impl 2.3
+import QtQuick 2.12
+import QtQuick.Templates 2.12 as T
+import QtQuick.Controls.Imagine 2.12
+import QtQuick.Controls.Imagine.impl 2.12
 
 T.BusyIndicator {
     id: control
 
-    implicitWidth: Math.max(background ? background.implicitWidth : 0,
-                            contentItem.implicitWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(background ? background.implicitHeight : 0,
-                             contentItem.implicitHeight + topPadding + bottomPadding)
+    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                            implicitContentWidth + leftPadding + rightPadding)
+    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                             implicitContentHeight + topPadding + bottomPadding)
 
     topPadding: background ? background.topPadding : 0
     leftPadding: background ? background.leftPadding : 0
     rightPadding: background ? background.rightPadding : 0
     bottomPadding: background ? background.bottomPadding : 0
 
+    topInset: background ? -background.topInset || 0 : 0
+    leftInset: background ? -background.leftInset || 0 : 0
+    rightInset: background ? -background.rightInset || 0 : 0
+    bottomInset: background ? -background.bottomInset || 0 : 0
+
     contentItem: AnimatedImage {
-        playing: control.running
         opacity: control.running ? 1 : 0
-        visible: control.running || animator.running
-        Behavior on opacity { OpacityAnimator { id: animator; duration: 250 } }
+        playing: control.running || opacity > 0
+        visible: control.running || opacity > 0
+        Behavior on opacity { OpacityAnimator { duration: 250 } }
 
         source: Imagine.url + "busyindicator-animation"
         AnimatedImageSelector on source {
@@ -70,10 +75,6 @@ T.BusyIndicator {
     }
 
     background: NinePatchImage {
-        x: -leftInset; y: -topInset
-        width: control.width + leftInset + rightInset
-        height: control.height + topInset + bottomInset
-
         source: Imagine.url + "busyindicator-background"
         NinePatchImageSelector on source {
             states: [

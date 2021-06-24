@@ -34,9 +34,9 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.1
+import QtQuick 2.12
 import HelperWidgets 2.0
-import QtQuick.Layouts 1.0
+import QtQuick.Layouts 1.12
 
 Column {
     width: parent.width
@@ -77,6 +77,10 @@ Column {
     }
 
     PaddingSection {
+        width: parent.width
+    }
+
+    InsetSection {
         width: parent.width
     }
 }

@@ -34,23 +34,21 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.10
-import QtQuick.Controls 2.3
-import QtQuick.Controls.impl 2.3
-import QtQuick.Templates 2.3 as T
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import QtQuick.Controls.impl 2.12
+import QtQuick.Templates 2.12 as T
 
 T.DelayButton {
     id: control
 
-    implicitWidth: Math.max(background ? background.implicitWidth : 0,
-                            contentItem.implicitWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(background ? background.implicitHeight : 0,
-                             contentItem.implicitHeight + topPadding + bottomPadding)
-    baselineOffset: contentItem.y + contentItem.baselineOffset
+    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                            implicitContentWidth + leftPadding + rightPadding)
+    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                             implicitContentHeight + topPadding + bottomPadding)
 
     padding: 6
-    leftPadding: padding + 2
-    rightPadding: padding + 2
+    horizontalPadding: padding + 2
 
     transition: Transition {
         NumberAnimation {
@@ -58,55 +56,35 @@ T.DelayButton {
         }
     }
 
-    contentItem: Item {
-        implicitWidth: label.implicitWidth
-        implicitHeight: label.implicitHeight
-
-        Item {
-            x: -control.leftPadding + (control.progress * control.width)
-            width: (1.0 - control.progress) * control.width
-            height: parent.height
-
+    contentItem: ItemGroup {
+        ClippedText {
             clip: control.progress > 0
+            clipX: -control.leftPadding + control.progress * control.width
+            clipWidth: (1.0 - control.progress) * control.width
             visible: control.progress < 1
 
-            Text {
-                id: label
-                x: -parent.x
-                width: control.availableWidth
-                height: parent.height
-
-                text: control.text
-                font: control.font
-                opacity: enabled ? 1 : 0.3
-                color: control.palette.buttonText
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                elide: Text.ElideRight
-            }
+            text: control.text
+            font: control.font
+            opacity: enabled ? 1 : 0.3
+            color: control.palette.buttonText
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            elide: Text.ElideRight
         }
 
-        Item {
-            x: -control.leftPadding
-            width: control.progress * control.width
-            height: parent.height
-
+        ClippedText {
             clip: control.progress > 0
+            clipX: -control.leftPadding
+            clipWidth: control.progress * control.width
             visible: control.progress > 0
 
-            Text {
-                x: control.leftPadding
-                width: control.availableWidth
-                height: parent.height
-
-                text: control.text
-                font: control.font
-                opacity: enabled ? 1 : 0.3
-                color: control.palette.brightText
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                elide: Text.ElideRight
-            }
+            text: control.text
+            font: control.font
+            opacity: enabled ? 1 : 0.3
+            color: control.palette.brightText
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            elide: Text.ElideRight
         }
     }
 

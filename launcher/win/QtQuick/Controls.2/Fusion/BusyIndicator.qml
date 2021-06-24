@@ -34,18 +34,20 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.10
-import QtQuick.Templates 2.3 as T
-import QtQuick.Controls 2.3
-import QtQuick.Controls.impl 2.3
-import QtQuick.Controls.Fusion 2.3
-import QtQuick.Controls.Fusion.impl 2.3
+import QtQuick 2.12
+import QtQuick.Templates 2.12 as T
+import QtQuick.Controls 2.12
+import QtQuick.Controls.impl 2.12
+import QtQuick.Controls.Fusion 2.12
+import QtQuick.Controls.Fusion.impl 2.12
 
 T.BusyIndicator {
     id: control
 
-    implicitWidth: contentItem.implicitWidth + leftPadding + rightPadding
-    implicitHeight: contentItem.implicitHeight + topPadding + bottomPadding
+    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                            implicitContentWidth + leftPadding + rightPadding)
+    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                             implicitContentHeight + topPadding + bottomPadding)
 
     padding: 6
 
@@ -54,12 +56,12 @@ T.BusyIndicator {
         implicitHeight: 28
         color: control.palette.text
 
+        running: control.running
         opacity: control.running ? 1 : 0
-        visible: control.running || opacityAnimator.running
-        Behavior on opacity { OpacityAnimator { id: opacityAnimator; duration: 250 } }
+        Behavior on opacity { OpacityAnimator { duration: 250 } }
 
         RotationAnimator on rotation {
-            running: control.running || opacityAnimator.running
+            running: control.running || contentItem.visible
             from: 0
             to: 360
             duration: 1000

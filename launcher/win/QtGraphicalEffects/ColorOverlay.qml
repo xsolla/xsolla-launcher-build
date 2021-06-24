@@ -37,8 +37,8 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.0
-import QtGraphicalEffects.private 1.0
+import QtQuick 2.12
+import QtGraphicalEffects.private 1.12
 
 /*!
     \qmltype ColorOverlay
@@ -123,6 +123,7 @@ Item {
     SourceProxy {
         id: sourceProxy
         input: rootItem.source
+        interpolation: input && input.smooth ? SourceProxy.LinearInterpolation : SourceProxy.NearestInterpolation
     }
 
     ShaderEffectSource {

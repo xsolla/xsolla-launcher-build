@@ -34,35 +34,32 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.10
-import QtQuick.Templates 2.3 as T
-import QtQuick.Controls.Universal 2.3
+import QtQuick 2.12
+import QtQuick.Templates 2.12 as T
+import QtQuick.Controls.Universal 2.12
 
 T.TabBar {
     id: control
 
-    implicitWidth: Math.max(background ? background.implicitWidth : 0,
+    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             contentWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(background ? background.implicitHeight : 0,
+    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                              contentHeight + topPadding + bottomPadding)
 
-    contentItem: PathView {
+    contentItem: ListView {
         model: control.contentModel
         currentIndex: control.currentIndex
 
-        interactive: false
-        snapMode: PathView.SnapToItem
-        movementDirection: PathView.Positive
-        highlightMoveDuration: 100
+        spacing: control.spacing
+        orientation: ListView.Horizontal
+        boundsBehavior: Flickable.StopAtBounds
+        flickableDirection: Flickable.AutoFlickIfNeeded
+        snapMode: ListView.SnapToItem
 
-        path: Path {
-            startX: control.count ? control.availableWidth / control.count / 2 : 0
-            startY: control.availableHeight / 2
-            PathLine {
-                x: control.count ? control.availableWidth + (control.availableWidth / control.count / 2) : 0
-                y: control.availableHeight / 2
-            }
-        }
+        highlightMoveDuration: 100
+        highlightRangeMode: ListView.ApplyRange
+        preferredHighlightBegin: 48
+        preferredHighlightEnd: width - 48
     }
 
     background: Rectangle {

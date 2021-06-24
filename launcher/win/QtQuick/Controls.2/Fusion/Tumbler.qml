@@ -34,38 +34,41 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.10
-import QtQuick.Templates 2.3 as T
-import QtQuick.Controls 2.3
-import QtQuick.Controls.impl 2.3
-import QtQuick.Controls.Fusion 2.3
-import QtQuick.Controls.Fusion.impl 2.3
+import QtQuick 2.12
+import QtQuick.Templates 2.12 as T
+import QtQuick.Controls 2.12
+import QtQuick.Controls.impl 2.12
+import QtQuick.Controls.Fusion 2.12
+import QtQuick.Controls.Fusion.impl 2.12
 
 T.Tumbler {
     id: control
-    implicitWidth: 60
-    implicitHeight: 200
+
+    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                            implicitContentWidth + leftPadding + rightPadding) || 60 // ### remove 60 in Qt 6
+    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                             implicitContentHeight + topPadding + bottomPadding) || 200 // ### remove 200 in Qt 6
 
     delegate: Text {
-        id: label
         text: modelData
         color: control.palette.windowText
         font: control.font
-        opacity: (1.0 - Math.abs(Tumbler.displacement) / (visibleItemCount / 2)) * (control.enabled ? 1 : 0.6)
+        opacity: (1.0 - Math.abs(Tumbler.displacement) / (control.visibleItemCount / 2)) * (control.enabled ? 1 : 0.6)
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
     }
 
     contentItem: TumblerView {
-        id: tumblerView
+        implicitWidth: 60
+        implicitHeight: 200
         model: control.model
         delegate: control.delegate
         path: Path {
-            startX: tumblerView.width / 2
-            startY: -tumblerView.delegateHeight / 2
+            startX: control.contentItem.width / 2
+            startY: -control.contentItem.delegateHeight / 2
             PathLine {
-                x: tumblerView.width / 2
-                y: (control.visibleItemCount + 1) * tumblerView.delegateHeight - tumblerView.delegateHeight / 2
+                x: control.contentItem.width / 2
+                y: (control.visibleItemCount + 1) * control.contentItem.delegateHeight - control.contentItem.delegateHeight / 2
             }
         }
 

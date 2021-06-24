@@ -34,23 +34,22 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.10
-import QtQuick.Controls 2.3
-import QtQuick.Controls.impl 2.3
-import QtQuick.Templates 2.3 as T
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import QtQuick.Controls.impl 2.12
+import QtQuick.Templates 2.12 as T
 
 T.SpinBox {
     id: control
 
-    implicitWidth: Math.max(background ? background.implicitWidth : 0,
+    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             contentItem.implicitWidth + 2 * padding +
-                            (up.indicator ? up.indicator.implicitWidth : 0) +
-                            (down.indicator ? down.indicator.implicitWidth : 0))
-    implicitHeight: Math.max(contentItem.implicitHeight + topPadding + bottomPadding,
-                             background ? background.implicitHeight : 0,
-                             up.indicator ? up.indicator.implicitHeight : 0,
-                             down.indicator ? down.indicator.implicitHeight : 0)
-    baselineOffset: contentItem.y + contentItem.baselineOffset
+                            up.implicitIndicatorWidth +
+                            down.implicitIndicatorWidth)
+    implicitHeight: Math.max(implicitContentHeight + topPadding + bottomPadding,
+                             implicitBackgroundHeight,
+                             up.implicitIndicatorHeight,
+                             down.implicitIndicatorHeight)
 
     padding: 6
     leftPadding: padding + (control.mirrored ? (up.indicator ? up.indicator.width : 0) : (down.indicator ? down.indicator.width : 0))
@@ -64,7 +63,7 @@ T.SpinBox {
 
     contentItem: TextInput {
         z: 2
-        text: control.textFromValue(control.value, control.locale)
+        text: control.displayText
 
         font: control.font
         color: control.palette.text
@@ -78,9 +77,9 @@ T.SpinBox {
         inputMethodHints: control.inputMethodHints
 
         Rectangle {
-            x: -6 - (down.indicator ? 1 : 0)
+            x: -6 - (control.down.indicator ? 1 : 0)
             y: -6
-            width: control.width - (up.indicator ? up.indicator.width - 1 : 0) - (down.indicator ? down.indicator.width - 1 : 0)
+            width: control.width - (control.up.indicator ? control.up.indicator.width - 1 : 0) - (control.down.indicator ? control.down.indicator.width - 1 : 0)
             height: control.height
             visible: control.activeFocus
             color: "transparent"
@@ -94,7 +93,7 @@ T.SpinBox {
         height: parent.height
         implicitWidth: 40
         implicitHeight: 40
-        color: up.pressed ? control.palette.mid : control.palette.button
+        color: control.up.pressed ? control.palette.mid : control.palette.button
 
         Rectangle {
             x: (parent.width - width) / 2
@@ -117,7 +116,7 @@ T.SpinBox {
         height: parent.height
         implicitWidth: 40
         implicitHeight: 40
-        color: down.pressed ? control.palette.mid : control.palette.button
+        color: control.down.pressed ? control.palette.mid : control.palette.button
 
         Rectangle {
             x: (parent.width - width) / 2

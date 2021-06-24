@@ -34,9 +34,9 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.1
+import QtQuick 2.12
 import HelperWidgets 2.0
-import QtQuick.Layouts 1.1
+import QtQuick.Layouts 1.12
 
 Column {
     width: parent.width
@@ -112,7 +112,7 @@ Column {
             }
             SecondColumnLayout {
                 ComboBox {
-                    backendValue: backendValues.orientation
+                    backendValue: backendValues.snapMode
                     model: [ "NoSnap", "SnapOnRelease", "SnapAlways" ]
                     scope: "Slider"
                     Layout.fillWidth: true
@@ -140,6 +140,20 @@ Column {
                 CheckBox {
                     text: backendValues.live.valueToString
                     backendValue: backendValues.live
+                    Layout.fillWidth: true
+                }
+            }
+
+            Label {
+                text: qsTr("Touch drag threshold")
+                tooltip: qsTr("The threshold (in logical pixels) at which a touch drag event will be initiated.")
+            }
+            SecondColumnLayout {
+                SpinBox {
+                    minimumValue: 0
+                    maximumValue: 10000
+                    decimals: 0
+                    backendValue: backendValues.touchDragThreshold
                     Layout.fillWidth: true
                 }
             }

@@ -37,6 +37,7 @@
 **
 ****************************************************************************/
 
+import QtQml 2.14 as Qml
 import QtQuick 2.2
 import QtQuick.Controls 1.2
 import QtQuick.Controls.Private 1.0
@@ -340,7 +341,7 @@ Control {
         be emitted if the combo box index was changed by the user, not
         when set programmatically.
 
-        \a index is the activated model index, or \c -1 if a new string is
+        \e index is the activated model index, or \c -1 if a new string is
         accepted.
 
         The corresponding handler is \c onActivated.
@@ -549,11 +550,12 @@ Control {
         }
     }
 
-    Binding {
+    Qml.Binding {
         target: input
         property: "text"
         value: popup.currentText
         when: input.editTextMatches
+        restoreMode: Binding.RestoreBinding
     }
 
     onTextRoleChanged: popup.resolveTextValue(textRole)
@@ -570,11 +572,16 @@ Control {
         onSelectedTextChanged: popup.currentText = selectedText
 
         property string selectedText
+        property int triggeredIndex: -1
         on__SelectedIndexChanged: {
             if (__selectedIndex === -1)
                 popup.currentText = ""
             else
                 updateSelectedText()
+            if (triggeredIndex >= 0 && triggeredIndex == __selectedIndex) {
+                activated(currentIndex)
+                triggeredIndex = -1
+            }
         }
         property string textRole: ""
 
@@ -611,8 +618,7 @@ Control {
                         modelData :
                           ((popup.modelIsArray ? modelData[popup.textRole] : model[popup.textRole]) || '')
                 onTriggered: {
-                    if (index !== currentIndex)
-                        activated(index)
+                    popup.triggeredIndex = index
                     comboBox.editText = text
                 }
                 onTextChanged: if (index === currentIndex) popup.updateSelectedText();

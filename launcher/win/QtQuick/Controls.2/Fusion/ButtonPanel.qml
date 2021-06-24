@@ -34,11 +34,11 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.10
-import QtQuick.Controls 2.3
-import QtQuick.Controls.impl 2.3
-import QtQuick.Controls.Fusion 2.3
-import QtQuick.Controls.Fusion.impl 2.3
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import QtQuick.Controls.impl 2.12
+import QtQuick.Controls.Fusion 2.12
+import QtQuick.Controls.Fusion.impl 2.12
 
 Rectangle {
     id: panel
@@ -55,11 +55,11 @@ Rectangle {
         id: buttonGradient
         GradientStop {
             position: 0
-            color: Fusion.gradientStart(Fusion.buttonColor(control.palette, panel.highlighted, control.down, control.hovered))
+            color: Fusion.gradientStart(Fusion.buttonColor(panel.control.palette, panel.highlighted, panel.control.down, panel.control.hovered))
         }
         GradientStop {
             position: 1
-            color: Fusion.gradientStop(Fusion.buttonColor(control.palette, panel.highlighted, control.down, control.hovered))
+            color: Fusion.gradientStop(Fusion.buttonColor(panel.control.palette, panel.highlighted, panel.control.down, panel.control.hovered))
         }
     }
 

@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.11.0] - 2021-06-23
+### Updated
+- Qt version to v5.15.2
+
 ## [2.10.2] - 2021-04-30
 ### Fixed
 - Occasional settings reset after restarting Launcher

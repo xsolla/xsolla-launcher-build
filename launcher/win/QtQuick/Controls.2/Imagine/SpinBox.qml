@@ -34,28 +34,32 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.10
-import QtQuick.Templates 2.3 as T
-import QtQuick.Controls.Imagine 2.3
-import QtQuick.Controls.Imagine.impl 2.3
+import QtQuick 2.12
+import QtQuick.Templates 2.12 as T
+import QtQuick.Controls.Imagine 2.12
+import QtQuick.Controls.Imagine.impl 2.12
 
 T.SpinBox {
     id: control
 
-    implicitWidth: Math.max(background ? background.implicitWidth : 0,
+    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             contentItem.implicitWidth + 2 * padding +
-                            (up.indicator ? up.indicator.implicitWidth : 0) +
-                            (down.indicator ? down.indicator.implicitWidth : 0))
-    implicitHeight: Math.max(contentItem.implicitHeight + topPadding + bottomPadding,
-                             background ? background.implicitHeight : 0,
-                             up.indicator ? up.indicator.implicitHeight : 0,
-                             down.indicator ? down.indicator.implicitHeight : 0)
-    baselineOffset: contentItem.y + contentItem.baselineOffset
+                            up.implicitIndicatorWidth +
+                            down.implicitIndicatorWidth)
+    implicitHeight: Math.max(implicitContentHeight + topPadding + bottomPadding,
+                             implicitBackgroundHeight,
+                             up.implicitIndicatorHeight,
+                             down.implicitIndicatorHeight)
 
     topPadding: background ? background.topPadding : 0
     leftPadding: (background ? background.leftPadding : 0) + (control.mirrored ? (up.indicator ? up.indicator.width : 0) : (down.indicator ? down.indicator.width : 0))
     rightPadding: (background ? background.rightPadding : 0) + (control.mirrored ? (down.indicator ? down.indicator.width : 0) : (up.indicator ? up.indicator.width : 0))
     bottomPadding: background ? background.bottomPadding : 0
+
+    topInset: background ? -background.topInset || 0 : 0
+    leftInset: background ? -background.leftInset || 0 : 0
+    rightInset: background ? -background.rightInset || 0 : 0
+    bottomInset: background ? -background.bottomInset || 0 : 0
 
     validator: IntValidator {
         locale: control.locale.name
@@ -65,7 +69,7 @@ T.SpinBox {
 
     contentItem: TextInput {
         z: 2
-        text: control.textFromValue(control.value, control.locale)
+        text: control.displayText
         opacity: control.enabled ? 1 : 0.3
 
         font: control.font
@@ -98,7 +102,6 @@ T.SpinBox {
     }
 
     up.indicator: NinePatchImage {
-        id: upIndicator
         x: control.mirrored ? 0 : parent.width - width
         height: parent.height
 
@@ -106,7 +109,7 @@ T.SpinBox {
         NinePatchImageSelector on source {
             states: [
                 {"up": true},
-                {"disabled": !upIndicator.enabled},
+                {"disabled": !control.up.indicator.enabled},
                 {"editable": control.editable},
                 {"pressed": control.up.pressed},
                 {"focused": control.activeFocus},
@@ -117,7 +120,6 @@ T.SpinBox {
     }
 
     down.indicator: NinePatchImage {
-        id: downIndicator
         x: control.mirrored ? parent.width - width : 0
         height: parent.height
 
@@ -125,7 +127,7 @@ T.SpinBox {
         NinePatchImageSelector on source {
             states: [
                 {"down": true},
-                {"disabled": !downIndicator.enabled},
+                {"disabled": !control.down.indicator.enabled},
                 {"editable": control.editable},
                 {"pressed": control.down.pressed},
                 {"focused": control.activeFocus},
@@ -136,10 +138,6 @@ T.SpinBox {
     }
 
     background: NinePatchImage {
-        x: -leftInset; y: -topInset
-        width: control.width + leftInset + rightInset
-        height: control.height + topInset + bottomInset
-
         source: Imagine.url + "spinbox-background"
         NinePatchImageSelector on source {
             states: [

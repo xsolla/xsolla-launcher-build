@@ -34,11 +34,11 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.10
-import QtQuick.Controls 2.3
-import QtQuick.Controls.impl 2.3
-import QtQuick.Controls.Fusion 2.3
-import QtQuick.Controls.Fusion.impl 2.3
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import QtQuick.Controls.impl 2.12
+import QtQuick.Controls.Fusion 2.12
+import QtQuick.Controls.Fusion.impl 2.12
 
 Rectangle {
     id: indicator
@@ -62,7 +62,7 @@ Rectangle {
         radius: width / 2
         color: "transparent"
         border.color: Fusion.topShadow
-        visible: control.enabled && !control.down
+        visible: indicator.control.enabled && !indicator.control.down
     }
 
     Rectangle {
@@ -73,6 +73,6 @@ Rectangle {
         radius: width / 2
         color: Color.transparent(indicator.checkMarkColor, 180 / 255)
         border.color: Color.transparent(indicator.checkMarkColor, 200 / 255)
-        visible: control.checked
+        visible: indicator.control.checked
     }
 }

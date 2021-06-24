@@ -34,9 +34,9 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.1
+import QtQuick 2.12
 import HelperWidgets 2.0
-import QtQuick.Layouts 1.0
+import QtQuick.Layouts 1.12
 
 Section {
     caption: qsTr("Control")
@@ -69,7 +69,7 @@ Section {
 
         Label {
             text: qsTr("Hover")
-            tooltip: qsTr("Whether control accepts hover evets.")
+            tooltip: qsTr("Whether control accepts hover events.")
         }
         SecondColumnLayout {
             CheckBox {
@@ -95,7 +95,7 @@ Section {
 
         Label {
             text: qsTr("Wheel")
-            tooltip: qsTr("Whether control accepts wheel evets.")
+            tooltip: qsTr("Whether control accepts wheel events.")
         }
         SecondColumnLayout {
             CheckBox {

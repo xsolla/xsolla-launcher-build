@@ -34,9 +34,9 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.1
+import QtQuick 2.12
 import HelperWidgets 2.0
-import QtQuick.Layouts 1.1
+import QtQuick.Layouts 1.12
 
 Column {
     width: parent.width
@@ -112,7 +112,7 @@ Column {
             }
             SecondColumnLayout {
                 ComboBox {
-                    backendValue: backendValues.orientation
+                    backendValue: backendValues.snapMode
                     model: [ "NoSnap", "SnapOnRelease", "SnapAlways" ]
                     scope: "Dial"
                     Layout.fillWidth: true
@@ -127,6 +127,31 @@ Column {
                 CheckBox {
                     text: backendValues.live.valueToString
                     backendValue: backendValues.live
+                    Layout.fillWidth: true
+                }
+            }
+
+            Label {
+                text: qsTr("Input Mode")
+                tooltip: qsTr("How the dial tracks movement.")
+            }
+            SecondColumnLayout {
+                ComboBox {
+                    backendValue: backendValues.inputMode
+                    model: [ "Circular", "Horizontal", "Vertical" ]
+                    scope: "Dial"
+                    Layout.fillWidth: true
+                }
+            }
+
+            Label {
+                text: qsTr("Wrap")
+                tooltip: qsTr("Whether the dial wraps when dragged.")
+            }
+            SecondColumnLayout {
+                CheckBox {
+                    text: backendValues.wrap.valueToString
+                    backendValue: backendValues.wrap
                     Layout.fillWidth: true
                 }
             }
