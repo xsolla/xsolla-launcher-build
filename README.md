@@ -44,7 +44,7 @@ The **scripts/macos/deploy.sh** script generates:
 ### Making Launcher Configuration
 
 
-Parameters for Launcher configuration are represented as JSON objects in **launcher/win/config.json**.
+Parameters for Launcher configuration are represented as JSON objects in **launcher/win/config.json** (UTF-8).
 
 #### Required Objects
 
@@ -82,7 +82,7 @@ Parameters for Launcher configuration are represented as JSON objects in **launc
 
 #### Optional Objects
 
-Optional objects in **config.json** are used to perform extended Launcher settings.
+Optional objects in **config.json** (UTF-8) are used to perform extended Launcher settings.
 
 **Object**               | **Description**
 :------------------------|:-------------------------------------------------------------------
@@ -170,11 +170,11 @@ multiple_instances_game_on_same_account_enabled | Whether to allow users to simu
 
 ### Customizing Launcher UI
 
-The **UIStyle.json** file is used to customize the UI of Xsolla Launcher v1.6.38.365 and earlier. If you updated Xsolla Launcher to v2.0.0 or later, use the **local_theme.json** file or both .json files for UI customization settings. Read more on the [Wiki page](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)#how-to-move-customization-settings-to-v200).
+The **UIStyle.json** file (UTF-8) is used to customize the UI of Xsolla Launcher v1.6.38.365 and earlier. If you updated Xsolla Launcher to v2.0.0 or later, use the **local_theme.json** file (UTF-8) or both .json files for UI customization settings. Read more on the [Wiki page](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)#how-to-move-customization-settings-to-v200).
 
 #### UIStyle.json
 
-All parameters required for Launcher UI customization are represented as JSON objects in **launcher/win/UIStyle.json**. An object may contain window element styles and/or nested objects.
+All parameters required for Launcher UI customization are represented as JSON objects in **launcher/win/UIStyle.json** (UTF-8). An object may contain window element styles and/or nested objects.
 
 The code is self-describing, with object names directly referring to their purpose. For example, ```version_text_color``` refers to the color of the text indicating Launcher version.
 
