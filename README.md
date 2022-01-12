@@ -119,6 +119,7 @@ custom_launcher_version | Сustom Launcher version.
 hide_news_page | Whether to hide the **News** page in Launcher. Can be 'true' or 'false'.  By default, the parameter is  'false', and the **News** page is not hidden.
 hide_game_banners | Whether to hide banners on the **Game** screen. Can be 'true' or 'false'.  By default, the parameter is 'false' and the banners are not hidden.
 multiple_instances_game_on_same_account_enabled | Whether to allow users to simultaneously launch the game on different devices using one account. Can be ‘true’ and ‘false’. Default is ‘false’.
+game_arguments          | Сhange the names of the arguments required for the game launch
 
 <details><summary>Example</summary>
 
@@ -163,7 +164,13 @@ multiple_instances_game_on_same_account_enabled | Whether to allow users to simu
 
         }
     ],
-  "multiple_instances_game_on_same_account_enabled": false
+  "multiple_instances_game_on_same_account_enabled": false,
+  "game_arguments": {
+                    "login_token_arg": "--xsolla-login-token",
+                    "playfab_token_arg": "--xsolla-playfab-token",
+                    "tracking_payload_arg": "--tracking-payload",
+                    "locale_arg": "--xsolla-locale" 
+                    }
 }
 ```
 </details>
