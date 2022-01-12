@@ -3,6 +3,16 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2.14.6] - 2022-01-12
+### Added
+- Game arguments customization
+### Fixed
+- Bug when in game status is stucks
+
+## [2.14.5] - 2021-12-17
+### Fixed
+- Tracking payload processing
+
 ## [2.14.1] - 2021-09-16
 ### Fixed
 - Minor bugs
