@@ -37,8 +37,8 @@ The **scripts/macos/deploy.sh** script generates:
 3. Clone this repository.
 4. [Make](#making-launcher-configuration) Launcher main configuration.
 5. [Customize](#customizing-launcher-ui) Launcher UI.
-6. [Generate](https://developers.xsolla.com/doc/launcher/#guides_launcher_generate_archive_installation_file) a Launcher installation file and build archive.
-7. [Upload](https://developers.xsolla.com/doc/launcher/#guides_launcher_builds_upload) the game build to the Xsolla update server.
+6. [Generate](https://developers.xsolla.com/doc/launcher/integration-guide/generate-installation-file/) a Launcher installation file and build archive.
+7. [Upload](https://developers.xsolla.com/doc/launcher/integration-guide/upload-game-build/) the game build to the Xsolla update server.
 8. Send the Launcher installation file to new users and upload the build archive to your Publisher Account > Launcher settings > **General settings > Customize Launcher**.
 
 ### Making Launcher Configuration
