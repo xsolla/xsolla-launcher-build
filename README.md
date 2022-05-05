@@ -1,4 +1,4 @@
->**Info**: The latest Xsolla Launcher version is 2.14.5. If your Xsolla Launcher version is earlier than 2.6.0, please read [Wiki](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)) to get updates.
+>**Info**: The latest Xsolla Launcher version is 2.14.7. If your Xsolla Launcher version is earlier than 2.6.0, please read [Wiki](https://github.com/xsolla/xsolla-launcher-build/wiki/New-version-of-Xsolla-Launcher-(v2.0.0)) to get updates.
 
 >**Since Launcher version 2.11.0 we moved Launcher and Build loader binaries to releases. You will find the latest version [here](https://github.com/xsolla/xsolla-launcher-build/releases/latest)**.
 
