@@ -167,5 +167,6 @@ xcrun stapler staple "$_dmgpath"
 echo "> Create Launcher Archive"
 
 hdiutil attach "$_dmgpath" -quiet
-"$_apppath/Contents/MacOS/7zr" a -t7z "$_7zpath" "$_apppath/Contents/." -mx=9 -m0=lzma 
+"$_apppath/Contents/MacOS/7zr" a -t7z "$_7zpath" 
+"$_apppath" -mx=9 -m0=lzma 
 hdiutil detach "/Volumes/$appname" -quiet
